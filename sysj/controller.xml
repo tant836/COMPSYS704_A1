@@ -1,0 +1,40 @@
+<System xmlns="http://systemjtechnology.com">
+	<SubSystem Name="SS1" Local="true">
+		<ClockDomain Name="ConveyorCD" Class="Conveyor">
+			<iSignal Name="bottleAtPos1" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
+			<iSignal Name="bottleLeftPos5"  Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
+
+			<oSignal Name="motConveyorOn" To="PlantCD.motConveyorOn" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10001" />
+		</ClockDomain>
+		<ClockDomain Name="RotaryTableCD" Class="RotaryTable">
+			<iSignal Name="tableAlignedWithSensor" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
+			<iSignal Name="bottleAtPos5"  Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
+			<iSignal Name="capsonBottleAtPos1"  Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
+
+			<oSignal Name="rotaryTableTrigger" To="PlantCD.rotaryTableTrigger" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10001" />
+		</ClockDomain>
+		<ClockDomain Name="CapperCD" Class="Capper">
+			<iSignal Name="bottleAtPos4" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
+			<iSignal Name="gripperZAxisLowered"  Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
+			<iSignal Name="gripperZAxisLifted"  Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
+			<iSignal Name="gripperTurnHomePos"  Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
+			<iSignal Name="gripperTurnFinalPos"  Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
+
+			<oSignal Name="cylPos5ZAxisExtend" To="PlantCD.cylPos5ZAxisExtend" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10001" />
+			<oSignal Name="gripperTurnRetract" To="PlantCD.gripperTurnRetract" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10001" />
+			<oSignal Name="gripperTurnExtend" To="PlantCD.gripperTurnExtend" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10001" />
+			<oSignal Name="capGripperPos5Extend" To="PlantCD.capGripperPos5Extend" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10001" />
+			<oSignal Name="cylClampBottleExtend" To="PlantCD.cylClampBottleExtend" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10001" />
+		</ClockDomain>
+		<ClockDomain Name="FillerCD" Class="Filler">
+			<iSignal Name="bottleAtPos2" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
+			<iSignal Name="dosUnitEvac"  Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
+			<iSignal Name="dosUnitFilled"  Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
+
+			<oSignal Name="valveInjectorOnOff" To="PlantCD.valveInjectorOnOff" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10001" />
+			<oSignal Name="valveInletOnOff" To="PlantCD.valveInletOnOff" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10001" />
+			<oSignal Name="dosUnitValveRetract" To="PlantCD.dosUnitValveRetract" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10001" />
+			<oSignal Name="dosUnitValveExtend" To="PlantCD.dosUnitValveExtend" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10001" />
+		</ClockDomain>
+	</SubSystem>
+</System>

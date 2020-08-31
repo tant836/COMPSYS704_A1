@@ -1,0 +1,22 @@
+<System xmlns="http://systemjtechnology.com">
+	<SubSystem Name="SS2" Local="true">
+		<ClockDomain Name="PlantCD" Class="Plant">
+			<iSignal Name="motConveyorOn" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10001" />
+			
+			<iSignal Name="rotaryTableTrigger" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10001" />
+			
+			<iSignal Name="cylPos5ZAxisExtend" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10001" />
+			<iSignal Name="gripperTurnRetract" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10001" />
+			<iSignal Name="gripperTurnExtend" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10001" />
+			<iSignal Name="capGripperPos5Extend" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10001" />
+			<iSignal Name="cylClampBottleExtend" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10001" />
+			
+			<iSignal Name="valveInjectorOnOff" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10001" />
+			<iSignal Name="valveInletOnOff" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10001" />
+			<iSignal Name="dosUnitValveRetract" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10001" />
+			<iSignal Name="dosUnitValveExtend" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10001" />
+			
+			
+		</ClockDomain>
+	</SubSystem>
+</System>

@@ -1,0 +1,125 @@
+Conveyor(
+		input signal bottleAtPos1, bottleLeftPos5;
+		output signal motConveyorOn;
+		)
+->{
+/* TODO: Write control-logic */
+	
+	loop {
+		pause;
+		abort(bottleAtPos1){
+			await(!bottleLeftPos5);
+			sustain motConveyorOn;
+		}
+	}
+	
+
+}
+
+RotaryTable(
+		input signal tableAlignedWithSensor, bottleAtPos5, capsonBottleAtPos1;
+		output signal rotaryTableTrigger;
+		)
+->{
+/* TODO: Write control-logic */
+	
+	loop{
+		pause;
+		present(capsonBottleAtPos1){
+			await(!bottleAtPos5);
+			abort(tableAlignedWithSensor){
+				sustain rotaryTableTrigger;
+			}
+		}
+	}
+
+}
+
+Capper(
+		input signal bottleAtPos4, gripperZAxisLowered, gripperZAxisLifted, gripperTurnHomePos, gripperTurnFinalPos;
+		output signal cylPos5ZAxisExtend, gripperTurnRetract, gripperTurnExtend, capGripperPos5Extend, cylClampBottleExtend;
+		)
+->{
+/* TODO: Write control-logic */
+	
+	loop{
+		pause;
+		await(bottleAtPos4);
+		abort(gripperZAxisLowered){//clamp and lower gripper until gripper is fully lowered
+			{
+				sustain cylClampBottleExtend;//clamp bottle
+			}
+			||
+			{
+				sustain cylPos5ZAxisExtend;//lower gripper
+			}
+		}
+		
+		abort(gripperTurnFinalPos){//steps 3 & 4
+			{
+				sustain cylClampBottleExtend;//clamp bottle
+			}
+			||
+			{
+				sustain cylPos5ZAxisExtend;//lower gripper
+			}
+			||
+			{
+				sustain capGripperPos5Extend;//grip the cap with gripper
+			}
+			||
+			{
+				sustain gripperTurnExtend;//twist the gripper
+			}
+		}
+		
+		abort(gripperTurnHomePos){//steps 5 & 6
+			{
+				sustain cylClampBottleExtend;//clamp bottle
+			}
+			||
+			{
+				sustain cylPos5ZAxisExtend;//lower gripper
+			}
+			||
+			{
+				sustain gripperTurnRetract;//twist the gripper
+			}
+		}
+		
+		abort(gripperZAxisLifted){
+			sustain cylClampBottleExtend;//clamp bottle
+		}
+	}
+
+}
+
+Filer(
+		input signal bottleAtPos2, dosUnitEvac, dosUnitFilled;
+		output signal valveInjectorOnOff, valveInletOnOff, dosUnitValveRetract, dosUnitValveExtend;
+		)
+->{
+/* TODO: Write control-logic */
+	loop{
+		pause;
+		await(bottleAtPos2);
+		abort(dosUnitFilled){
+			{sustain valveInjectorOnOff;}
+			||
+			{
+				present(dosUnitEvac){
+					sustain dosUnitValveRetract;
+				}
+			}
+			
+		}
+		
+		abort(dosUnitEvac){
+			{sustain valveInletOnOff;}
+			||
+			{
+				sustain dosUnitValveExtend;
+			}
+		}
+	}
+}
