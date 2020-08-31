@@ -17,7 +17,7 @@ Conveyor(
 }
 
 RotaryTable(
-		input signal tableAlignedWithSensor, bottleAtPos5, capsonBottleAtPos1;
+		input signal tableAlignedWithSensor, bottleAtPos5, capsonBottleAtPos1, bottleAtPos1;
 		output signal rotaryTableTrigger;
 		)
 ->{
@@ -25,12 +25,14 @@ RotaryTable(
 	//My change is logic good?
 	loop{
 		pause;
-		present(!capsonBottleAtPos1){
-			abort(bottleAtPos5){
-				sustain rotaryTableTrigger;
-			}
-			abort(tableAlignedWithSensor){
-				sustain rotaryTableTrigger;
+		present(bottleAtPos1){
+			present(!capsonBottleAtPos1){
+				abort(bottleAtPos5){
+					sustain rotaryTableTrigger;
+				}
+				abort(tableAlignedWithSensor){
+					sustain rotaryTableTrigger;
+				}
 			}
 		}
 	}
