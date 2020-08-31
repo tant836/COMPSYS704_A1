@@ -26,14 +26,16 @@ public class CapLoader extends JFrame {
 		panel.setBackground(Color.WHITE);
 		JButton enable = new JButton("Enable");
 		enable.addActionListener(new SignalClient(Ports.PORT_LOADER_PLANT, Ports.ENABLE_SIGNAL));
-		JButton request = new JButton("Remove bottle");
-		request.addActionListener(new SignalClient(Ports.PORT_LOADER_CONTROLLER, Ports.REMOVE_BOTTLE_SIGNAL));
+		JButton remBottle = new JButton("Remove bottle");
+		remBottle.addActionListener(new SignalClient(Ports.PORT_LOADER_PLANT, Ports.REMOVE_BOTTLE_SIGNAL));
 		JButton put_bottle = new JButton("Put bottle");
-		request.addActionListener(new SignalClient(Ports.PORT_LOADER_CONTROLLER, Ports.PLACE_BOTTLE_SIGNAL));
+		put_bottle.addActionListener(new SignalClient(Ports.PORT_LOADER_PLANT, Ports.PLACE_BOTTLE_SIGNAL));
+		JButton put_5 = new JButton("Put pos 5");
+		put_bottle.addActionListener(new SignalClient(Ports.PORT_LOADER_PLANT, Ports.PUT_BOTTLE_POS_5_SIGNAL));
 		
 		JPanel ss = new JPanel();
 		ss.add(enable);
-		ss.add(request);
+		ss.add(remBottle);
 		ss.add(put_bottle);
 		this.setLayout(new GridBagLayout());
 		GridBagConstraints c = new GridBagConstraints();

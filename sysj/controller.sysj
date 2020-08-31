@@ -29,16 +29,15 @@ RotaryTable(
 	//My change is logic good?
 	loop{
 		pause;
-		present(bottleAtPos1){
+		await(bottleAtPos1);
 			present(!capsonBottleAtPos1){
-				abort(bottleAtPos5){
+				abort(bottleAtPos5 || tableAlignedWithSensor){
 					sustain rotaryTableTrigger;
 				}
-				abort(tableAlignedWithSensor){
-					sustain rotaryTableTrigger;
-				}
+//				abort(tableAlignedWithSensor){
+//					sustain rotaryTableTrigger;
+//				}
 			}
-		}
 	}
 
 }

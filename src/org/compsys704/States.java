@@ -5,12 +5,12 @@ public class States {
 	
 	
 	public static volatile boolean bottleAtPos1 = true;
-	public static volatile boolean bottleLeftPos5 = true;
+	public static volatile boolean bottleLeftPos5 = false;
 	public static volatile boolean motConveyorOn = false;
 	
 	public static volatile boolean tableAlignedWithSensor = true;
-	public static volatile boolean bottleAtPos5 = true;
-	public static volatile boolean capsonBottleAtPos1 = true;
+	public static volatile boolean bottleAtPos5 = false;
+	public static volatile boolean capsonBottleAtPos1 = false;
 	public static volatile boolean rotaryTableTrigger = false;
 	
 	public static volatile boolean bottleAtPos4 = true;

@@ -14,7 +14,7 @@ Plant(
 		//Rotary Table
 		input signal rotaryTableTrigger;
 		
-		output signal rotaryTableTriggerE;
+		output signal rotaryTableTriggerE, bottleAtPos1_RT;
 		
 		//Filler
 		input signal valveInjectorOnOff,valveInletOnOff,dosUnitValveRetract,dosUnitValveExtend;
@@ -31,6 +31,7 @@ Plant(
 	new Thread(new GUI()).start();
 
 	signal capDec;
+	signal l_bottleAdded;
 	int signal capPos;
 	emit capPos(0);
 	{// Arm
@@ -122,30 +123,23 @@ Plant(
 		while(true) {
 			pause;
 			{
-				//abort(!motConveyorOn && enable){
-				sustain motConveyorOnE;
-				//}
-			}
-			||
-			{
-				present(bottleAdded && enable && motConveyorOn){
-					abort(rotaryTableTrigger){
-						sustain bottleAtPos1;
-					}
+				await(l_bottleAdded && enable && motConveyorOn);
+				abort(rotaryTableTrigger && enable){
+					sustain bottleAtPos1;
 				}
 			}
 		}
 	}
 	||
-	{	
+	{
 		while(true) {
 			pause;
-			present(motConveyorOn && bottleAdded){
-				abort(rotaryTableTrigger){
-					sustain bottleAtPos1;
+			present(bottleAdded){
+				abort(enable && !bottleAdded){
+					sustain l_bottleAdded;
 				}
 			}
-		}
+		} 
 	}
 //Conveyer end
 	||
@@ -215,12 +209,13 @@ Plant(
 //		||
 //		{while(true){present(armAtDest){emit armAtDestE;} pause;}}
 //		||
-//		{while(true){present(empty){emit emptyE;} pause;}}
-//		||
 		{while(true){present(bottleAtPos1){emit bottleAtPos1E;} pause;}}
 		||
-		{while(true){sustain rotaryTableTriggerE; pause;}}
+		{while(true){present(motConveyorOn){emit motConveyorOnE;} pause;}}
+		||
+		{while(true){present(rotaryTableTrigger){emit rotaryTableTriggerE;} pause;}}
+		||
+		{while(true){present(bottleAtPos1 && enable){pause; pause; pause; pause; pause; pause; pause; await(enable); emit bottleAtPos1_RT;} pause;}}
 
-	
 	}
 }

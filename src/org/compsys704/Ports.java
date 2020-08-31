@@ -16,4 +16,5 @@ public class Ports {
 	public static final String SIGNAL_ARM_SOURCE      = "ControllerCD.armSourceM";
 	public static final String SIGNAL_ARM_DEST        = "ControllerCD.armDestM";
 	public static final String SIGNAL_Mode            = "ControllerCD.mode";
+	public static final String PUT_BOTTLE_POS_5_SIGNAL = "ConveyorCD.placeBottleAtPos5";
 }
