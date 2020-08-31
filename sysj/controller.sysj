@@ -7,8 +7,8 @@ Conveyor(
 	
 	loop {
 		pause;
-		abort(bottleAtPos1){
-			await(!bottleLeftPos5);
+		await(!bottleLeftPos5);
+		abort(bottleAtPos1 || bottleLeftPos5){
 			sustain motConveyorOn;
 		}
 	}
@@ -22,11 +22,13 @@ RotaryTable(
 		)
 ->{
 /* TODO: Write control-logic */
-	
+	//My change is logic good?
 	loop{
 		pause;
-		present(capsonBottleAtPos1){
-			await(!bottleAtPos5);
+		present(!capsonBottleAtPos1){
+			abort(bottleAtPos5){
+				sustain rotaryTableTrigger;
+			}
 			abort(tableAlignedWithSensor){
 				sustain rotaryTableTrigger;
 			}

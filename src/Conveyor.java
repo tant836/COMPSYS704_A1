@@ -14,9 +14,8 @@ public class Conveyor extends ClockDomain{
   public Signal bottleAtPos1 = new Signal("bottleAtPos1", Signal.INPUT);
   public Signal bottleLeftPos5 = new Signal("bottleLeftPos5", Signal.INPUT);
   public Signal motConveyorOn = new Signal("motConveyorOn", Signal.OUTPUT);
-  private int S58 = 1;
-  private int S18 = 1;
-  private int S7 = 1;
+  private int S34 = 1;
+  private int S2 = 1;
   
   private int[] ends = new int[18];
   private int[] tdone = new int[18];
@@ -28,65 +27,57 @@ public class Conveyor extends ClockDomain{
     }
     
     RUN: while(true){
-      switch(S58){
+      switch(S34){
         case 0 : 
-          S58=0;
+          S34=0;
           break RUN;
         
         case 1 : 
-          S58=2;
-          S58=2;
-          S18=0;
+          S34=2;
+          S34=2;
+          S2=0;
           active[1]=1;
           ends[1]=1;
           break RUN;
         
         case 2 : 
-          switch(S18){
+          switch(S2){
             case 0 : 
-              S18=0;
-              S18=1;
-              S7=0;
+              S2=0;
+              S2=1;
               active[1]=1;
               ends[1]=1;
               break RUN;
             
             case 1 : 
-              if(bottleAtPos1.getprestatus()){//sysj\controller.sysj line: 10, column: 9
-                S18=0;
+              if(!bottleLeftPos5.getprestatus()){//sysj\controller.sysj line: 10, column: 9
+                S2=2;
+                motConveyorOn.setPresent();//sysj\controller.sysj line: 12, column: 4
+                currsigs.addElement(motConveyorOn);
                 active[1]=1;
                 ends[1]=1;
                 break RUN;
               }
               else {
-                switch(S7){
-                  case 0 : 
-                    if(!bottleLeftPos5.getprestatus()){//sysj\controller.sysj line: 11, column: 10
-                      S7=1;
-                      motConveyorOn.setPresent();//sysj\controller.sysj line: 12, column: 4
-                      currsigs.addElement(motConveyorOn);
-                      System.out.println("Emitted motConveyorOn");
-                      active[1]=1;
-                      ends[1]=1;
-                      break RUN;
-                    }
-                    else {
-                      active[1]=1;
-                      ends[1]=1;
-                      break RUN;
-                    }
-                  
-                  case 1 : 
-                    motConveyorOn.setPresent();//sysj\controller.sysj line: 12, column: 4
-                    currsigs.addElement(motConveyorOn);
-                    System.out.println("Emitted motConveyorOn");
-                    active[1]=1;
-                    ends[1]=1;
-                    break RUN;
-                  
-                }
+                active[1]=1;
+                ends[1]=1;
+                break RUN;
               }
-              break;
+            
+            case 2 : 
+              if(bottleAtPos1.getprestatus() || bottleLeftPos5.getprestatus()){//sysj\controller.sysj line: 11, column: 9
+                S2=0;
+                active[1]=1;
+                ends[1]=1;
+                break RUN;
+              }
+              else {
+                motConveyorOn.setPresent();//sysj\controller.sysj line: 12, column: 4
+                currsigs.addElement(motConveyorOn);
+                active[1]=1;
+                ends[1]=1;
+                break RUN;
+              }
             
           }
         

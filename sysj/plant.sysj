@@ -1,8 +1,25 @@
 Plant(
-		input signal pusherExtend,vacOn,armSource,armDest;
+		//global plant signals
 		input signal enable,refill;
+		//Caploader
+		input signal pusherExtend,vacOn,armSource,armDest;
 		output signal pusherRetracted,pusherExtended,WPgripped,armAtSource,armAtDest,empty;
 		output signal pusherRetractedE,pusherExtendedE,WPgrippedE,armAtSourceE,armAtDestE,emptyE;
+		
+		//Conveyor
+		input signal motConveyorOn;
+		
+		output signal motConveyorOnE;
+		
+		//Rotary Table
+		input signal rotaryTableTrigger;
+		
+		output signal rotaryTableTriggerE;
+		
+		//Filler
+		input signal valveInjectorOnOff,valveInletOnOff,dosUnitValveRetract,dosUnitValveExtend;
+		
+		output signal valveInjectorOnOffE,valveInletOnOffE,dosUnitValveRetractE,dosUnitValveExtendE;
 		)
 ->
 {
@@ -99,7 +116,68 @@ Plant(
 		}
 	}
 	||
+//Conveyer starts here
+	{
+		signal s_motConveyorOn;
+		while(true) {
+			abort(!motConveyorOn && enable){
+				sustain motConveyorOnE;
+			}
+		}
+	}
+//Conveyer end
+	||
+	//Rotary Table start
+	{
+		while(true) {
+			abort(!rotaryTableTrigger && enable){
+				sustain rotaryTableTriggerE;
+			}
+		}
+	}
+	//Rotary Table end
+	||
+	//Filler start
+	
+	{
+		signal s_valveInjectorOnOff;
+		while(true) {
+			abort(!valveInjectorOnOff && enable){
+				sustain valveInjectorOnOffE;
+			}
+		}
+		
+	}
+	||
+	{
+		while(true) {
+			abort(!valveInletOnOff && enable){
+				sustain valveInletOnOffE;
+			}
+		}
+		
+	}
+	||
+	{
+		while(true) {
+			abort(!dosUnitValveRetract && enable){
+				sustain dosUnitValveRetractE;
+			}
+		}
+		
+	}
+	||
+	{
+		while(true) {
+			abort(!dosUnitValveExtend && enable){
+				sustain dosUnitValveExtendE;
+			}
+		}
+		
+	}
+	||
 	{// To viz
+		//Caploader
 		{while(true){present(pusherRetracted){emit pusherRetractedE;} pause;}}
 		||
 		{while(true){present(pusherExtended){emit pusherExtendedE;} pause;}}
@@ -111,5 +189,7 @@ Plant(
 		{while(true){present(armAtDest){emit armAtDestE;} pause;}}
 		||
 		{while(true){present(empty){emit emptyE;} pause;}}
+
+	
 	}
 }
