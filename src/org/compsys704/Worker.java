@@ -19,6 +19,7 @@ public abstract class Worker implements Runnable {
 	}
 
 	public void setObjectInputStream(ObjectInputStream o) {
+		System.out.println("1");
 		ois = o;
 	}
 
@@ -43,13 +44,16 @@ public abstract class Worker implements Runnable {
 		try {
 			while (true) {
 				Object[] o = (Object[]) ois.readObject();
+				System.out.println("+");
 				if(initTimeElapsed())
 					setSignal((Boolean) o[0]);
 			}
 		} catch (IOException e) {
+			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} finally {
+			System.out.println("goodbye");
 			try {
 				socket.close();
 			} catch (IOException e1) {

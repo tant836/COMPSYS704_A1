@@ -48,13 +48,14 @@ public class CapLoader extends JFrame {
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setLocationRelativeTo(null);
 		this.setResizable(false);
+		System.out.println("Started");
 	}
 
 	public static void main(String[] args) {
 		CapLoader cl = new CapLoader();
 		cl.pack();
 		cl.setVisible(true);
-		
+		System.out.println("Begin");
 		SignalServer<LoaderVizWorker> server = new SignalServer<LoaderVizWorker>(Ports.PORT_LOADER_VIZ, LoaderVizWorker.class);
 		new Thread(server).start();
 		while(true){

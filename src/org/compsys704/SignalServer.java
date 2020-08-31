@@ -20,13 +20,16 @@ public class SignalServer <T extends Worker> implements Runnable {
 	@Override
 	public void run() {
 		try {
+			System.out.println("port: " + SERVER_PORT);
 			ServerSocket ss = new ServerSocket(SERVER_PORT, 50, InetAddress.getByName(IP));
 			while(true){
 				Socket s = ss.accept();
+				
 				try{
 					ObjectInputStream ois = new ObjectInputStream(s.getInputStream());
 					String signame = ((String)ois.readObject()).split("\\.")[1];
 					T w = (T) clz.newInstance();
+					System.out.println(signame);
 					if(w.hasSignal(signame))
 						s.getOutputStream().write(0);
 					else{

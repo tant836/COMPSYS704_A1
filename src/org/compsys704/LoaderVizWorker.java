@@ -7,7 +7,7 @@ public class LoaderVizWorker extends Worker {
 
 	@Override
 	public void setSignal(boolean status) {
-//		System.out.println(signame+"  "+status);
+		System.out.println(signame+"  "+status);
 		switch (signame) {
 		case "motConveyorOnE":
 			States.motConveyorOn = status;

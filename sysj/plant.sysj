@@ -2,14 +2,14 @@ Plant(
 		//global plant signals
 		input signal enable,refill;
 		//Caploader
-		input signal pusherExtend,vacOn,armSource,armDest;
+		input signal pusherExtend,vacOn,armSource,armDest, cylPos5ZAxisExtend, gripperTurnRetract, gripperTurnExtend, capGripperPos5Extend, cylClampBottleExtend;
 		output signal pusherRetracted,pusherExtended,WPgripped,armAtSource,armAtDest,empty;
 		output signal pusherRetractedE,pusherExtendedE,WPgrippedE,armAtSourceE,armAtDestE,emptyE;
 		
 		//Conveyor
 		input signal motConveyorOn, bottleAdded;
 		
-		output signal motConveyorOnE, bottleAtPos1;
+		output signal motConveyorOnE, bottleAtPos1, bottleAtPos1E;
 		
 		//Rotary Table
 		input signal rotaryTableTrigger;
@@ -120,10 +120,11 @@ Plant(
 	{
 		signal s_motConveyorOn;
 		while(true) {
+			pause;
 			{
-				abort(!motConveyorOn && enable){
+				//abort(!motConveyorOn && enable){
 				sustain motConveyorOnE;
-				}
+				//}
 			}
 			||
 			{
@@ -151,6 +152,7 @@ Plant(
 	//Rotary Table start
 	{
 		while(true) {
+			pause;
 			abort(!rotaryTableTrigger && enable){
 				sustain rotaryTableTriggerE;
 			}
@@ -163,6 +165,7 @@ Plant(
 	{
 		signal s_valveInjectorOnOff;
 		while(true) {
+			pause;
 			abort(!valveInjectorOnOff && enable){
 				sustain valveInjectorOnOffE;
 			}
@@ -172,6 +175,7 @@ Plant(
 	||
 	{
 		while(true) {
+			pause;
 			abort(!valveInletOnOff && enable){
 				sustain valveInletOnOffE;
 			}
@@ -181,6 +185,7 @@ Plant(
 	||
 	{
 		while(true) {
+			pause;
 			abort(!dosUnitValveRetract && enable){
 				sustain dosUnitValveRetractE;
 			}
@@ -190,6 +195,7 @@ Plant(
 	||
 	{
 		while(true) {
+			pause;
 			abort(!dosUnitValveExtend && enable){
 				sustain dosUnitValveExtendE;
 			}
@@ -199,19 +205,21 @@ Plant(
 	||
 	{// To viz
 		//Caploader
-		{while(true){present(pusherRetracted){emit pusherRetractedE;} pause;}}
-		||
-		{while(true){present(pusherExtended){emit pusherExtendedE;} pause;}}
-		||
-		{while(true){present(WPgripped){emit WPgrippedE;} pause;}}
-		||
-		{while(true){present(armAtSource){emit armAtSourceE;} pause;}}
-		||
-		{while(true){present(armAtDest){emit armAtDestE;} pause;}}
-		||
-		{while(true){present(empty){emit emptyE;} pause;}}
-		||
+//		{while(true){present(pusherRetracted){emit pusherRetractedE;} pause;}}
+//		||
+//		{while(true){present(pusherExtended){emit pusherExtendedE;} pause;}}
+//		||
+//		{while(true){present(WPgripped){emit WPgrippedE;} pause;}}
+//		||
+//		{while(true){present(armAtSource){emit armAtSourceE;} pause;}}
+//		||
+//		{while(true){present(armAtDest){emit armAtDestE;} pause;}}
+//		||
+//		{while(true){present(empty){emit emptyE;} pause;}}
+//		||
 		{while(true){present(bottleAtPos1){emit bottleAtPos1E;} pause;}}
+		||
+		{while(true){sustain rotaryTableTriggerE; pause;}}
 
 	
 	}
