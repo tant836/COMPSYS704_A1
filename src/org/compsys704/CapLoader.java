@@ -31,12 +31,13 @@ public class CapLoader extends JFrame {
 		JButton put_bottle = new JButton("Put bottle");
 		put_bottle.addActionListener(new SignalClient(Ports.PORT_LOADER_PLANT, Ports.PLACE_BOTTLE_SIGNAL));
 		JButton put_5 = new JButton("Put pos 5");
-		put_bottle.addActionListener(new SignalClient(Ports.PORT_LOADER_PLANT, Ports.PUT_BOTTLE_POS_5_SIGNAL));
+		put_5.addActionListener(new SignalClient(Ports.PORT_LOADER_PLANT, Ports.PUT_BOTTLE_POS_5_SIGNAL));
 		
 		JPanel ss = new JPanel();
 		ss.add(enable);
 		ss.add(remBottle);
 		ss.add(put_bottle);
+		ss.add(put_5);
 		this.setLayout(new GridBagLayout());
 		GridBagConstraints c = new GridBagConstraints();
 		c.gridx = 0;

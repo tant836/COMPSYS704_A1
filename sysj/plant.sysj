@@ -7,9 +7,9 @@ Plant(
 		output signal pusherRetractedE,pusherExtendedE,WPgrippedE,armAtSourceE,armAtDestE,emptyE;
 		
 		//Conveyor
-		input signal motConveyorOn, bottleAdded;
+		input signal motConveyorOn, bottleAdded, putBottleAt5_FV;
 		
-		output signal motConveyorOnE, bottleAtPos1, bottleAtPos1E;
+		output signal motConveyorOnE, bottleAtPos1, bottleAtPos1E, bottleAtPos5, bottleLeftPos5, bottleAtPos5E;
 		
 		//Rotary Table
 		input signal rotaryTableTrigger;
@@ -141,6 +141,27 @@ Plant(
 			}
 		} 
 	}
+	||
+	{
+		while(true) {
+			pause;
+			present(putBottleAt5_FV){
+				abort((enable && !putBottleAt5_FV) || bottleLeftPos5){
+					sustain bottleAtPos5;
+				}
+			}
+		}
+	}
+	||
+	{
+		while(true) {
+			pause;
+			present(bottleAtPos5 && motConveyorOn && enable){//might not need enable
+				await(!enable);
+				sustain bottleLeftPos5;
+			}
+		}
+	}
 //Conveyer end
 	||
 	//Rotary Table start
@@ -215,7 +236,9 @@ Plant(
 		||
 		{while(true){present(rotaryTableTrigger){emit rotaryTableTriggerE;} pause;}}
 		||
-		{while(true){present(bottleAtPos1 && enable){pause; pause; pause; pause; pause; pause; pause; await(enable); emit bottleAtPos1_RT;} pause;}}
+		{while(true){present(bottleAtPos1 && enable){await(!enable);  await(enable); emit bottleAtPos1_RT;} pause;}}
+		||
+		{while(true){present(bottleAtPos5 && enable){await(!enable);  await(enable); emit bottleAtPos5E;} pause;}}
 
 	}
 }
