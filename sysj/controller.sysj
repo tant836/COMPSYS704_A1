@@ -1,5 +1,5 @@
 Conveyor(
-		input signal bottleAtPos1, bottleLeftPos5, bottleAtPos5, bottlePlaced;
+		input signal bottleAtPos1, bottleLeftPos5, bottleAtPos5;
 		output signal motConveyorOn;
 		)
 ->{

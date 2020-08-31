@@ -3,48 +3,60 @@ package org.compsys704;
 import java.util.Arrays;
 import java.util.List;
 
-public class LoaderVizWorker extends Worker{
+public class LoaderVizWorker extends Worker {
 
 	@Override
 	public void setSignal(boolean status) {
 //		System.out.println(signame+"  "+status);
-		switch(signame){
-		case "pusherRetractedE":
-			States.PUSHER_RETRACTED = status;
+		switch (signame) {
+		case "motConveyorOnE":
+			States.motConveyorOn = status;
+			
 			break;
-		case "pusherExtendedE":
-			if(!States.MAG_EMPTY && !States.PUSHER_EXTENDED)
-				States.CAP_READY = true;
-			States.PUSHER_EXTENDED = status;
+		case "bottleAtPos1E":
+			States.bottleAtPos1 = status;
+			
 			break;
-		case "WPgrippedE":
-			if(States.GRIPPED && States.ARM_AT_SOURCE){
-				if(!status)
-					States.CAP_READY = true;
-			}
-			States.GRIPPED = status;
-			if(States.GRIPPED && States.ARM_AT_SOURCE){
-				States.CAP_READY = false;
-			}
+		case "rotaryTableTriggerE":
+			States.rotaryTableTrigger = status;
 			break;
-		case "armAtSourceE":
-			States.ARM_AT_SOURCE = status;
+		case "cylPos5ZAxisExtendE":
+			States.cylPos5ZAxisExtend = status;
 			break;
-		case "armAtDestE":
-			States.ARM_AT_DEST = status;
+		case "gripperTurnRetractE":
+			States.gripperTurnRetract = status;
 			break;
-		case "emptyE":
-			States.MAG_EMPTY = status;
+		case "gripperTurnExtendE":
+			States.gripperTurnExtend = status;
 			break;
-		default: 
-			System.err.println("Wrong sig name : "+signame);
+		case "capGripperPos5ExtendE":
+			States.capGripperPos5Extend = status;
+			break;
+		case "cylClampBottleExtendE":
+			States.cylClampBottleExtend = status;
+			break;
+		case "valveInjectorOnOffE":
+			States.valveInjectorOnOff = status;
+			break;
+		case "valveInletOnOffE":
+			States.valveInletOnOff = status;
+			break;
+		case "dosUnitValveRetractE":
+			States.dosUnitValveRetract = status;
+			break;
+		case "dosUnitValveExtendE":
+			States.dosUnitValveExtend = status;
+			break;
+		default:
+			System.err.println("Wrong sig name : " + signame);
 			System.exit(1);
 		}
 	}
-	
-	
-	static final List<String> signames = Arrays.asList("pusherRetractedE","pusherExtendedE","WPgrippedE","armAtSourceE","armAtDestE","emptyE");
-	
+
+	static final List<String> signames = Arrays.asList("motConveyorOnE", "bottleAtPos1E", "rotaryTableTriggerE", "cylPos5ZAxisExtendE",
+			"gripperTurnRetractE", "gripperTurnExtendE", "capGripperPos5ExtendE", "cylClampBottleExtendE",
+			"valveInjectorOnOffE", "valveInletOnOffE", "dosUnitValveRetractE", "dosUnitValveExtendE");
+
 	@Override
 	public boolean hasSignal(String sn) {
 		return signames.contains(sn);

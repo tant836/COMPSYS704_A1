@@ -120,17 +120,28 @@ Plant(
 	{
 		signal s_motConveyorOn;
 		while(true) {
-			abort(!motConveyorOn && enable){
+			{
+				abort(!motConveyorOn && enable){
 				sustain motConveyorOnE;
+				}
+			}
+			||
+			{
+				present(bottleAdded && enable && motConveyorOn){
+					abort(rotaryTableTrigger){
+						sustain bottleAtPos1;
+					}
+				}
 			}
 		}
 	}
 	||
 	{	
 		while(true) {
+			pause;
 			present(motConveyorOn && bottleAdded){
 				abort(rotaryTableTrigger){
-					sustain(bottleAtPos1);
+					sustain bottleAtPos1;
 				}
 			}
 		}
@@ -199,6 +210,8 @@ Plant(
 		{while(true){present(armAtDest){emit armAtDestE;} pause;}}
 		||
 		{while(true){present(empty){emit emptyE;} pause;}}
+		||
+		{while(true){present(bottleAtPos1){emit bottleAtPos1E;} pause;}}
 
 	
 	}
