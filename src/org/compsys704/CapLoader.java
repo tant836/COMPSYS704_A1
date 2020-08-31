@@ -8,19 +8,24 @@ import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 
 import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
+import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
+import javax.swing.JTabbedPane;
 
 public class CapLoader extends JFrame {
 	private JPanel panel;
+	private JPanel panel2;
 	
 	public CapLoader() {
+		
 		panel = new Canvas();
 		panel.setPreferredSize(new Dimension(500, 800));
 		panel.setBackground(Color.WHITE);
@@ -38,11 +43,23 @@ public class CapLoader extends JFrame {
 		ss.add(remBottle);
 		ss.add(put_bottle);
 		ss.add(put_5);
+		
+		
+		JTabbedPane tabbedPane = new JTabbedPane();
+
+		tabbedPane.addTab("tab1", panel);
+		
+		panel2 = new Canvas2();
+		panel2.setPreferredSize(new Dimension(500, 800));
+		panel2.setBackground(Color.WHITE);
+		
+		tabbedPane.addTab("tab2", panel2);
 		this.setLayout(new GridBagLayout());
 		GridBagConstraints c = new GridBagConstraints();
 		c.gridx = 0;
 		c.gridy = 0;
-		this.add(panel,c);
+		this.add(tabbedPane,c);
+		
 		c.gridx = 0;
 		c.gridy = 1;
 		this.add(ss,c);
