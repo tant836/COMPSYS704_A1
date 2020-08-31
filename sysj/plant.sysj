@@ -158,7 +158,8 @@ Plant(
 		while(true) {
 			pause;
 			present(l_putBottleAt4){
-				abort((enable && !l_putBottleAt4) || bottleLeftPos4){
+				abort((enable && !l_putBottleAt4) || (bottleAtPos4 && motConveyorOn && enable)){
+					await(!enable);
 					sustain bottleAtPos4;
 				}
 			}
@@ -169,7 +170,8 @@ Plant(
 		while(true) {
 			pause;
 			present(l_putBottleAt2){
-				abort((enable && !l_putBottleAt2) || bottleLeftPos2){
+				abort((enable && !l_putBottleAt2) || (bottleAtPos2 && motConveyorOn && enable)){
+					await(!enable);
 					sustain bottleAtPos2;
 				}
 			}
@@ -286,5 +288,9 @@ Plant(
 		}
 		||
 		{while(true){present(bottleAtPos5 && enable){await(!enable);  await(enable); emit bottleAtPos5_RT;} pause;}}
+		||
+		{while(true){present(bottleAtPos4){emit bottleAtPos4E;} pause;}}
+		||
+		{while(true){present(bottleAtPos2){emit bottleAtPos2E;} pause;}}
 	}
 }
