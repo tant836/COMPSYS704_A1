@@ -279,7 +279,7 @@ Plant(
 		||
 		{while(true){present(bottleAtPos1 && enable){await(!enable);  await(enable); emit bottleAtPos1_RT;} pause;}}
 		||
-		{while(true){present(bottleAtPos5){emit bottleAtPos5E;} pause;}}
+		{while(true){present(bottleAtPos5 || l_putBottleAt5){emit bottleAtPos5E;} pause;}}
 		||
 		{while(true){
 			present(bottleLeftPos5){

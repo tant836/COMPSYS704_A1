@@ -322,8 +322,8 @@ public class Plant extends ClockDomain{
         break;
       
       case 1 : 
-        if(bottleAtPos5.getprestatus()){//sysj\plant.sysj line: 282, column: 24
-          bottleAtPos5E.setPresent();//sysj\plant.sysj line: 282, column: 38
+        if(bottleAtPos5.getprestatus() || l_putBottleAt5_1.getprestatus()){//sysj\plant.sysj line: 282, column: 24
+          bottleAtPos5E.setPresent();//sysj\plant.sysj line: 282, column: 56
           currsigs.addElement(bottleAtPos5E);
           active[23]=1;
           ends[23]=1;
@@ -1630,8 +1630,8 @@ public class Plant extends ClockDomain{
 
   public void thread8114(int [] tdone, int [] ends){
         S2591=1;
-    if(bottleAtPos5.getprestatus()){//sysj\plant.sysj line: 282, column: 24
-      bottleAtPos5E.setPresent();//sysj\plant.sysj line: 282, column: 38
+    if(bottleAtPos5.getprestatus() || l_putBottleAt5_1.getprestatus()){//sysj\plant.sysj line: 282, column: 24
+      bottleAtPos5E.setPresent();//sysj\plant.sysj line: 282, column: 56
       currsigs.addElement(bottleAtPos5E);
       active[23]=1;
       ends[23]=1;
