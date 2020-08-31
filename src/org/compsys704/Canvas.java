@@ -35,7 +35,7 @@ public class Canvas extends JPanel {
 //			cap = ImageIO.read(new File("res/cap.png"));
 		} catch (IOException e) {
 			e.printStackTrace();
-			System.exit(1);;
+			//System.exit(1);;
 		}
 	}
 	

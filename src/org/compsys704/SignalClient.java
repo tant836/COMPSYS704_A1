@@ -25,7 +25,7 @@ public class SignalClient implements ActionListener{
 			s.close();
 		} catch (IOException e) {
 			e.printStackTrace();
-			System.exit(1);;
+			//System.exit(1);;
 		}
 	}
 
@@ -48,7 +48,7 @@ public class SignalClient implements ActionListener{
 		catch (IOException | InterruptedException ee) {
 			try {s.close();} catch (IOException e1) {
 				e1.printStackTrace();
-				System.exit(1);
+				//System.exit(1);
 			}
 		}
 		

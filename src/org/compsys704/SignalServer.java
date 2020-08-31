@@ -24,12 +24,10 @@ public class SignalServer <T extends Worker> implements Runnable {
 			ServerSocket ss = new ServerSocket(SERVER_PORT, 50, InetAddress.getByName(IP));
 			while(true){
 				Socket s = ss.accept();
-				
 				try{
 					ObjectInputStream ois = new ObjectInputStream(s.getInputStream());
 					String signame = ((String)ois.readObject()).split("\\.")[1];
 					T w = (T) clz.newInstance();
-					System.out.println(signame);
 					if(w.hasSignal(signame))
 						s.getOutputStream().write(0);
 					else{
@@ -41,15 +39,17 @@ public class SignalServer <T extends Worker> implements Runnable {
 					w.setSocket(s);
 					new Thread(w).start();
 				}
-				catch(java.io.EOFException e){}
+				catch(java.io.EOFException e){
+					e.printStackTrace();
+				}
 				catch (InstantiationException | IllegalAccessException e) {
 					e.printStackTrace();
-					System.exit(1);;
+					//System.exit(1);;
 				}
 			}
 		} catch (IOException | ClassNotFoundException e) {
 			e.printStackTrace();
-			System.exit(1);;
+			//System.exit(1);;
 		}
 	}
 

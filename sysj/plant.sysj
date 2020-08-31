@@ -153,9 +153,9 @@ Plant(
 	{
 		while(true) {
 			pause;
-			abort(!rotaryTableTrigger && enable){
-				sustain rotaryTableTriggerE;
-			}
+//			abort(!rotaryTableTrigger && enable){
+//				sustain rotaryTableTriggerE;
+//			}
 		}
 	}
 	//Rotary Table end
@@ -166,9 +166,9 @@ Plant(
 		signal s_valveInjectorOnOff;
 		while(true) {
 			pause;
-			abort(!valveInjectorOnOff && enable){
-				sustain valveInjectorOnOffE;
-			}
+//			abort(!valveInjectorOnOff && enable){
+//				sustain valveInjectorOnOffE;
+//			}
 		}
 		
 	}
@@ -176,9 +176,9 @@ Plant(
 	{
 		while(true) {
 			pause;
-			abort(!valveInletOnOff && enable){
-				sustain valveInletOnOffE;
-			}
+//			abort(!valveInletOnOff && enable){
+//				sustain valveInletOnOffE;
+//			}
 		}
 		
 	}
@@ -186,9 +186,9 @@ Plant(
 	{
 		while(true) {
 			pause;
-			abort(!dosUnitValveRetract && enable){
-				sustain dosUnitValveRetractE;
-			}
+//			abort(!dosUnitValveRetract && enable){
+//				sustain dosUnitValveRetractE;
+//			}
 		}
 		
 	}
@@ -196,9 +196,9 @@ Plant(
 	{
 		while(true) {
 			pause;
-			abort(!dosUnitValveExtend && enable){
-				sustain dosUnitValveExtendE;
-			}
+//			abort(!dosUnitValveExtend && enable){
+//				sustain dosUnitValveExtendE;
+//			}
 		}
 		
 	}

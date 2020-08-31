@@ -55,6 +55,7 @@ public class Conveyor extends ClockDomain{
                 S2=2;
                 motConveyorOn.setPresent();//sysj\controller.sysj line: 12, column: 4
                 currsigs.addElement(motConveyorOn);
+                System.out.println("Emitted motConveyorOn");
                 active[1]=1;
                 ends[1]=1;
                 break RUN;
@@ -75,6 +76,7 @@ public class Conveyor extends ClockDomain{
               else {
                 motConveyorOn.setPresent();//sysj\controller.sysj line: 12, column: 4
                 currsigs.addElement(motConveyorOn);
+                System.out.println("Emitted motConveyorOn");
                 active[1]=1;
                 ends[1]=1;
                 break RUN;
@@ -85,6 +87,7 @@ public class Conveyor extends ClockDomain{
                 S2=4;
                 motConveyorOn.setPresent();//sysj\controller.sysj line: 16, column: 4
                 currsigs.addElement(motConveyorOn);
+                System.out.println("Emitted motConveyorOn");
                 active[1]=1;
                 ends[1]=1;
                 break RUN;
@@ -105,6 +108,7 @@ public class Conveyor extends ClockDomain{
               else {
                 motConveyorOn.setPresent();//sysj\controller.sysj line: 16, column: 4
                 currsigs.addElement(motConveyorOn);
+                System.out.println("Emitted motConveyorOn");
                 active[1]=1;
                 ends[1]=1;
                 break RUN;

@@ -34,7 +34,7 @@ public class SignalCheckBoxClient extends SignalClient implements ItemListener{
 		catch (IOException ee) {
 			try {s.close();} catch (IOException e1) {
 				e1.printStackTrace();
-				System.exit(1);
+				//System.exit(1);
 			}
 		}
 	}
