@@ -54,6 +54,8 @@
 			<oSignal Name="armAtDestE"       To="UI.armAtDestE"       Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20000" />
 			<oSignal Name="emptyE"           To="UI.emptyE"           Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20000" />
 			<oSignal Name="bottleAtPos5E" To="UI.bottleAtPos5E" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20000" />
+			<oSignal Name="bottleAtPos4E" To="UI.bottleAtPos4E" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20000" />
+			<oSignal Name="bottleAtPos2E" To="UI.bottleAtPos2E" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20000" />
 			<oSignal Name="bottleLeftPos5E" To="UI.bottleLeftPos5E" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20000" />
 		</ClockDomain>
 	</SubSystem>

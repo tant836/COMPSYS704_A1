@@ -61,7 +61,7 @@ public class LoaderVizWorker extends Worker {
 		}
 	}
 
-	static final List<String> signames = Arrays.asList("motConveyorOnE", "bottleAtPos1E", "rotaryTableTriggerE", "cylPos5ZAxisExtendE",
+	static final List<String> signames = Arrays.asList("motConveyorOnE", "bottleAtPos1E", "rotaryTableTriggerE", "cylPos5ZAxisExtendE", "bottleLeftPos5E", "bottleAtPos5E",
 			"gripperTurnRetractE", "gripperTurnExtendE", "capGripperPos5ExtendE", "cylClampBottleExtendE",
 			"valveInjectorOnOffE", "valveInletOnOffE", "dosUnitValveRetractE", "dosUnitValveExtendE", "emptyE", "armAtDestE", "armAtSourceE", "WPgrippedE", "pusherExtendedE", "pusherRetractedE");
 

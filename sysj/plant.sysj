@@ -9,7 +9,7 @@ Plant(
 		//Conveyor
 		input signal motConveyorOn, bottleAdded, putBottleAt5_FV;
 		
-		output signal motConveyorOnE, bottleAtPos1, bottleAtPos1E, bottleAtPos5,bottleAtPos5_RT, bottleLeftPos5, bottleAtPos5E, bottleLeftPos5E;
+		output signal motConveyorOnE, bottleAtPos1, bottleAtPos1E, bottleAtPos5,bottleAtPos5_RT, bottleLeftPos5, bottleAtPos5E, bottleLeftPos5E, bottleAtPos2E, bottleAtPos4E, bottleAtPos2, bottleAtPos4;
 		
 		//Rotary Table
 		input signal rotaryTableTrigger;
@@ -32,6 +32,7 @@ Plant(
 
 	signal capDec;
 	signal l_bottleAdded;
+	signal l_putBottleAt5, l_putBottleAt4, l_putBottleAt2;
 	int signal capPos;
 	emit capPos(0);
 	{// Arm
@@ -145,9 +146,31 @@ Plant(
 	{
 		while(true) {
 			pause;
-			present(putBottleAt5_FV){
-				abort((enable && !putBottleAt5_FV) || bottleLeftPos5){
+			present(l_putBottleAt5){
+				abort((enable && !l_putBottleAt5) || bottleLeftPos5){
 					sustain bottleAtPos5;
+				}
+			}
+		}
+	}
+	||
+	{
+		while(true) {
+			pause;
+			present(l_putBottleAt4){
+				abort((enable && !l_putBottleAt4) || bottleLeftPos4){
+					sustain bottleAtPos4;
+				}
+			}
+		}
+	}
+	||
+	{
+		while(true) {
+			pause;
+			present(l_putBottleAt2){
+				abort((enable && !l_putBottleAt2) || bottleLeftPos2){
+					sustain bottleAtPos2;
 				}
 			}
 		}
@@ -158,7 +181,7 @@ Plant(
 			pause;
 			present(bottleAtPos5 && motConveyorOn && enable){//might not need enable
 				await(!enable);
-				sustain bottleLeftPos5;
+				emit bottleLeftPos5;
 			}
 		}
 	}
@@ -166,11 +189,22 @@ Plant(
 	||
 	//Rotary Table start
 	{
+		int numTurns = 0;
 		while(true) {
 			pause;
-//			abort(!rotaryTableTrigger && enable){
-//				sustain rotaryTableTriggerE;
-//			}
+			present(rotaryTableTrigger && enable){
+				await(!enable);
+				numTurns++;
+				if(numTurns == 2) {
+					emit l_putBottleAt2;
+				}else if(numTurns == 3) {
+					emit l_putBottleAt4;
+				}else if(numTurns == 4) {
+					numTurns = 0;
+					emit l_putBottleAt5;
+				}
+			}
+			
 		}
 	}
 	//Rotary Table end
@@ -238,9 +272,18 @@ Plant(
 		||
 		{while(true){present(bottleAtPos1 && enable){await(!enable);  await(enable); emit bottleAtPos1_RT;} pause;}}
 		||
-		{while(true){present(bottleAtPos5 && enable){await(!enable);  await(enable); emit bottleAtPos5E;} pause;}}
+		{while(true){present(bottleAtPos5){emit bottleAtPos5E;} pause;}}
 		||
-		{while(true){present(bottleLeftPos5 && enable){await(!enable); emit bottleLeftPos5E;} pause;}}
+		{while(true){
+			present(bottleLeftPos5){
+				await(!enable);
+				abort(enable){
+					sustain bottleLeftPos5E; 
+				}
+			}
+			pause;
+		}
+		}
 		||
 		{while(true){present(bottleAtPos5 && enable){await(!enable);  await(enable); emit bottleAtPos5_RT;} pause;}}
 	}
