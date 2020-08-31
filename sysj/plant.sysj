@@ -7,9 +7,9 @@ Plant(
 		output signal pusherRetractedE,pusherExtendedE,WPgrippedE,armAtSourceE,armAtDestE,emptyE;
 		
 		//Conveyor
-		input signal motConveyorOn;
+		input signal motConveyorOn, bottleAdded;
 		
-		output signal motConveyorOnE;
+		output signal motConveyorOnE, bottleAtPos1;
 		
 		//Rotary Table
 		input signal rotaryTableTrigger;
@@ -122,6 +122,16 @@ Plant(
 		while(true) {
 			abort(!motConveyorOn && enable){
 				sustain motConveyorOnE;
+			}
+		}
+	}
+	||
+	{	
+		while(true) {
+			present(motConveyorOn && bottleAdded){
+				abort(rotaryTableTrigger){
+					sustain(bottleAtPos1);
+				}
 			}
 		}
 	}

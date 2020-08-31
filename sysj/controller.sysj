@@ -1,5 +1,5 @@
 Conveyor(
-		input signal bottleAtPos1, bottleLeftPos5;
+		input signal bottleAtPos1, bottleLeftPos5, bottleAtPos5, bottlePlaced;
 		output signal motConveyorOn;
 		)
 ->{
@@ -8,7 +8,11 @@ Conveyor(
 	loop {
 		pause;
 		await(!bottleLeftPos5);
-		abort(bottleAtPos1 || bottleLeftPos5){
+		abort(bottleAtPos1){
+			sustain motConveyorOn;
+		}
+		await(bottleAtPos5);
+		abort(bottleLeftPos5){
 			sustain motConveyorOn;
 		}
 	}
@@ -98,7 +102,7 @@ Capper(
 
 }
 
-Filer(
+Filler(
 		input signal bottleAtPos2, dosUnitEvac, dosUnitFilled;
 		output signal valveInjectorOnOff, valveInletOnOff, dosUnitValveRetract, dosUnitValveExtend;
 		)
