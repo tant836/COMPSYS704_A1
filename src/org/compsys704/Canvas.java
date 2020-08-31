@@ -97,8 +97,20 @@ public class Canvas extends JPanel {
 		
 		//Capper
 		g.drawImage(Capper, 44, 350, null);
+		if(States.bottleAtPos4) {
+			g.setColor(Color.green);
+		}else {
+			g.setColor(Color.red);
+		}
+		g.fillOval(35, 370, 15, 15);
 		
 		//Filler
 		g.drawImage(Filler, 50, 550, null);
+		if(States.bottleAtPos2) {
+			g.setColor(Color.green);
+		}else {
+			g.setColor(Color.red);
+		}
+		g.fillOval(40, 587, 15, 15);
 	}
 }

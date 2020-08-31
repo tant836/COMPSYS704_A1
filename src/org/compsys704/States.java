@@ -13,7 +13,7 @@ public class States {
 	public static volatile boolean capsonBottleAtPos1 = false;
 	public static volatile boolean rotaryTableTrigger = false;
 	
-	public static volatile boolean bottleAtPos4 = true;
+	public static volatile boolean bottleAtPos4 = false;
 	public static volatile boolean gripperZAxisLowered = true;
 	public static volatile boolean gripperZAxisLifted = !gripperZAxisLowered;
 	public static volatile boolean gripperTurnHomePos = true;
@@ -24,7 +24,7 @@ public class States {
 	public static volatile boolean capGripperPos5Extend = false;
 	public static volatile boolean cylClampBottleExtend = false;
 	
-	public static volatile boolean bottleAtPos2 = true;
+	public static volatile boolean bottleAtPos2 = false;
 	public static volatile boolean dosUnitEvac = true;
 	public static volatile boolean dosUnitFilled = !dosUnitEvac;
 	public static volatile boolean valveInjectorOnOff = false;

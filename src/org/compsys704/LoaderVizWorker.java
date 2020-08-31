@@ -55,13 +55,19 @@ public class LoaderVizWorker extends Worker {
 		case "dosUnitValveExtendE":
 			States.dosUnitValveExtend = status;
 			break;
+		case "bottleAtPos2E":
+			States.bottleAtPos2 = status;
+			break;
+		case "bottleAtPos4E":
+			States.bottleAtPos4 = status;
+			break;
 		default:
 			System.err.println("Wrong sig name : " + signame);
 			//System.exit(1);
 		}
 	}
 
-	static final List<String> signames = Arrays.asList("motConveyorOnE", "bottleAtPos1E", "rotaryTableTriggerE", "cylPos5ZAxisExtendE", "bottleLeftPos5E", "bottleAtPos5E",
+	static final List<String> signames = Arrays.asList("motConveyorOnE", "bottleAtPos1E", "rotaryTableTriggerE", "cylPos5ZAxisExtendE", "bottleLeftPos5E", "bottleAtPos4E", "bottleAtPos2E",
 			"gripperTurnRetractE", "gripperTurnExtendE", "capGripperPos5ExtendE", "cylClampBottleExtendE",
 			"valveInjectorOnOffE", "valveInletOnOffE", "dosUnitValveRetractE", "dosUnitValveExtendE", "emptyE", "armAtDestE", "armAtSourceE", "WPgrippedE", "pusherExtendedE", "pusherRetractedE");
 

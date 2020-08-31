@@ -158,7 +158,7 @@ Plant(
 		while(true) {
 			pause;
 			present(l_putBottleAt4){
-				abort((enable && !l_putBottleAt4) || (bottleAtPos4 && motConveyorOn && enable)){
+				abort((enable && !l_putBottleAt4)){
 					await(!enable);
 					sustain bottleAtPos4;
 				}
@@ -170,7 +170,7 @@ Plant(
 		while(true) {
 			pause;
 			present(l_putBottleAt2){
-				abort((enable && !l_putBottleAt2) || (bottleAtPos2 && motConveyorOn && enable)){
+				abort((enable && !l_putBottleAt2)){
 					await(!enable);
 					sustain bottleAtPos2;
 				}
@@ -194,17 +194,22 @@ Plant(
 		int numTurns = 0;
 		while(true) {
 			pause;
-			present(rotaryTableTrigger && enable){
-				await(!enable);
-				numTurns++;
-				if(numTurns == 2) {
-					emit l_putBottleAt2;
-				}else if(numTurns == 3) {
-					emit l_putBottleAt4;
-				}else if(numTurns == 4) {
-					numTurns = 0;
-					emit l_putBottleAt5;
+			abort(!rotaryTableTrigger){
+				present(rotaryTableTrigger && enable){
+					await(!enable);
+					numTurns++;
+					if(numTurns == 2) {
+						emit l_putBottleAt2;
+					}else if(numTurns == 3) {
+						emit l_putBottleAt4;
+					}else if(numTurns == 4) {
+						numTurns = 0;
+						emit l_putBottleAt5;
+					}
 				}
+			}
+			present(!rotaryTableTrigger){
+				numTurns = 0;
 			}
 			
 		}
