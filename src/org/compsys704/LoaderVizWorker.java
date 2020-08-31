@@ -13,6 +13,14 @@ public class LoaderVizWorker extends Worker {
 			States.motConveyorOn = status;
 			
 			break;
+		case "bottleLeftPos5E":
+			States.bottleLeftPos5 = status;
+			
+			break;
+		case "bottleAtPos5E":
+			States.bottleAtPos5 = status;
+			
+			break;
 		case "bottleAtPos1E":
 			States.bottleAtPos1 = status;
 			

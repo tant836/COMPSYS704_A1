@@ -9,7 +9,7 @@ Plant(
 		//Conveyor
 		input signal motConveyorOn, bottleAdded, putBottleAt5_FV;
 		
-		output signal motConveyorOnE, bottleAtPos1, bottleAtPos1E, bottleAtPos5, bottleLeftPos5, bottleAtPos5E;
+		output signal motConveyorOnE, bottleAtPos1, bottleAtPos1E, bottleAtPos5,bottleAtPos5_RT, bottleLeftPos5, bottleAtPos5E, bottleLeftPos5E;
 		
 		//Rotary Table
 		input signal rotaryTableTrigger;
@@ -239,6 +239,9 @@ Plant(
 		{while(true){present(bottleAtPos1 && enable){await(!enable);  await(enable); emit bottleAtPos1_RT;} pause;}}
 		||
 		{while(true){present(bottleAtPos5 && enable){await(!enable);  await(enable); emit bottleAtPos5E;} pause;}}
-
+		||
+		{while(true){present(bottleLeftPos5 && enable){await(!enable); emit bottleLeftPos5E;} pause;}}
+		||
+		{while(true){present(bottleAtPos5 && enable){await(!enable);  await(enable); emit bottleAtPos5_RT;} pause;}}
 	}
 }
