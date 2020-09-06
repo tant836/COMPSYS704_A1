@@ -9,6 +9,11 @@
 			<oSignal Name="bottleAtPos5_RT" To="RotaryTableCD.bottleAtPos5" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10000" />
 			<oSignal Name="bottleLeftPos5" To="ConveyorCD.bottleLeftPos5" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10000" />
 			
+			<oSignal Name="gripperZAxisLowered" To="CapperCD.gripperZAxisLowered" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10000" />
+			<oSignal Name="gripperTurnFinalPos" To="CapperCD.gripperTurnFinalPos" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10000" />
+			<oSignal Name="gripperTurnHomePos" To="CapperCD.gripperTurnHomePos" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10000" />
+			<oSignal Name="gripperZAxisLifted" To="CapperCD.gripperZAxisLifted" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10000" />
+			
 			<iSignal Name="rotaryTableTrigger" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10001" />
 			
 			<iSignal Name="cylPos5ZAxisExtend" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10001" />

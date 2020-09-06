@@ -16,6 +16,10 @@ Plant(
 		
 		output signal rotaryTableTriggerE, bottleAtPos1_RT;
 		
+		//capper 
+		//input signal 
+		output signal gripperZAxisLowered, gripperTurnFinalPos, gripperTurnHomePos, gripperZAxisLifted;
+		
 		//Filler
 		input signal valveInjectorOnOff,valveInletOnOff,dosUnitValveRetract,dosUnitValveExtend;
 		
@@ -258,6 +262,57 @@ Plant(
 		}
 		
 	}
+	||
+	//capper
+	{
+		while(true) {//lower gripper
+			pause;
+			present(cylPos5ZaxisExtend){
+				abort((enable)){
+					await(!enable);
+					sustain gripperZAxisLowered;
+				}
+			}
+		}
+	}
+	||
+	{
+		while(true) {//twist the gripper
+			pause;
+			present(gripperTurnExtend){
+				abort((enable)){
+					await(!enable);
+					sustain gripperTurnFinalPos;
+				}
+			}
+		}
+	}
+	||
+	{
+		while(true) {//un-twist the gripper
+			pause;
+			present(gripperTurnRetract || !gripperTurnFinalPos){
+				abort((enable)){
+					await(!enable);
+					sustain gripperTurnHomePos;
+				}
+			}
+		}
+	}
+	||
+	{
+		while(true) {//raise the gripper
+			pause;
+			present(!cylPos5ZaxisExtend){
+				abort((enable)){
+					await(!enable);
+					sustain gripperZAxisLifted;
+				}
+			}
+		}
+	}
+	
+	//end capper
 	||
 	{// To viz
 		//Caploader
