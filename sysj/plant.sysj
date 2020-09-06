@@ -1,10 +1,7 @@
 Plant(
 		//global plant signals
 		input signal enable,refill;
-		//Caploader
-		input signal pusherExtend,vacOn,armSource,armDest, cylPos5ZAxisExtend, gripperTurnRetract, gripperTurnExtend, capGripperPos5Extend, cylClampBottleExtend;
-		output signal pusherRetracted,pusherExtended,WPgripped,armAtSource,armAtDest,empty;
-		output signal pusherRetractedE,pusherExtendedE,WPgrippedE,armAtSourceE,armAtDestE,emptyE;
+		
 		
 		//Conveyor
 		input signal motConveyorOn, bottleAdded, putBottleAt5_FV;
@@ -17,7 +14,12 @@ Plant(
 		output signal rotaryTableTriggerE, bottleAtPos1_RT;
 		
 		//capper 
-		//input signal 
+		
+		//Caploader
+		input signal pusherExtend,vacOn,armSource,armDest, cylPos5ZAxisExtend, gripperTurnRetract, gripperTurnExtend, capGripperPos5Extend, cylClampBottleExtend;
+		output signal pusherRetracted,pusherExtended,WPgripped,armAtSource,armAtDest,empty;
+		output signal pusherRetractedE,pusherExtendedE,WPgrippedE,armAtSourceE,armAtDestE,emptyE;
+		output signal gripperZAxisLoweredE, gripperTurnFinalPosE, gripperTurnHomePosE, gripperZAxisLiftedE;
 		output signal gripperZAxisLowered, gripperTurnFinalPos, gripperTurnHomePos, gripperZAxisLifted;
 		
 		//Filler
@@ -267,7 +269,7 @@ Plant(
 	{
 		while(true) {//lower gripper
 			pause;
-			present(cylPos5ZaxisExtend){
+			present(cylPos5ZAxisExtend && cylClampBottleExtend){
 				abort((enable)){
 					await(!enable);
 					sustain gripperZAxisLowered;
@@ -279,7 +281,7 @@ Plant(
 	{
 		while(true) {//twist the gripper
 			pause;
-			present(gripperTurnExtend){
+			present(gripperTurnExtend && capGripperPos5Extend){
 				abort((enable)){
 					await(!enable);
 					sustain gripperTurnFinalPos;
@@ -291,7 +293,7 @@ Plant(
 	{
 		while(true) {//un-twist the gripper
 			pause;
-			present(gripperTurnRetract || !gripperTurnFinalPos){
+			present((gripperTurnRetract && !capGripperPos5Extend) || !gripperTurnFinalPos){
 				abort((enable)){
 					await(!enable);
 					sustain gripperTurnHomePos;
@@ -303,7 +305,7 @@ Plant(
 	{
 		while(true) {//raise the gripper
 			pause;
-			present(!cylPos5ZaxisExtend){
+			present(!cylPos5ZAxisExtend){
 				abort((enable)){
 					await(!enable);
 					sustain gripperZAxisLifted;
@@ -352,5 +354,13 @@ Plant(
 		{while(true){present(bottleAtPos4){emit bottleAtPos4E;} pause;}}
 		||
 		{while(true){present(bottleAtPos2){emit bottleAtPos2E;} pause;}}
+		||
+		{while(true) {present(gripperZAxisLowered){emit gripperZAxisLoweredE;} pause;}}
+		||
+		{while(true) {present(gripperTurnFinalPos){emit gripperTurnFinalPosE;} pause;}}
+		||
+		{while(true) {present(gripperTurnHomePos){emit gripperTurnHomePosE;} pause;}}
+		||
+		{while(true) {present(gripperZAxisLifted){emit gripperZAxisLiftedE;} pause;}}
 	}
 }
