@@ -84,7 +84,7 @@ public class Canvas2 extends JPanel {
 //		}else if(previousState == State.OUT) {
 //			
 //		}
-		System.out.println(" x: " + x + " y: " + y);
+		//System.out.println(" x: " + x + " y: " + y);
 		
 		if(States.bottleAtPos1) {
 			previousState = State.POS1;

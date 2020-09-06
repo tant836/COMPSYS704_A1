@@ -104,6 +104,69 @@ public class Canvas extends JPanel {
 		}
 		g.fillOval(35, 370, 15, 15);
 		
+		if(States.gripperZAxisLowered) {
+			g.setColor(Color.green);
+		}else {
+			g.setColor(Color.red);
+		}
+		g.fillOval(35, 400, 15, 15);
+		
+		if(States.gripperZAxisLifted) {
+			g.setColor(Color.green);
+		}else {
+			g.setColor(Color.red);
+		}
+		g.fillOval(35, 430, 15, 15);
+		
+		if(States.gripperTurnHomePos) {
+			g.setColor(Color.green);
+		}else {
+			g.setColor(Color.red);
+		}
+		g.fillOval(35, 460, 15, 15);
+		
+		if(States.gripperTurnFinalPos) {
+			g.setColor(Color.green);
+		}else {
+			g.setColor(Color.red);
+		}
+		g.fillOval(35, 490, 15, 15);
+		
+		if(States.cylPos5ZAxisExtend) {
+			g.setColor(Color.green);
+		}else {
+			g.setColor(Color.red);
+		}
+		g.fillOval(438, 370, 15, 15);
+		
+		if(States.gripperTurnRetract) {
+			g.setColor(Color.green);
+		}else {
+			g.setColor(Color.red);
+		}
+		g.fillOval(438, 400, 15, 15);
+		
+		if(States.gripperTurnExtend) {
+			g.setColor(Color.green);
+		}else {
+			g.setColor(Color.red);
+		}
+		g.fillOval(438, 430, 15, 15);
+		
+		if(States.capGripperPos5Extend) {
+			g.setColor(Color.green);
+		}else {
+			g.setColor(Color.red);
+		}
+		g.fillOval(438, 460, 15, 15);
+		
+		if(States.cylClampBottleExtend) {
+			g.setColor(Color.green);
+		}else {
+			g.setColor(Color.red);
+		}
+		g.fillOval(438, 490, 15, 15);
+		
 		//Filler
 		g.drawImage(Filler, 50, 550, null);
 		if(States.bottleAtPos2) {
@@ -112,5 +175,47 @@ public class Canvas extends JPanel {
 			g.setColor(Color.red);
 		}
 		g.fillOval(40, 587, 15, 15);
+		
+		if(States.dosUnitEvac) {
+			g.setColor(Color.green);
+		}else {
+			g.setColor(Color.red);
+		}
+		g.fillOval(40, 615, 15, 15);
+		
+		if(States.dosUnitFilled) {
+			g.setColor(Color.green);
+		}else {
+			g.setColor(Color.red);
+		}
+		g.fillOval(40, 647, 15, 15);
+		
+		if(States.valveInjectorOnOff) {
+			g.setColor(Color.green);
+		}else {
+			g.setColor(Color.red);
+		}
+		g.fillOval(439, 573, 15, 15);
+		
+		if(States.valveInletOnOff) {
+			g.setColor(Color.green);
+		}else {
+			g.setColor(Color.red);
+		}
+		g.fillOval(439, 600, 15, 15);
+		
+		if(States.dosUnitValveRetract) {
+			g.setColor(Color.green);
+		}else {
+			g.setColor(Color.red);
+		}
+		g.fillOval(439, 630, 15, 15);
+		
+		if(States.dosUnitValveExtend) {
+			g.setColor(Color.green);
+		}else {
+			g.setColor(Color.red);
+		}
+		g.fillOval(439, 660, 15, 15);
 	}
 }
