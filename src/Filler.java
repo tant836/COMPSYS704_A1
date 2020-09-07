@@ -39,7 +39,6 @@ public class Filler extends ClockDomain{
       case 1 : 
         dosUnitValveExtend.setPresent();//sysj\controller.sysj line: 128, column: 5
         currsigs.addElement(dosUnitValveExtend);
-        System.out.println("Emitted dosUnitValveExtend");
         active[17]=1;
         ends[17]=1;
         tdone[17]=1;
@@ -59,7 +58,6 @@ public class Filler extends ClockDomain{
       case 1 : 
         valveInletOnOff.setPresent();//sysj\controller.sysj line: 125, column: 5
         currsigs.addElement(valveInletOnOff);
-        System.out.println("Emitted valveInletOnOff");
         active[16]=1;
         ends[16]=1;
         tdone[16]=1;
@@ -72,7 +70,6 @@ public class Filler extends ClockDomain{
         S601=1;
     dosUnitValveExtend.setPresent();//sysj\controller.sysj line: 128, column: 5
     currsigs.addElement(dosUnitValveExtend);
-    System.out.println("Emitted dosUnitValveExtend");
     active[17]=1;
     ends[17]=1;
     tdone[17]=1;
@@ -82,7 +79,6 @@ public class Filler extends ClockDomain{
         S596=1;
     valveInletOnOff.setPresent();//sysj\controller.sysj line: 125, column: 5
     currsigs.addElement(valveInletOnOff);
-    System.out.println("Emitted valveInletOnOff");
     active[16]=1;
     ends[16]=1;
     tdone[16]=1;
@@ -99,7 +95,6 @@ public class Filler extends ClockDomain{
       case 1 : 
         dosUnitValveRetract.setPresent();//sysj\controller.sysj line: 118, column: 6
         currsigs.addElement(dosUnitValveRetract);
-        System.out.println("Emitted dosUnitValveRetract");
         active[15]=1;
         ends[15]=1;
         tdone[15]=1;
@@ -119,7 +114,6 @@ public class Filler extends ClockDomain{
       case 1 : 
         valveInjectorOnOff.setPresent();//sysj\controller.sysj line: 114, column: 5
         currsigs.addElement(valveInjectorOnOff);
-        System.out.println("Emitted valveInjectorOnOff");
         active[14]=1;
         ends[14]=1;
         tdone[14]=1;
@@ -132,7 +126,6 @@ public class Filler extends ClockDomain{
         S601=1;
     dosUnitValveExtend.setPresent();//sysj\controller.sysj line: 128, column: 5
     currsigs.addElement(dosUnitValveExtend);
-    System.out.println("Emitted dosUnitValveExtend");
     active[17]=1;
     ends[17]=1;
     tdone[17]=1;
@@ -142,7 +135,6 @@ public class Filler extends ClockDomain{
         S596=1;
     valveInletOnOff.setPresent();//sysj\controller.sysj line: 125, column: 5
     currsigs.addElement(valveInletOnOff);
-    System.out.println("Emitted valveInletOnOff");
     active[16]=1;
     ends[16]=1;
     tdone[16]=1;
@@ -153,7 +145,6 @@ public class Filler extends ClockDomain{
     if(dosUnitEvac.getprestatus()){//sysj\controller.sysj line: 117, column: 13
       dosUnitValveRetract.setPresent();//sysj\controller.sysj line: 118, column: 6
       currsigs.addElement(dosUnitValveRetract);
-      System.out.println("Emitted dosUnitValveRetract");
       active[15]=1;
       ends[15]=1;
       tdone[15]=1;
@@ -170,7 +161,6 @@ public class Filler extends ClockDomain{
         S572=1;
     valveInjectorOnOff.setPresent();//sysj\controller.sysj line: 114, column: 5
     currsigs.addElement(valveInjectorOnOff);
-    System.out.println("Emitted valveInjectorOnOff");
     active[14]=1;
     ends[14]=1;
     tdone[14]=1;

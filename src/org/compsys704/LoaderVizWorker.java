@@ -7,29 +7,26 @@ public class LoaderVizWorker extends Worker {
 
 	@Override
 	public void setSignal(boolean status) {
-		System.out.println(signame+"  "+status);
+		System.out.println(signame + "  " + status);
 		switch (signame) {
 		case "motConveyorOnE":
 			States.motConveyorOn = status;
-			
+
 			break;
 		case "bottleLeftPos5E":
 			States.bottleLeftPos5 = status;
-			
+
 			break;
 		case "bottleAtPos5E":
 			States.bottleAtPos5 = status;
-			
+
 			break;
 		case "bottleAtPos1E":
 			States.bottleAtPos1 = status;
-			
+
 			break;
 		case "rotaryTableTriggerE":
 			States.rotaryTableTrigger = status;
-			break;
-		case "cylPos5ZAxisExtendE":
-			States.cylPos5ZAxisExtend = status;
 			break;
 		case "gripperTurnRetractE":
 			States.gripperTurnRetract = status;
@@ -61,15 +58,40 @@ public class LoaderVizWorker extends Worker {
 		case "bottleAtPos4E":
 			States.bottleAtPos4 = status;
 			break;
+
+		case "gripperZAxisLoweredE":
+			States.gripperZAxisLowered = status;
+			break;
+
+		case "gripperZAxisLiftedE":
+			States.gripperZAxisLifted = status;
+			break;
+
+		case "gripperTurnHomePosE":
+			States.gripperTurnHomePos = status;
+			break;
+
+		case "gripperTurnFinalPosE":
+			States.gripperTurnFinalPos = status;
+			break;
+
+		case "cylPos5ZaxisExtendE":
+			States.cylPos5ZaxisExtend = status;
+			break;
+
 		default:
 			System.err.println("Wrong sig name : " + signame);
-			//System.exit(1);
+			// System.exit(1);
 		}
 	}
 
-	static final List<String> signames = Arrays.asList("motConveyorOnE", "bottleAtPos1E", "rotaryTableTriggerE", "cylPos5ZAxisExtendE", "bottleLeftPos5E", "bottleAtPos4E", "bottleAtPos2E",
-			"gripperTurnRetractE", "gripperTurnExtendE", "capGripperPos5ExtendE", "cylClampBottleExtendE", "bottleAtPos5E",
-			"valveInjectorOnOffE", "valveInletOnOffE", "dosUnitValveRetractE", "dosUnitValveExtendE", "emptyE", "armAtDestE", "armAtSourceE", "WPgrippedE", "pusherExtendedE", "pusherRetractedE");
+	static final List<String> signames = Arrays.asList("motConveyorOnE", "bottleAtPos1E", "rotaryTableTriggerE",
+			"cylPos5ZAxisExtendE", "bottleLeftPos5E", "bottleAtPos4E", "bottleAtPos2E", "gripperTurnRetractE",
+			"gripperTurnExtendE", "capGripperPos5ExtendE", "cylClampBottleExtendE", "bottleAtPos5E",
+			"gripperZAxisLoweredE", "gripperZAxisLiftedE", "gripperTurnHomePosE", "gripperTurnFinalPosE",
+			"valveInjectorOnOffE", "valveInletOnOffE", "dosUnitValveRetractE",
+			"dosUnitValveExtendE", "emptyE", "armAtDestE", "armAtSourceE", "WPgrippedE", "pusherExtendedE",
+			"pusherRetractedE");
 
 	@Override
 	public boolean hasSignal(String sn) {

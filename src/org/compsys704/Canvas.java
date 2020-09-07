@@ -132,7 +132,7 @@ public class Canvas extends JPanel {
 		}
 		g.fillOval(35, 490, 15, 15);
 		
-		if(States.cylPos5ZAxisExtend) {
+		if(States.cylPos5ZaxisExtend) {
 			g.setColor(Color.green);
 		}else {
 			g.setColor(Color.red);

@@ -14,6 +14,8 @@ Plant(
 		output signal rotaryTableTriggerE, bottleAtPos1_RT;
 		
 		//capper 
+		input signal cylPos5ZaxisExtend;
+		output signal cylPos5ZaxisExtendE, gripperTurnRetractE, gripperTurnExtendE, capGripperPos5ExtendE, cylClampBottleExtendE;
 		
 		//Caploader
 		input signal pusherExtend,vacOn,armSource,armDest, cylPos5ZAxisExtend, gripperTurnRetract, gripperTurnExtend, capGripperPos5Extend, cylClampBottleExtend;
@@ -206,9 +208,9 @@ Plant(
 					numTurns++;
 					if(numTurns == 2) {
 						emit l_putBottleAt2;
-					}else if(numTurns == 3) {
+					}else if(numTurns >= 3 && numTurns < 9) {
 						emit l_putBottleAt4;
-					}else if(numTurns == 4) {
+					}else if(numTurns >= 9) {
 						numTurns = 0;
 						emit l_putBottleAt5;
 					}
@@ -269,9 +271,9 @@ Plant(
 	{
 		while(true) {//lower gripper
 			pause;
-			present(cylPos5ZAxisExtend && cylClampBottleExtend){
-				abort((enable)){
-					await(!enable);
+			present(cylPos5ZAxisExtend && enable){
+				await(!enable);
+				abort(!cylPos5ZAxisExtend){
 					sustain gripperZAxisLowered;
 				}
 			}
@@ -281,9 +283,9 @@ Plant(
 	{
 		while(true) {//twist the gripper
 			pause;
-			present(gripperTurnExtend && capGripperPos5Extend){
-				abort((enable)){
-					await(!enable);
+			present(gripperTurnExtend && enable && !gripperTurnRetract){
+				await(!enable);
+				abort(!gripperTurnExtend && gripperTurnRetract){
 					sustain gripperTurnFinalPos;
 				}
 			}
@@ -293,9 +295,9 @@ Plant(
 	{
 		while(true) {//un-twist the gripper
 			pause;
-			present((gripperTurnRetract && !capGripperPos5Extend) || !gripperTurnFinalPos){
-				abort((enable)){
-					await(!enable);
+			present(gripperTurnRetract && enable && !gripperTurnExtend){
+				await(!enable);
+				abort(!gripperTurnRetract && gripperTurnExtend){
 					sustain gripperTurnHomePos;
 				}
 			}
@@ -306,8 +308,7 @@ Plant(
 		while(true) {//raise the gripper
 			pause;
 			present(!cylPos5ZAxisExtend){
-				abort((enable)){
-					await(!enable);
+				abort(cylPos5ZAxisExtend){
 					sustain gripperZAxisLifted;
 				}
 			}
@@ -361,6 +362,17 @@ Plant(
 		||
 		{while(true) {present(gripperTurnHomePos){emit gripperTurnHomePosE;} pause;}}
 		||
+		
 		{while(true) {present(gripperZAxisLifted){emit gripperZAxisLiftedE;} pause;}}
+		||
+		{while(true) {present(cylPos5ZaxisExtend){emit cylPos5ZaxisExtendE;} pause;}}
+		||
+		{while(true) {present(gripperTurnRetract){emit gripperTurnRetractE;} pause;}}
+		||
+		{while(true) {present(gripperTurnExtend){emit gripperTurnExtendE;} pause;}}
+		||
+		{while(true) {present(capGripperPos5Extend){emit capGripperPos5ExtendE;} pause;}}
+		||
+		{while(true) {present(cylClampBottleExtend){emit cylClampBottleExtendE;} pause;}}
 	}
 }

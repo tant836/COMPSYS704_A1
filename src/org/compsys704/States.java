@@ -18,7 +18,7 @@ public class States {
 	public static volatile boolean gripperZAxisLifted = !gripperZAxisLowered;
 	public static volatile boolean gripperTurnHomePos = true;
 	public static volatile boolean gripperTurnFinalPos = !gripperTurnHomePos;
-	public static volatile boolean cylPos5ZAxisExtend = false;
+	public static volatile boolean cylPos5ZaxisExtend = false;
 	public static volatile boolean gripperTurnRetract = false;
 	public static volatile boolean gripperTurnExtend = false;
 	public static volatile boolean capGripperPos5Extend = false;
