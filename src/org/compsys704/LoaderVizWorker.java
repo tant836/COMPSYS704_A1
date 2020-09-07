@@ -78,6 +78,14 @@ public class LoaderVizWorker extends Worker {
 		case "cylPos5ZaxisExtendE":
 			States.cylPos5ZaxisExtend = status;
 			break;
+			
+		case "dosUnitFilledE":
+			States.dosUnitFilled = status;
+			break;
+			
+		case "dosUnitEvacE":
+			States.dosUnitEvac = status;
+			break;
 
 		default:
 			System.err.println("Wrong sig name : " + signame);
@@ -89,7 +97,7 @@ public class LoaderVizWorker extends Worker {
 			"cylPos5ZAxisExtendE", "bottleLeftPos5E", "bottleAtPos4E", "bottleAtPos2E", "gripperTurnRetractE",
 			"gripperTurnExtendE", "capGripperPos5ExtendE", "cylClampBottleExtendE", "bottleAtPos5E",
 			"gripperZAxisLoweredE", "gripperZAxisLiftedE", "gripperTurnHomePosE", "gripperTurnFinalPosE",
-			"valveInjectorOnOffE", "valveInletOnOffE", "dosUnitValveRetractE",
+			"valveInjectorOnOffE", "valveInletOnOffE", "dosUnitValveRetractE", "dosUnitEvacE", "dosUnitFilledE",
 			"dosUnitValveExtendE", "emptyE", "armAtDestE", "armAtSourceE", "WPgrippedE", "pusherExtendedE",
 			"pusherRetractedE");
 

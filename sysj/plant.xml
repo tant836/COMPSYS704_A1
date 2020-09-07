@@ -39,6 +39,10 @@
 			<oSignal Name="armAtDest"       To="ControllerCD.armAtDest"       Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10000" />
 			<oSignal Name="empty"           To="ControllerCD.empty"           Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10000" />
 			
+			<oSignal Name="bottleAtPos2"    To="FillerCD.bottleAtPos2"    Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10000" />
+			<oSignal Name="dosUnitEvac"    To="FillerCD.dosUnitEvac"    Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10000" />
+			<oSignal Name="dosUnitFilled"    To="FillerCD.dosUnitFilled"    Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10000" />
+			
 			<iSignal Name="valveInjectorOnOff" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10001" />
 			<iSignal Name="valveInletOnOff" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10001" />
 			<iSignal Name="dosUnitValveRetract" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10001" />
@@ -74,6 +78,8 @@
 			<oSignal Name="capGripperPos5ExtendE"       To="UI.capGripperPos5ExtendE"       Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20000" />
 			<oSignal Name="cylClampBottleExtendE"       To="UI.cylClampBottleExtendE"       Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20000" />
 			
+			<oSignal Name="dosUnitFilledE"       To="UI.dosUnitFilledE"       Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20000" />
+			<oSignal Name="dosUnitEvacE"       To="UI.dosUnitEvacE"       Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20000" />
 		</ClockDomain>
 	</SubSystem>
 </System>

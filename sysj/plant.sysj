@@ -27,7 +27,7 @@ Plant(
 		//Filler
 		input signal valveInjectorOnOff,valveInletOnOff,dosUnitValveRetract,dosUnitValveExtend;
 		
-		output signal valveInjectorOnOffE,valveInletOnOffE,dosUnitValveRetractE,dosUnitValveExtendE;
+		output signal valveInjectorOnOffE,valveInletOnOffE,dosUnitValveRetractE,dosUnitValveExtendE, dosUnitFilledE, dosUnitEvacE, dosUnitEvac, dosUnitFilled;
 		)
 ->
 {
@@ -206,11 +206,11 @@ Plant(
 				present(rotaryTableTrigger && enable){
 					await(!enable);
 					numTurns++;
-					if(numTurns == 2) {
+					if(numTurns >= 2 && numTurns < 6) {
 						emit l_putBottleAt2;
-					}else if(numTurns >= 3 && numTurns < 9) {
+					}else if(numTurns >= 6 && numTurns < 12) {
 						emit l_putBottleAt4;
-					}else if(numTurns >= 9) {
+					}else if(numTurns >= 12) {
 						numTurns = 0;
 						emit l_putBottleAt5;
 					}
@@ -317,6 +317,35 @@ Plant(
 	
 	//end capper
 	||
+	//start Filler
+	{
+		abort(dosUnitValveRetract || dosUnitValveExtend){
+			sustain dosUnitEvac;
+		}
+		while(true) {//extend pressure cannister
+			pause;
+			present(dosUnitValveExtend && enable && !dosUnitValveRetract){
+				await(!enable);
+				abort(!dosUnitValveExtend && dosUnitValveRetract){
+					sustain dosUnitEvac;
+				}
+			}
+		}
+	}
+	||
+	{
+		while(true) {//retract the pressure cannister
+			pause;
+			present(dosUnitValveRetract && enable && !dosUnitValveExtend){
+				await(!enable);
+				abort(!dosUnitValveRetract && dosUnitValveExtend){
+					sustain dosUnitFilled;
+				}
+			}
+		}
+	}
+	||
+	//end Filler
 	{// To viz
 		//Caploader
 //		{while(true){present(pusherRetracted){emit pusherRetractedE;} pause;}}
@@ -374,5 +403,20 @@ Plant(
 		{while(true) {present(capGripperPos5Extend){emit capGripperPos5ExtendE;} pause;}}
 		||
 		{while(true) {present(cylClampBottleExtend){emit cylClampBottleExtendE;} pause;}}
+		
+		||
+		{while(true) {present(valveInjectorOnOff){emit valveInjectorOnOffE;} pause;}}
+		||
+		{while(true) {present(valveInletOnOff){emit valveInletOnOffE;} pause;}}
+		||
+		{while(true) {present(dosUnitValveRetract){emit dosUnitValveRetractE;} pause;}}
+		||
+		{while(true) {present(dosUnitValveExtend){emit dosUnitValveExtendE;} pause;}}
+		||
+		{while(true) {present(bottleAtPos2){emit bottleAtPos2E;} pause;}}
+		||
+		{while(true) {present(dosUnitEvac){emit dosUnitEvacE;} pause;}}
+		||
+		{while(true) {present(dosUnitFilled){emit dosUnitFilledE;} pause;}}
 	}
 }

@@ -30,14 +30,13 @@ RotaryTable(
 	loop{
 		pause;
 		await(bottleAtPos1);
-			present(!capsonBottleAtPos1){
-				abort(bottleAtPos5 || tableAlignedWithSensor){
-					sustain rotaryTableTrigger;
-				}
+		await(!capsonBottleAtPos1);
+		abort(bottleAtPos5 || tableAlignedWithSensor){
+			sustain rotaryTableTrigger;
+		}
 //				abort(tableAlignedWithSensor){
 //					sustain rotaryTableTrigger;
 //				}
-			}
 	}
 
 }
