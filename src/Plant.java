@@ -1093,7 +1093,7 @@ public class Plant extends ClockDomain{
           case 0 : 
             S3067=0;
             S3067=1;
-            if(dosUnitValveRetract.getprestatus() && enable.getprestatus() && !dosUnitValveExtend.getprestatus()){//sysj\plant.sysj line: 339, column: 12
+            if(dosUnitValveRetract.getprestatus() && enable.getprestatus() && valveInjectorOnOff.getprestatus()){//sysj\plant.sysj line: 339, column: 12
               S3054=0;
               active[23]=1;
               ends[23]=1;
@@ -1126,7 +1126,7 @@ public class Plant extends ClockDomain{
                 break;
               
               case 1 : 
-                if(!dosUnitValveRetract.getprestatus() && dosUnitValveExtend.getprestatus()){//sysj\plant.sysj line: 341, column: 11
+                if(!dosUnitValveRetract.getprestatus() && dosUnitValveExtend.getprestatus() && enable.getprestatus()){//sysj\plant.sysj line: 341, column: 11
                   S3067=0;
                   active[23]=1;
                   ends[23]=1;
@@ -1182,7 +1182,7 @@ public class Plant extends ClockDomain{
               case 0 : 
                 S2881=0;
                 S2881=1;
-                if(dosUnitValveExtend.getprestatus() && enable.getprestatus() && !dosUnitValveRetract.getprestatus()){//sysj\plant.sysj line: 327, column: 12
+                if(dosUnitValveExtend.getprestatus() && enable.getprestatus() && valveInletOnOff.getprestatus()){//sysj\plant.sysj line: 327, column: 12
                   S2868=0;
                   active[22]=1;
                   ends[22]=1;
@@ -1628,7 +1628,7 @@ public class Plant extends ClockDomain{
                 case 0 : 
                   if(!enable.getprestatus()){//sysj\plant.sysj line: 207, column: 12
                     numTurns_thread_13 = numTurns_thread_13 + 1;//sysj\plant.sysj line: 208, column: 6
-                    if(numTurns_thread_13 >= 2 && numTurns_thread_13 < 6){//sysj\plant.sysj line: 209, column: 9
+                    if(numTurns_thread_13 >= 2 && numTurns_thread_13 < 4){//sysj\plant.sysj line: 209, column: 9
                       l_putBottleAt2_1.setPresent();//sysj\plant.sysj line: 210, column: 7
                       currsigs.addElement(l_putBottleAt2_1);
                       if(!rotaryTableTrigger.getprestatus()){//sysj\plant.sysj line: 219, column: 12
@@ -1646,7 +1646,7 @@ public class Plant extends ClockDomain{
                       }
                     }
                     else {
-                      if(numTurns_thread_13 >= 6 && numTurns_thread_13 < 12){//sysj\plant.sysj line: 211, column: 15
+                      if(numTurns_thread_13 >= 4 && numTurns_thread_13 < 10){//sysj\plant.sysj line: 211, column: 15
                         l_putBottleAt4_1.setPresent();//sysj\plant.sysj line: 212, column: 7
                         currsigs.addElement(l_putBottleAt4_1);
                         if(!rotaryTableTrigger.getprestatus()){//sysj\plant.sysj line: 219, column: 12
@@ -1664,7 +1664,7 @@ public class Plant extends ClockDomain{
                         }
                       }
                       else {
-                        if(numTurns_thread_13 >= 12){//sysj\plant.sysj line: 213, column: 15
+                        if(numTurns_thread_13 >= 10){//sysj\plant.sysj line: 213, column: 15
                           numTurns_thread_13 = 0;//sysj\plant.sysj line: 214, column: 7
                           l_putBottleAt5_1.setPresent();//sysj\plant.sysj line: 215, column: 7
                           currsigs.addElement(l_putBottleAt5_1);

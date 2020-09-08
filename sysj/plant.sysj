@@ -206,11 +206,11 @@ Plant(
 				present(rotaryTableTrigger && enable){
 					await(!enable);
 					numTurns++;
-					if(numTurns >= 2 && numTurns < 6) {
+					if(numTurns >= 2 && numTurns < 4) {
 						emit l_putBottleAt2;
-					}else if(numTurns >= 6 && numTurns < 12) {
+					}else if(numTurns >= 4 && numTurns < 10) {
 						emit l_putBottleAt4;
-					}else if(numTurns >= 12) {
+					}else if(numTurns >= 10) {
 						numTurns = 0;
 						emit l_putBottleAt5;
 					}
@@ -220,6 +220,15 @@ Plant(
 				numTurns = 0;
 			}
 			
+		}
+	}
+	||
+	{
+		while(true) {
+			pause;
+//			abort(!valveInjectorOnOff && enable){
+//				sustain valveInjectorOnOffE;
+//			}
 		}
 	}
 	//Rotary Table end
@@ -324,7 +333,7 @@ Plant(
 		}
 		while(true) {//extend pressure cannister
 			pause;
-			present(dosUnitValveExtend && enable && !dosUnitValveRetract){
+			present(dosUnitValveExtend && enable && valveInletOnOff){
 				await(!enable);
 				abort(!dosUnitValveExtend && dosUnitValveRetract){
 					sustain dosUnitEvac;
@@ -336,9 +345,9 @@ Plant(
 	{
 		while(true) {//retract the pressure cannister
 			pause;
-			present(dosUnitValveRetract && enable && !dosUnitValveExtend){
+			present(dosUnitValveRetract && enable && valveInjectorOnOff){
 				await(!enable);
-				abort(!dosUnitValveRetract && dosUnitValveExtend){
+				abort(!dosUnitValveRetract && dosUnitValveExtend && enable){
 					sustain dosUnitFilled;
 				}
 			}
