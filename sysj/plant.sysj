@@ -25,9 +25,10 @@ Plant(
 		output signal gripperZAxisLowered, gripperTurnFinalPos, gripperTurnHomePos, gripperZAxisLifted;
 		
 		//Filler
-		input signal valveInjectorOnOff,valveInletOnOff,dosUnitValveRetract,dosUnitValveExtend;
+		input signal valveInjectorOnOff,valveInletOnOff,dosUnitValveRetract,dosUnitValveExtend, selNoz1, selNoz2, selNoz3, selNoz4, turnNozTrigger;
 		
-		output signal valveInjectorOnOffE,valveInletOnOffE,dosUnitValveRetractE,dosUnitValveExtendE, dosUnitFilledE, dosUnitEvacE, dosUnitEvac, dosUnitFilled;
+		output signal valveInjectorOnOffE,valveInletOnOffE,dosUnitValveRetractE,dosUnitValveExtendE, dosUnitFilledE, dosUnitEvacE, dosUnitEvac, dosUnitFilled,noz1,noz2,noz3,noz4;
+		output signal  o_selNoz1, o_selNoz2, o_selNoz3, o_selNoz4;
 		)
 ->
 {
@@ -354,6 +355,30 @@ Plant(
 		}
 	}
 	||
+	{
+		//Filler nozzle control
+		int nozzlenum = 0;
+		while(true) {
+			pause;
+			abort(!turnNozTrigger){
+				present(turnNozTrigger && enable){
+					await(!enable);
+					nozzlenum++;
+					if(nozzlenum == 1) {
+						emit noz1;
+					}else if(nozzlenum == 2) {
+						emit noz2;
+					}else if(nozzlenum == 3) {
+						emit noz3;
+					}else {
+						emit noz4;
+						nozzlenum = 0;
+					}
+				}
+			}
+		}
+	}
+	||
 	//end Filler
 	{// To viz
 		//Caploader
@@ -427,5 +452,13 @@ Plant(
 		{while(true) {present(dosUnitEvac){emit dosUnitEvacE;} pause;}}
 		||
 		{while(true) {present(dosUnitFilled){emit dosUnitFilledE;} pause;}}
+		||
+		{while(true) {present(selNoz1){emit o_selNoz1;} pause;}}
+		||
+		{while(true) {present(selNoz2){emit o_selNoz2;} pause;}}
+		||
+		{while(true) {present(selNoz3){emit o_selNoz3;} pause;}}
+		||
+		{while(true) {present(selNoz4){emit o_selNoz4;} pause;}}
 	}
 }

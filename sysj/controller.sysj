@@ -102,7 +102,9 @@ Capper(
 
 Filler(
 		input signal bottleAtPos2, dosUnitEvac, dosUnitFilled;
-		output signal valveInjectorOnOff, valveInletOnOff, dosUnitValveRetract, dosUnitValveExtend;
+		input signal noz1,noz2,noz3,noz4;
+		input signal  i_selNoz1, i_selNoz2, i_selNoz3, i_selNoz4;
+		output signal valveInjectorOnOff, valveInletOnOff, dosUnitValveRetract, dosUnitValveExtend, turnNozTrigger;
 		)
 ->{
 /* TODO: Write control-logic */
@@ -127,5 +129,10 @@ Filler(
 				sustain dosUnitValveExtend;
 			}
 		}
+	}
+	||
+	loop{
+		pause;
+		
 	}
 }

@@ -18,8 +18,8 @@ public class Conveyor extends ClockDomain{
   private int S64 = 1;
   private int S2 = 1;
   
-  private int[] ends = new int[18];
-  private int[] tdone = new int[18];
+  private int[] ends = new int[20];
+  private int[] tdone = new int[20];
   
   public void runClockDomain(){
     for(int i=0;i<ends.length;i++){
@@ -55,6 +55,7 @@ public class Conveyor extends ClockDomain{
                 S2=2;
                 motConveyorOn.setPresent();//sysj\controller.sysj line: 12, column: 4
                 currsigs.addElement(motConveyorOn);
+                System.out.println("Emitted motConveyorOn");
                 active[1]=1;
                 ends[1]=1;
                 break RUN;
@@ -75,6 +76,7 @@ public class Conveyor extends ClockDomain{
               else {
                 motConveyorOn.setPresent();//sysj\controller.sysj line: 12, column: 4
                 currsigs.addElement(motConveyorOn);
+                System.out.println("Emitted motConveyorOn");
                 active[1]=1;
                 ends[1]=1;
                 break RUN;
@@ -85,6 +87,7 @@ public class Conveyor extends ClockDomain{
                 S2=4;
                 motConveyorOn.setPresent();//sysj\controller.sysj line: 16, column: 4
                 currsigs.addElement(motConveyorOn);
+                System.out.println("Emitted motConveyorOn");
                 active[1]=1;
                 ends[1]=1;
                 break RUN;
@@ -105,6 +108,7 @@ public class Conveyor extends ClockDomain{
               else {
                 motConveyorOn.setPresent();//sysj\controller.sysj line: 16, column: 4
                 currsigs.addElement(motConveyorOn);
+                System.out.println("Emitted motConveyorOn");
                 active[1]=1;
                 ends[1]=1;
                 break RUN;
@@ -117,9 +121,9 @@ public class Conveyor extends ClockDomain{
   }
 
   public void init(){
-    char [] active1 = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1};
-    char [] paused1 = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-    char [] suspended1 = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+    char [] active1 = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1};
+    char [] paused1 = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+    char [] suspended1 = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
     paused = paused1;
     active = active1;
     suspended = suspended1;
