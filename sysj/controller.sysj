@@ -21,7 +21,7 @@ Conveyor(
 }
 
 RotaryTable(
-		input signal tableAlignedWithSensor, bottleAtPos5, capsonBottleAtPos1, bottleAtPos1;
+		input signal tableAlignedWithSensor, bottleAtPos5, capOnBottleAtPos1, bottleAtPos1;
 		output signal rotaryTableTrigger;
 		)
 ->{
@@ -30,7 +30,7 @@ RotaryTable(
 	loop{
 		pause;
 		await(bottleAtPos1);
-		await(!capsonBottleAtPos1);
+		await(!capOnBottleAtPos1);
 		abort(bottleAtPos5 || tableAlignedWithSensor){
 			sustain rotaryTableTrigger;
 		}

@@ -86,6 +86,10 @@ public class LoaderVizWorker extends Worker {
 		case "dosUnitEvacE":
 			States.dosUnitEvac = status;
 			break;
+			
+		case "capOnBottleAtPos1E":
+			States.capsonBottleAtPos1 = status;
+			break;
 
 		default:
 			System.err.println("Wrong sig name : " + signame);
@@ -95,7 +99,7 @@ public class LoaderVizWorker extends Worker {
 
 	static final List<String> signames = Arrays.asList("motConveyorOnE", "bottleAtPos1E", "rotaryTableTriggerE",
 			"cylPos5ZAxisExtendE", "bottleLeftPos5E", "bottleAtPos4E", "bottleAtPos2E", "gripperTurnRetractE",
-			"gripperTurnExtendE", "capGripperPos5ExtendE", "cylClampBottleExtendE", "bottleAtPos5E",
+			"gripperTurnExtendE", "capGripperPos5ExtendE", "cylClampBottleExtendE", "bottleAtPos5E", "capOnBottleAtPos1E",
 			"gripperZAxisLoweredE", "gripperZAxisLiftedE", "gripperTurnHomePosE", "gripperTurnFinalPosE",
 			"valveInjectorOnOffE", "valveInletOnOffE", "dosUnitValveRetractE", "dosUnitEvacE", "dosUnitFilledE",
 			"dosUnitValveExtendE", "emptyE", "armAtDestE", "armAtSourceE", "WPgrippedE", "pusherExtendedE",

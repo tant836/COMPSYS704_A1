@@ -1,6 +1,6 @@
 Plant(
 		//global plant signals
-		input signal enable,refill;
+		input signal enable,refill, removeBottle;
 		
 		
 		//Conveyor
@@ -11,7 +11,7 @@ Plant(
 		//Rotary Table
 		input signal rotaryTableTrigger;
 		
-		output signal rotaryTableTriggerE, bottleAtPos1_RT;
+		output signal rotaryTableTriggerE, bottleAtPos1_RT, capOnBottleAtPos1E, capOnBottleAtPos1;
 		
 		//capper 
 		input signal cylPos5ZaxisExtend;
@@ -224,11 +224,23 @@ Plant(
 	}
 	||
 	{
+		Integer chance = 25;
+		Integer rand;
 		while(true) {
 			pause;
-//			abort(!valveInjectorOnOff && enable){
-//				sustain valveInjectorOnOffE;
-//			}
+			
+			present(bottleAtPos1){
+				rand = (int)(Math.random() * 100);
+				System.out.println(rand);
+				if(rand < chance) {
+					abort(removeBottle){
+							sustain capOnBottleAtPos1;
+					}
+					
+				}
+				await(enable);
+				await(!enable);
+			}
 		}
 	}
 	//Rotary Table end
@@ -427,5 +439,8 @@ Plant(
 		{while(true) {present(dosUnitEvac){emit dosUnitEvacE;} pause;}}
 		||
 		{while(true) {present(dosUnitFilled){emit dosUnitFilledE;} pause;}}
+		
+		||
+		{while(true) {present(capOnBottleAtPos1){emit capOnBottleAtPos1E;} pause;}}
 	}
 }
