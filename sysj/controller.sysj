@@ -133,6 +133,27 @@ Filler(
 	||
 	loop{
 		pause;
+		await(i_selNoz1 || i_selNoz2 || i_selNoz3 || i_selNoz4);
+		present(i_selNoz1){
+			abort(noz1){
+				sustain turnNozTrigger;
+			}
+		}
+		present(i_selNoz2){
+			abort(noz2){
+				sustain turnNozTrigger;
+			}
+		}
+		present(i_selNoz3){
+			abort(noz3){
+				sustain turnNozTrigger;
+			}
+		}
+		present(i_selNoz4){
+			abort(noz4){
+				sustain turnNozTrigger;
+			}
+		}
 		
 	}
 }

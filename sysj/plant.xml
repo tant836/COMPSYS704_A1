@@ -17,6 +17,7 @@
 			<oSignal Name="bottleAtPos4" To="CapperCD.bottleAtPos4" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10000" />
 			
 			<iSignal Name="rotaryTableTrigger" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10001" />
+			<iSignal Name="turnNozTrigger"       Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10001" />
 			
 			<iSignal Name="cylPos5ZAxisExtend" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10001" />
 			<iSignal Name="gripperTurnRetract" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10001" />
@@ -33,6 +34,10 @@
 			<iSignal Name="refill"       Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10001" />
 			<iSignal Name="bottleAdded"       Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10001" />
 			<iSignal Name="removeBottle"       Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10001" />
+			<iSignal Name="selNoz1"       Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10001" />
+			<iSignal Name="selNoz2"       Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10001" />
+			<iSignal Name="selNoz3"       Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10001" />
+			<iSignal Name="selNoz4"       Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10001" />
 
 			<oSignal Name="pusherRetracted" To="ControllerCD.pusherRetracted" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10000" />
 			<oSignal Name="pusherExtended"  To="ControllerCD.pusherExtended"  Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10000" />
@@ -44,6 +49,15 @@
 			<oSignal Name="bottleAtPos2"    To="FillerCD.bottleAtPos2"    Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10000" />
 			<oSignal Name="dosUnitEvac"    To="FillerCD.dosUnitEvac"    Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10000" />
 			<oSignal Name="dosUnitFilled"    To="FillerCD.dosUnitFilled"    Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10000" />
+			
+			<oSignal Name="noz1"    To="FillerCD.noz1"    Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10000" />
+			<oSignal Name="noz2"    To="FillerCD.noz2"    Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10000" />
+			<oSignal Name="noz3"    To="FillerCD.noz3"    Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10000" />
+			<oSignal Name="noz4"    To="FillerCD.noz4"    Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10000" />
+			<oSignal Name="o_selNoz1"    To="FillerCD.i_selNoz1"    Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10000" />
+			<oSignal Name="o_selNoz2"    To="FillerCD.i_selNoz2"    Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10000" />
+			<oSignal Name="o_selNoz3"    To="FillerCD.i_selNoz3"    Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10000" />
+			<oSignal Name="o_selNoz4"    To="FillerCD.i_selNoz4"    Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10000" />
 			
 			<iSignal Name="valveInjectorOnOff" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10001" />
 			<iSignal Name="valveInletOnOff" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10001" />
