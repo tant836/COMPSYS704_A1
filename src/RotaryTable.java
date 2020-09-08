@@ -13,7 +13,7 @@ public class RotaryTable extends ClockDomain{
   private char [] suspended;
   public Signal tableAlignedWithSensor = new Signal("tableAlignedWithSensor", Signal.INPUT);
   public Signal bottleAtPos5 = new Signal("bottleAtPos5", Signal.INPUT);
-  public Signal capsonBottleAtPos1 = new Signal("capsonBottleAtPos1", Signal.INPUT);
+  public Signal capOnBottleAtPos1 = new Signal("capOnBottleAtPos1", Signal.INPUT);
   public Signal bottleAtPos1 = new Signal("bottleAtPos1", Signal.INPUT);
   public Signal rotaryTableTrigger = new Signal("rotaryTableTrigger", Signal.OUTPUT);
   private int S105 = 1;
@@ -65,7 +65,7 @@ public class RotaryTable extends ClockDomain{
               }
             
             case 2 : 
-              if(!capsonBottleAtPos1.getprestatus()){//sysj\controller.sysj line: 33, column: 9
+              if(!capOnBottleAtPos1.getprestatus()){//sysj\controller.sysj line: 33, column: 9
                 S67=3;
                 rotaryTableTrigger.setPresent();//sysj\controller.sysj line: 35, column: 4
                 currsigs.addElement(rotaryTableTrigger);
@@ -126,7 +126,7 @@ public class RotaryTable extends ClockDomain{
         if(!df){
           tableAlignedWithSensor.gethook();
           bottleAtPos5.gethook();
-          capsonBottleAtPos1.gethook();
+          capOnBottleAtPos1.gethook();
           bottleAtPos1.gethook();
           df = true;
         }
@@ -134,7 +134,7 @@ public class RotaryTable extends ClockDomain{
       }
       tableAlignedWithSensor.setpreclear();
       bottleAtPos5.setpreclear();
-      capsonBottleAtPos1.setpreclear();
+      capOnBottleAtPos1.setpreclear();
       bottleAtPos1.setpreclear();
       rotaryTableTrigger.setpreclear();
       int dummyint = 0;
@@ -149,9 +149,9 @@ public class RotaryTable extends ClockDomain{
       dummyint = bottleAtPos5.getStatus() ? bottleAtPos5.setprepresent() : bottleAtPos5.setpreclear();
       bottleAtPos5.setpreval(bottleAtPos5.getValue());
       bottleAtPos5.setClear();
-      dummyint = capsonBottleAtPos1.getStatus() ? capsonBottleAtPos1.setprepresent() : capsonBottleAtPos1.setpreclear();
-      capsonBottleAtPos1.setpreval(capsonBottleAtPos1.getValue());
-      capsonBottleAtPos1.setClear();
+      dummyint = capOnBottleAtPos1.getStatus() ? capOnBottleAtPos1.setprepresent() : capOnBottleAtPos1.setpreclear();
+      capOnBottleAtPos1.setpreval(capOnBottleAtPos1.getValue());
+      capOnBottleAtPos1.setClear();
       dummyint = bottleAtPos1.getStatus() ? bottleAtPos1.setprepresent() : bottleAtPos1.setpreclear();
       bottleAtPos1.setpreval(bottleAtPos1.getValue());
       bottleAtPos1.setClear();
@@ -161,7 +161,7 @@ public class RotaryTable extends ClockDomain{
       else{
         tableAlignedWithSensor.gethook();
         bottleAtPos5.gethook();
-        capsonBottleAtPos1.gethook();
+        capOnBottleAtPos1.gethook();
         bottleAtPos1.gethook();
       }
       runFinisher();
