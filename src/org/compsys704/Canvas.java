@@ -1,12 +1,14 @@
 package org.compsys704;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class Canvas extends JPanel {
@@ -217,5 +219,10 @@ public class Canvas extends JPanel {
 			g.setColor(Color.red);
 		}
 		g.fillOval(439, 660, 15, 15);
+		
+		//Liquid type
+		g.setColor(Color.black);
+		g.setFont( new Font(Font.SANS_SERIF, Font.BOLD,  14));
+		g.drawString(States.Liquid, 230, 660);
 	}
 }

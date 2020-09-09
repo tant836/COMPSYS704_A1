@@ -27,20 +27,21 @@ public class Filler extends ClockDomain{
   public Signal dosUnitValveRetract = new Signal("dosUnitValveRetract", Signal.OUTPUT);
   public Signal dosUnitValveExtend = new Signal("dosUnitValveExtend", Signal.OUTPUT);
   public Signal turnNozTrigger = new Signal("turnNozTrigger", Signal.OUTPUT);
-  private int S797 = 1;
+  private int S1308 = 1;
   private int S793 = 1;
   private int S554 = 1;
   private int S559 = 1;
   private int S565 = 1;
   private int S583 = 1;
   private int S588 = 1;
-  private int S795 = 1;
+  private int S1306 = 1;
+  private int S796 = 1;
   
   private int[] ends = new int[20];
   private int[] tdone = new int[20];
   
-  public void thread851(int [] tdone, int [] ends){
-        switch(S795){
+  public void thread1362(int [] tdone, int [] ends){
+        switch(S1306){
       case 0 : 
         active[19]=0;
         ends[19]=0;
@@ -48,15 +49,200 @@ public class Filler extends ClockDomain{
         break;
       
       case 1 : 
-        active[19]=1;
-        ends[19]=1;
-        tdone[19]=1;
+        switch(S796){
+          case 0 : 
+            S796=0;
+            S796=1;
+            active[19]=1;
+            ends[19]=1;
+            tdone[19]=1;
+            break;
+          
+          case 1 : 
+            if(i_selNoz1.getprestatus() || i_selNoz2.getprestatus() || i_selNoz3.getprestatus() || i_selNoz4.getprestatus()){//sysj\controller.sysj line: 136, column: 9
+              S796=2;
+              if(i_selNoz1.getprestatus()){//sysj\controller.sysj line: 137, column: 11
+                turnNozTrigger.setPresent();//sysj\controller.sysj line: 139, column: 5
+                currsigs.addElement(turnNozTrigger);
+                active[19]=1;
+                ends[19]=1;
+                tdone[19]=1;
+              }
+              else {
+                S796=3;
+                if(i_selNoz2.getprestatus()){//sysj\controller.sysj line: 142, column: 11
+                  turnNozTrigger.setPresent();//sysj\controller.sysj line: 144, column: 5
+                  currsigs.addElement(turnNozTrigger);
+                  active[19]=1;
+                  ends[19]=1;
+                  tdone[19]=1;
+                }
+                else {
+                  S796=4;
+                  if(i_selNoz3.getprestatus()){//sysj\controller.sysj line: 147, column: 11
+                    turnNozTrigger.setPresent();//sysj\controller.sysj line: 149, column: 5
+                    currsigs.addElement(turnNozTrigger);
+                    active[19]=1;
+                    ends[19]=1;
+                    tdone[19]=1;
+                  }
+                  else {
+                    S796=5;
+                    if(i_selNoz4.getprestatus()){//sysj\controller.sysj line: 152, column: 11
+                      turnNozTrigger.setPresent();//sysj\controller.sysj line: 154, column: 5
+                      currsigs.addElement(turnNozTrigger);
+                      active[19]=1;
+                      ends[19]=1;
+                      tdone[19]=1;
+                    }
+                    else {
+                      S796=0;
+                      active[19]=1;
+                      ends[19]=1;
+                      tdone[19]=1;
+                    }
+                  }
+                }
+              }
+            }
+            else {
+              active[19]=1;
+              ends[19]=1;
+              tdone[19]=1;
+            }
+            break;
+          
+          case 2 : 
+            if(noz1.getprestatus()){//sysj\controller.sysj line: 138, column: 10
+              S796=3;
+              if(i_selNoz2.getprestatus()){//sysj\controller.sysj line: 142, column: 11
+                turnNozTrigger.setPresent();//sysj\controller.sysj line: 144, column: 5
+                currsigs.addElement(turnNozTrigger);
+                active[19]=1;
+                ends[19]=1;
+                tdone[19]=1;
+              }
+              else {
+                S796=4;
+                if(i_selNoz3.getprestatus()){//sysj\controller.sysj line: 147, column: 11
+                  turnNozTrigger.setPresent();//sysj\controller.sysj line: 149, column: 5
+                  currsigs.addElement(turnNozTrigger);
+                  active[19]=1;
+                  ends[19]=1;
+                  tdone[19]=1;
+                }
+                else {
+                  S796=5;
+                  if(i_selNoz4.getprestatus()){//sysj\controller.sysj line: 152, column: 11
+                    turnNozTrigger.setPresent();//sysj\controller.sysj line: 154, column: 5
+                    currsigs.addElement(turnNozTrigger);
+                    active[19]=1;
+                    ends[19]=1;
+                    tdone[19]=1;
+                  }
+                  else {
+                    S796=0;
+                    active[19]=1;
+                    ends[19]=1;
+                    tdone[19]=1;
+                  }
+                }
+              }
+            }
+            else {
+              turnNozTrigger.setPresent();//sysj\controller.sysj line: 139, column: 5
+              currsigs.addElement(turnNozTrigger);
+              active[19]=1;
+              ends[19]=1;
+              tdone[19]=1;
+            }
+            break;
+          
+          case 3 : 
+            if(noz2.getprestatus()){//sysj\controller.sysj line: 143, column: 10
+              S796=4;
+              if(i_selNoz3.getprestatus()){//sysj\controller.sysj line: 147, column: 11
+                turnNozTrigger.setPresent();//sysj\controller.sysj line: 149, column: 5
+                currsigs.addElement(turnNozTrigger);
+                active[19]=1;
+                ends[19]=1;
+                tdone[19]=1;
+              }
+              else {
+                S796=5;
+                if(i_selNoz4.getprestatus()){//sysj\controller.sysj line: 152, column: 11
+                  turnNozTrigger.setPresent();//sysj\controller.sysj line: 154, column: 5
+                  currsigs.addElement(turnNozTrigger);
+                  active[19]=1;
+                  ends[19]=1;
+                  tdone[19]=1;
+                }
+                else {
+                  S796=0;
+                  active[19]=1;
+                  ends[19]=1;
+                  tdone[19]=1;
+                }
+              }
+            }
+            else {
+              turnNozTrigger.setPresent();//sysj\controller.sysj line: 144, column: 5
+              currsigs.addElement(turnNozTrigger);
+              active[19]=1;
+              ends[19]=1;
+              tdone[19]=1;
+            }
+            break;
+          
+          case 4 : 
+            if(noz3.getprestatus()){//sysj\controller.sysj line: 148, column: 10
+              S796=5;
+              if(i_selNoz4.getprestatus()){//sysj\controller.sysj line: 152, column: 11
+                turnNozTrigger.setPresent();//sysj\controller.sysj line: 154, column: 5
+                currsigs.addElement(turnNozTrigger);
+                active[19]=1;
+                ends[19]=1;
+                tdone[19]=1;
+              }
+              else {
+                S796=0;
+                active[19]=1;
+                ends[19]=1;
+                tdone[19]=1;
+              }
+            }
+            else {
+              turnNozTrigger.setPresent();//sysj\controller.sysj line: 149, column: 5
+              currsigs.addElement(turnNozTrigger);
+              active[19]=1;
+              ends[19]=1;
+              tdone[19]=1;
+            }
+            break;
+          
+          case 5 : 
+            if(noz4.getprestatus()){//sysj\controller.sysj line: 153, column: 10
+              S796=0;
+              active[19]=1;
+              ends[19]=1;
+              tdone[19]=1;
+            }
+            else {
+              turnNozTrigger.setPresent();//sysj\controller.sysj line: 154, column: 5
+              currsigs.addElement(turnNozTrigger);
+              active[19]=1;
+              ends[19]=1;
+              tdone[19]=1;
+            }
+            break;
+          
+        }
         break;
       
     }
   }
 
-  public void thread849(int [] tdone, int [] ends){
+  public void thread1360(int [] tdone, int [] ends){
         switch(S588){
       case 0 : 
         active[18]=0;
@@ -67,7 +253,6 @@ public class Filler extends ClockDomain{
       case 1 : 
         dosUnitValveExtend.setPresent();//sysj\controller.sysj line: 129, column: 5
         currsigs.addElement(dosUnitValveExtend);
-        System.out.println("Emitted dosUnitValveExtend");
         active[18]=1;
         ends[18]=1;
         tdone[18]=1;
@@ -76,7 +261,7 @@ public class Filler extends ClockDomain{
     }
   }
 
-  public void thread848(int [] tdone, int [] ends){
+  public void thread1359(int [] tdone, int [] ends){
         switch(S583){
       case 0 : 
         active[17]=0;
@@ -87,7 +272,6 @@ public class Filler extends ClockDomain{
       case 1 : 
         valveInletOnOff.setPresent();//sysj\controller.sysj line: 126, column: 5
         currsigs.addElement(valveInletOnOff);
-        System.out.println("Emitted valveInletOnOff");
         active[17]=1;
         ends[17]=1;
         tdone[17]=1;
@@ -96,27 +280,25 @@ public class Filler extends ClockDomain{
     }
   }
 
-  public void thread846(int [] tdone, int [] ends){
+  public void thread1357(int [] tdone, int [] ends){
         S588=1;
     dosUnitValveExtend.setPresent();//sysj\controller.sysj line: 129, column: 5
     currsigs.addElement(dosUnitValveExtend);
-    System.out.println("Emitted dosUnitValveExtend");
     active[18]=1;
     ends[18]=1;
     tdone[18]=1;
   }
 
-  public void thread845(int [] tdone, int [] ends){
+  public void thread1356(int [] tdone, int [] ends){
         S583=1;
     valveInletOnOff.setPresent();//sysj\controller.sysj line: 126, column: 5
     currsigs.addElement(valveInletOnOff);
-    System.out.println("Emitted valveInletOnOff");
     active[17]=1;
     ends[17]=1;
     tdone[17]=1;
   }
 
-  public void thread843(int [] tdone, int [] ends){
+  public void thread1354(int [] tdone, int [] ends){
         switch(S565){
       case 0 : 
         active[16]=0;
@@ -127,7 +309,6 @@ public class Filler extends ClockDomain{
       case 1 : 
         dosUnitValveRetract.setPresent();//sysj\controller.sysj line: 119, column: 6
         currsigs.addElement(dosUnitValveRetract);
-        System.out.println("Emitted dosUnitValveRetract");
         active[16]=1;
         ends[16]=1;
         tdone[16]=1;
@@ -136,7 +317,7 @@ public class Filler extends ClockDomain{
     }
   }
 
-  public void thread842(int [] tdone, int [] ends){
+  public void thread1353(int [] tdone, int [] ends){
         switch(S559){
       case 0 : 
         active[15]=0;
@@ -147,7 +328,6 @@ public class Filler extends ClockDomain{
       case 1 : 
         valveInjectorOnOff.setPresent();//sysj\controller.sysj line: 115, column: 5
         currsigs.addElement(valveInjectorOnOff);
-        System.out.println("Emitted valveInjectorOnOff");
         active[15]=1;
         ends[15]=1;
         tdone[15]=1;
@@ -156,32 +336,29 @@ public class Filler extends ClockDomain{
     }
   }
 
-  public void thread840(int [] tdone, int [] ends){
+  public void thread1351(int [] tdone, int [] ends){
         S588=1;
     dosUnitValveExtend.setPresent();//sysj\controller.sysj line: 129, column: 5
     currsigs.addElement(dosUnitValveExtend);
-    System.out.println("Emitted dosUnitValveExtend");
     active[18]=1;
     ends[18]=1;
     tdone[18]=1;
   }
 
-  public void thread839(int [] tdone, int [] ends){
+  public void thread1350(int [] tdone, int [] ends){
         S583=1;
     valveInletOnOff.setPresent();//sysj\controller.sysj line: 126, column: 5
     currsigs.addElement(valveInletOnOff);
-    System.out.println("Emitted valveInletOnOff");
     active[17]=1;
     ends[17]=1;
     tdone[17]=1;
   }
 
-  public void thread837(int [] tdone, int [] ends){
+  public void thread1348(int [] tdone, int [] ends){
         S565=1;
     if(dosUnitEvac.getprestatus()){//sysj\controller.sysj line: 118, column: 13
       dosUnitValveRetract.setPresent();//sysj\controller.sysj line: 119, column: 6
       currsigs.addElement(dosUnitValveRetract);
-      System.out.println("Emitted dosUnitValveRetract");
       active[16]=1;
       ends[16]=1;
       tdone[16]=1;
@@ -194,17 +371,16 @@ public class Filler extends ClockDomain{
     }
   }
 
-  public void thread836(int [] tdone, int [] ends){
+  public void thread1347(int [] tdone, int [] ends){
         S559=1;
     valveInjectorOnOff.setPresent();//sysj\controller.sysj line: 115, column: 5
     currsigs.addElement(valveInjectorOnOff);
-    System.out.println("Emitted valveInjectorOnOff");
     active[15]=1;
     ends[15]=1;
     tdone[15]=1;
   }
 
-  public void thread835(int [] tdone, int [] ends){
+  public void thread1346(int [] tdone, int [] ends){
         switch(S793){
       case 0 : 
         active[14]=0;
@@ -225,16 +401,16 @@ public class Filler extends ClockDomain{
           case 1 : 
             if(bottleAtPos2.getprestatus()){//sysj\controller.sysj line: 113, column: 9
               S554=2;
-              thread836(tdone,ends);
-              thread837(tdone,ends);
-              int biggest838 = 0;
-              if(ends[15]>=biggest838){
-                biggest838=ends[15];
+              thread1347(tdone,ends);
+              thread1348(tdone,ends);
+              int biggest1349 = 0;
+              if(ends[15]>=biggest1349){
+                biggest1349=ends[15];
               }
-              if(ends[16]>=biggest838){
-                biggest838=ends[16];
+              if(ends[16]>=biggest1349){
+                biggest1349=ends[16];
               }
-              if(biggest838 == 1){
+              if(biggest1349 == 1){
                 active[14]=1;
                 ends[14]=1;
                 tdone[14]=1;
@@ -250,49 +426,49 @@ public class Filler extends ClockDomain{
           case 2 : 
             if(dosUnitFilled.getprestatus()){//sysj\controller.sysj line: 114, column: 9
               S554=3;
-              thread839(tdone,ends);
-              thread840(tdone,ends);
-              int biggest841 = 0;
-              if(ends[17]>=biggest841){
-                biggest841=ends[17];
+              thread1350(tdone,ends);
+              thread1351(tdone,ends);
+              int biggest1352 = 0;
+              if(ends[17]>=biggest1352){
+                biggest1352=ends[17];
               }
-              if(ends[18]>=biggest841){
-                biggest841=ends[18];
+              if(ends[18]>=biggest1352){
+                biggest1352=ends[18];
               }
-              if(biggest841 == 1){
+              if(biggest1352 == 1){
                 active[14]=1;
                 ends[14]=1;
                 tdone[14]=1;
               }
             }
             else {
-              thread842(tdone,ends);
-              thread843(tdone,ends);
-              int biggest844 = 0;
-              if(ends[15]>=biggest844){
-                biggest844=ends[15];
+              thread1353(tdone,ends);
+              thread1354(tdone,ends);
+              int biggest1355 = 0;
+              if(ends[15]>=biggest1355){
+                biggest1355=ends[15];
               }
-              if(ends[16]>=biggest844){
-                biggest844=ends[16];
+              if(ends[16]>=biggest1355){
+                biggest1355=ends[16];
               }
-              if(biggest844 == 1){
+              if(biggest1355 == 1){
                 active[14]=1;
                 ends[14]=1;
                 tdone[14]=1;
               }
               //FINXME code
-              if(biggest844 == 0){
+              if(biggest1355 == 0){
                 S554=3;
-                thread845(tdone,ends);
-                thread846(tdone,ends);
-                int biggest847 = 0;
-                if(ends[17]>=biggest847){
-                  biggest847=ends[17];
+                thread1356(tdone,ends);
+                thread1357(tdone,ends);
+                int biggest1358 = 0;
+                if(ends[17]>=biggest1358){
+                  biggest1358=ends[17];
                 }
-                if(ends[18]>=biggest847){
-                  biggest847=ends[18];
+                if(ends[18]>=biggest1358){
+                  biggest1358=ends[18];
                 }
-                if(biggest847 == 1){
+                if(biggest1358 == 1){
                   active[14]=1;
                   ends[14]=1;
                   tdone[14]=1;
@@ -309,22 +485,22 @@ public class Filler extends ClockDomain{
               tdone[14]=1;
             }
             else {
-              thread848(tdone,ends);
-              thread849(tdone,ends);
-              int biggest850 = 0;
-              if(ends[17]>=biggest850){
-                biggest850=ends[17];
+              thread1359(tdone,ends);
+              thread1360(tdone,ends);
+              int biggest1361 = 0;
+              if(ends[17]>=biggest1361){
+                biggest1361=ends[17];
               }
-              if(ends[18]>=biggest850){
-                biggest850=ends[18];
+              if(ends[18]>=biggest1361){
+                biggest1361=ends[18];
               }
-              if(biggest850 == 1){
+              if(biggest1361 == 1){
                 active[14]=1;
                 ends[14]=1;
                 tdone[14]=1;
               }
               //FINXME code
-              if(biggest850 == 0){
+              if(biggest1361 == 0){
                 S554=0;
                 active[14]=1;
                 ends[14]=1;
@@ -339,14 +515,15 @@ public class Filler extends ClockDomain{
     }
   }
 
-  public void thread833(int [] tdone, int [] ends){
-        S795=1;
+  public void thread1344(int [] tdone, int [] ends){
+        S1306=1;
+    S796=0;
     active[19]=1;
     ends[19]=1;
     tdone[19]=1;
   }
 
-  public void thread832(int [] tdone, int [] ends){
+  public void thread1343(int [] tdone, int [] ends){
         S793=1;
     S554=0;
     active[14]=1;
@@ -361,50 +538,50 @@ public class Filler extends ClockDomain{
     }
     
     RUN: while(true){
-      switch(S797){
+      switch(S1308){
         case 0 : 
-          S797=0;
+          S1308=0;
           break RUN;
         
         case 1 : 
-          S797=2;
-          S797=2;
-          thread832(tdone,ends);
-          thread833(tdone,ends);
-          int biggest834 = 0;
-          if(ends[14]>=biggest834){
-            biggest834=ends[14];
+          S1308=2;
+          S1308=2;
+          thread1343(tdone,ends);
+          thread1344(tdone,ends);
+          int biggest1345 = 0;
+          if(ends[14]>=biggest1345){
+            biggest1345=ends[14];
           }
-          if(ends[19]>=biggest834){
-            biggest834=ends[19];
+          if(ends[19]>=biggest1345){
+            biggest1345=ends[19];
           }
-          if(biggest834 == 1){
+          if(biggest1345 == 1){
             active[13]=1;
             ends[13]=1;
             break RUN;
           }
         
         case 2 : 
-          thread835(tdone,ends);
-          thread851(tdone,ends);
-          int biggest852 = 0;
-          if(ends[14]>=biggest852){
-            biggest852=ends[14];
+          thread1346(tdone,ends);
+          thread1362(tdone,ends);
+          int biggest1363 = 0;
+          if(ends[14]>=biggest1363){
+            biggest1363=ends[14];
           }
-          if(ends[19]>=biggest852){
-            biggest852=ends[19];
+          if(ends[19]>=biggest1363){
+            biggest1363=ends[19];
           }
-          if(biggest852 == 1){
+          if(biggest1363 == 1){
             active[13]=1;
             ends[13]=1;
             break RUN;
           }
           //FINXME code
-          if(biggest852 == 0){
-            S797=0;
+          if(biggest1363 == 0){
+            S1308=0;
             active[13]=0;
             ends[13]=0;
-            S797=0;
+            S1308=0;
             break RUN;
           }
         
