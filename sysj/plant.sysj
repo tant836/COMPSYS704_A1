@@ -11,7 +11,7 @@ Plant(
 		//Rotary Table
 		input signal rotaryTableTrigger;
 		
-		output signal rotaryTableTriggerE, bottleAtPos1_RT, capOnBottleAtPos1E, capOnBottleAtPos1;
+		output signal rotaryTableTriggerE, bottleAtPos1_RT, capOnBottleAtPos1E, capOnBottleAtPos1, tableAlignedWithSensor;
 		
 		//capper 
 		input signal cylPos5ZaxisExtend;
@@ -156,7 +156,7 @@ Plant(
 		while(true) {
 			pause;
 			present(l_putBottleAt5){
-				abort((enable && !l_putBottleAt5) || bottleLeftPos5){
+				abort(bottleLeftPos5){
 					sustain bottleAtPos5;
 				}
 			}
@@ -167,7 +167,7 @@ Plant(
 		while(true) {
 			pause;
 			present(l_putBottleAt4){
-				abort((enable && !l_putBottleAt4)){
+				abort((bottleAtPos5)){
 					await(!enable);
 					sustain bottleAtPos4;
 				}
@@ -179,7 +179,7 @@ Plant(
 		while(true) {
 			pause;
 			present(l_putBottleAt2){
-				abort((enable && !l_putBottleAt2)){
+				abort((bottleAtPos4)){
 					await(!enable);
 					sustain bottleAtPos2;
 				}
@@ -203,24 +203,27 @@ Plant(
 		int numTurns = 0;
 		while(true) {
 			pause;
-			abort(!rotaryTableTrigger){
-				present(rotaryTableTrigger && enable){
-					await(!enable);
-					numTurns++;
-					if(numTurns >= 2 && numTurns < 4) {
-						emit l_putBottleAt2;
-					}else if(numTurns >= 4 && numTurns < 10) {
-						emit l_putBottleAt4;
-					}else if(numTurns >= 10) {
-						numTurns = 0;
-						emit l_putBottleAt5;
+			present(rotaryTableTrigger && enable){
+				await(!enable);
+				numTurns++;
+				if(numTurns >= 2 && numTurns < 3) {
+					emit l_putBottleAt2;
+					abort(rotaryTableTrigger){
+						sustain tableAlignedWithSensor;
+					}
+				}else if(numTurns >= 3 && numTurns < 4) {
+					emit l_putBottleAt4;
+					abort(rotaryTableTrigger){
+						sustain tableAlignedWithSensor;
+					}
+				}else if(numTurns >= 4) {
+					numTurns = 0;
+					emit l_putBottleAt5;
+					abort(rotaryTableTrigger){
+						sustain tableAlignedWithSensor;
 					}
 				}
 			}
-			present(!rotaryTableTrigger){
-				numTurns = 0;
-			}
-			
 		}
 	}
 	||
