@@ -13,8 +13,8 @@ public class Ports {
 	
 	public static final String PUT_BOTTLE_POS_5_SIGNAL = "PlantCD.putBottleAt5_FV";
 	
-	public static final String LIQUID_1 = "PlantCD.liquid_1";
-	public static final String LIQUID_2 = "PlantCD.liquid_2";
-	public static final String LIQUID_3 = "PlantCD.liquid_3";
-	public static final String LIQUID_4 = "PlantCD.liquid_4";
+	public static final String LIQUID_1 = "PlantCD.selNoz1";
+	public static final String LIQUID_2 = "PlantCD.selNoz2";
+	public static final String LIQUID_3 = "PlantCD.selNoz3";
+	public static final String LIQUID_4 = "PlantCD.selNoz4";
 }

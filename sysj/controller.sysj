@@ -35,10 +35,12 @@ RotaryTable(
 			sustain rotaryTableTrigger;
 		}
 		await(doneAtPos2);
+		await(!doneAtPos2);
 		abort(bottleAtPos5 || tableAlignedWithSensor){
 			sustain rotaryTableTrigger;
 		}
 		await(doneAtPos4);
+		await(!doneAtPos4);
 		abort(bottleAtPos5 || tableAlignedWithSensor){
 			sustain rotaryTableTrigger;
 		}

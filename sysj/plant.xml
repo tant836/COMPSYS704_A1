@@ -58,6 +58,7 @@
 			<oSignal Name="o_selNoz2"    To="FillerCD.i_selNoz2"    Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10000" />
 			<oSignal Name="o_selNoz3"    To="FillerCD.i_selNoz3"    Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10000" />
 			<oSignal Name="o_selNoz4"    To="FillerCD.i_selNoz4"    Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10000" />
+			<oSignal Name="tableAlignedWithSensor"    To="RotaryTableCD.tableAlignedWithSensor"    Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10000" />
 			
 			<iSignal Name="valveInjectorOnOff" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10001" />
 			<iSignal Name="valveInletOnOff" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10001" />
