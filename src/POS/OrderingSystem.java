@@ -53,7 +53,7 @@ public class OrderingSystem extends JFrame {
 		
 		rdbtnNewRadioButton_1.doClick();
 		
-		btnNewButton.addActionListener(new ActionListener() { 
+		btnNewButton.addActionListener(new ActionListener() {
             // Anonymous class. 
   
             public void actionPerformed(ActionEvent e) 
@@ -65,27 +65,27 @@ public class OrderingSystem extends JFrame {
   
                 // If condition to check if jRadioButton2 is selected. 
                 if (rdbtnNewRadioButton_1.isSelected()) { 
-                	ActionListener al = new SignalClient(Ports.PORT_LOADER_PLANT, Ports.PLACE_BOTTLE_SIGNAL);
+                	ActionListener al = new SignalClient(Ports.PORT_LOADER_CONTROLLER, Ports.LIQUID_1);
                 	al.actionPerformed(null);
                     qual = "Liquid 1"; 
                 } else if (rdbtnNewRadioButton_2.isSelected()) { 
-                	ActionListener al = new SignalClient(Ports.PORT_LOADER_PLANT, Ports.PLACE_BOTTLE_SIGNAL);
+                	ActionListener al = new SignalClient(Ports.PORT_LOADER_CONTROLLER, Ports.LIQUID_2);
                 	al.actionPerformed(null);
                     qual = "Liquid 2"; 
                 }else if (rdbtnNewRadioButton_3.isSelected()) { 
-                	ActionListener al = new SignalClient(Ports.PORT_LOADER_PLANT, Ports.PLACE_BOTTLE_SIGNAL);
+                	ActionListener al = new SignalClient(Ports.PORT_LOADER_CONTROLLER, Ports.LIQUID_3);
                 	al.actionPerformed(null);
                     qual = "Liquid 3"; 
                 } else { 
-                	ActionListener al = new SignalClient(Ports.PORT_LOADER_PLANT, Ports.PLACE_BOTTLE_SIGNAL);
+                	ActionListener al = new SignalClient(Ports.PORT_LOADER_CONTROLLER, Ports.LIQUID_4);
                 	al.actionPerformed(null);
                     qual = "Liquid 4"; 
-                } 
+                }
   
                 // MessageDialog to show information selected radion buttons. 
                 JOptionPane.showMessageDialog(OrderingSystem.this, "Order made: \n" + qual); 
-            } 
-        }); 
+            }
+        });
 		
 		this.setTitle("Ordering System");
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);

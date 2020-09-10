@@ -245,50 +245,6 @@ Plant(
 		}
 	}
 	//Rotary Table end
-	||
-	//Filler start
-	
-	{
-		signal s_valveInjectorOnOff;
-		while(true) {
-			pause;
-//			abort(!valveInjectorOnOff && enable){
-//				sustain valveInjectorOnOffE;
-//			}
-		}
-		
-	}
-	||
-	{
-		while(true) {
-			pause;
-//			abort(!valveInletOnOff && enable){
-//				sustain valveInletOnOffE;
-//			}
-		}
-		
-	}
-	||
-	{
-		while(true) {
-			pause;
-//			abort(!dosUnitValveRetract && enable){
-//				sustain dosUnitValveRetractE;
-//			}
-		}
-		
-	}
-	||
-	{
-		while(true) {
-			pause;
-//			abort(!dosUnitValveExtend && enable){
-//				sustain dosUnitValveExtendE;
-//			}
-		}
-		
-	}
-	||
 	//capper
 	{
 		while(true) {//lower gripper
