@@ -245,6 +245,7 @@ Plant(
 		}
 	}
 	//Rotary Table end
+	||
 	//capper
 	{
 		while(true) {//lower gripper
@@ -294,6 +295,7 @@ Plant(
 	}
 	
 	//end capper
+	
 	||
 	//start Filler
 	{
