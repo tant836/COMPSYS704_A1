@@ -13,8 +13,9 @@ public class Ports {
 	
 	public static final String PUT_BOTTLE_POS_5_SIGNAL = "PlantCD.putBottleAt5_FV";
 	
-	public static final String LIQUID_1 = "PlantCD.selNoz1";
-	public static final String LIQUID_2 = "PlantCD.selNoz2";
-	public static final String LIQUID_3 = "PlantCD.selNoz3";
-	public static final String LIQUID_4 = "PlantCD.selNoz4";
+	public static final String LIQUID_1 = "GUIReaderCD.liquid1";
+	public static final String LIQUID_2 = "GUIReaderCD.liquid2";
+	public static final String LIQUID_3 = "GUIReaderCD.liquid3";
+	public static final String LIQUID_4 = "GUIReaderCD.liquid4";
+	public static final String PLACE_ORDER = "GUIReaderCD.placeOrder";
 }

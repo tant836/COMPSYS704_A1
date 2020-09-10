@@ -92,33 +92,31 @@ public class LoaderVizWorker extends Worker {
 			break;
 			
 		case "noz1E":
-			if(status) {
-				States.Liquid = "Liquid 1";
-			}
+			
+			States.noz1 = status;
 			break;
 			
 		case "noz2E":
-			if(status) {
-				States.Liquid = "Liquid 2";
-			}
+			
+			States.noz2 = status;
 			break;
 			
 		case "noz3E":
-			if(status) {
-				States.Liquid = "Liquid 3";
-			}
+			
+			States.noz3 = status;
 			break;
 			
 		case "noz4E":
-			if(status) {
-				States.Liquid = "Liquid 4";
-			}
+			
+			States.noz4 = status;
 			break;
 
 		default:
 			System.err.println("Wrong sig name : " + signame);
 			// System.exit(1);
 		}
+		
+		
 	}
 
 	static final List<String> signames = Arrays.asList("motConveyorOnE", "bottleAtPos1E", "rotaryTableTriggerE",

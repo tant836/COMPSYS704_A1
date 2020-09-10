@@ -32,6 +32,13 @@ public class States {
 	public static volatile boolean dosUnitValveRetract = false;
 	public static volatile boolean dosUnitValveExtend = false;
 	
+	public static volatile boolean noz1 = false;
+	public static volatile boolean noz2 = false;
+	public static volatile boolean noz3 = false;
+	public static volatile boolean noz4 = false;
+	
+	
+	
 	public static volatile String Liquid = "Water";
 	
 }

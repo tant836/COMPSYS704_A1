@@ -3,6 +3,8 @@ package POS;
 import javax.swing.JFrame;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
+
 import java.awt.BorderLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -35,22 +37,22 @@ public class OrderingSystem extends JFrame {
 		JLabel lblNewLabel = new JLabel("Select liquid: ");
 		panel.add(lblNewLabel);
 		
-		JRadioButton rdbtnNewRadioButton_1 = new JRadioButton("Liquid 1");
+		JCheckBox rdbtnNewRadioButton_1 = new JCheckBox("Liquid 1");
 		panel.add(rdbtnNewRadioButton_1);
 		
-		JRadioButton rdbtnNewRadioButton_2 = new JRadioButton("Liquid 2");
+		JCheckBox rdbtnNewRadioButton_2 = new JCheckBox("Liquid 2");
 		panel.add(rdbtnNewRadioButton_2);
 		
-		JRadioButton rdbtnNewRadioButton_3 = new JRadioButton("Liquid 3");
+		JCheckBox rdbtnNewRadioButton_3 = new JCheckBox("Liquid 3");
 		panel.add(rdbtnNewRadioButton_3);
 		
-		JRadioButton rdbtnNewRadioButton = new JRadioButton("Liquid 4");
+		JCheckBox rdbtnNewRadioButton = new JCheckBox("Liquid 4");
 		panel.add(rdbtnNewRadioButton);
 		
-		G1.add(rdbtnNewRadioButton_1);
-		G1.add(rdbtnNewRadioButton_2);
-		G1.add(rdbtnNewRadioButton_3);
-		G1.add(rdbtnNewRadioButton);
+//		G1.add(rdbtnNewRadioButton_1);
+//		G1.add(rdbtnNewRadioButton_2);
+//		G1.add(rdbtnNewRadioButton_3);
+//		G1.add(rdbtnNewRadioButton);
 		
 		rdbtnNewRadioButton_1.doClick();
 		
@@ -66,25 +68,37 @@ public class OrderingSystem extends JFrame {
   
                 // If condition to check if jRadioButton2 is selected. 
                 if (rdbtnNewRadioButton_1.isSelected()) { 
-                	ActionListener al = new SignalClient(Ports.PORT_LOADER_PLANT, Ports.LIQUID_1);
+                	ActionListener al = new SignalClient(Ports.PORT_LOADER_CONTROLLER, Ports.LIQUID_1);
                 	al.actionPerformed(null);
                     qual = "Liquid 1"; 
-                } else if (rdbtnNewRadioButton_2.isSelected()) { 
-                	ActionListener al = new SignalClient(Ports.PORT_LOADER_PLANT, Ports.LIQUID_2);
+                } 
+                if (rdbtnNewRadioButton_2.isSelected()) { 
+                	ActionListener al = new SignalClient(Ports.PORT_LOADER_CONTROLLER, Ports.LIQUID_2);
                 	al.actionPerformed(null);
                     qual = "Liquid 2"; 
-                }else if (rdbtnNewRadioButton_3.isSelected()) { 
-                	ActionListener al = new SignalClient(Ports.PORT_LOADER_PLANT, Ports.LIQUID_3);
+                }
+                if (rdbtnNewRadioButton_3.isSelected()) { 
+                	ActionListener al = new SignalClient(Ports.PORT_LOADER_CONTROLLER, Ports.LIQUID_3);
                 	al.actionPerformed(null);
                     qual = "Liquid 3"; 
-                } else { 
-                	ActionListener al = new SignalClient(Ports.PORT_LOADER_PLANT, Ports.LIQUID_4);
+                } 
+                if (rdbtnNewRadioButton.isSelected()) { 
+                	ActionListener al = new SignalClient(Ports.PORT_LOADER_CONTROLLER, Ports.LIQUID_4);
                 	al.actionPerformed(null);
                     qual = "Liquid 4"; 
                 }
-  
-                // MessageDialog to show information selected radion buttons. 
-                JOptionPane.showMessageDialog(OrderingSystem.this, "Order made: \n" + qual); 
+                
+                if(!rdbtnNewRadioButton.isSelected() && rdbtnNewRadioButton_1.isSelected() && rdbtnNewRadioButton_2.isSelected() && rdbtnNewRadioButton_3.isSelected()) {
+                	JOptionPane.showMessageDialog(OrderingSystem.this, "No liquids selected. \n Order was not made"); 
+                }else {
+                	// MessageDialog to show information selected radion buttons. 
+                    JOptionPane.showMessageDialog(OrderingSystem.this, "Order made: \n" + qual); 
+                    ActionListener al = new SignalClient(Ports.PORT_LOADER_CONTROLLER, Ports.PLACE_ORDER);
+                	al.actionPerformed(null);
+                }
+                
+                
+                
             }
         });
 		

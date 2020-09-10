@@ -1,4 +1,4 @@
-import systemj.util.FIFO;
+	import org.compsys704.FIFO;
 Conveyor(
 		input signal bottleAtPos1, bottleLeftPos5, bottleAtPos5;
 		output signal motConveyorOn;
@@ -217,41 +217,48 @@ Filler(
 //	}
 }
 
-GUIReader(
-		input signal placeOrder, liquid1, liquid2, liquid3, liquid4, requestliquid;
-		output int channel liquidBuffer;
-		output signal sentliquid;
-		)
-->{
-	FIFO fifo = new FIFO(4);
-	loop{
-		pause;
-		if(requestliquid && !fifo.isEmpty()) {
-			send liquidBuffer(fifo.dequeue());
-		}
-		if(fifo.isEmpty() && requestliquid) {
-			emit sentliquid;
-		}
-	}
-	||
-	loop{
-		pause;
-		present(placeOrder){
-			if(fifio.isEmpty()) {
-				present (liquid1){
-					Fifo.enqueue(1);
-				}
-				present (liquid2){
-					Fifo.enqueue(2);
-				}
-				present (liquid3){
-					Fifo.enqueue(3);
-				}
-				present (liquid4){
-					Fifo.enqueue(4);
-				}
-			}
-		}
-	}
-	
-}
+//GUIReader(
+//		input signal placeOrder, liquid1, liquid2, liquid3, liquid4, requestliquid;
+//		output int channel liquidBuffer;
+//		output signal sentliquid;
+//		)
+//->{
+//	
+//	int signal queueVal;
+//	signal fifoEmpty;
+//	{
+//	loop{
+//		pause;
+//		if(requestliquid && !fifo.isEmpty()) {
+//			Integer integer1 = fifo.poll();
+//			send liquidBuffer(integer1);
+//		}
+//		if(fifo.isEmpty() && requestliquid) {
+//			emit sentliquid;
+//		}
+//	}
+//	}
+//	||
+//	{
+//		FIFO fifo = new FIFO();
+//	loop{
+//		pause;
+//		present(placeOrder){
+//			if(fifo.isEmpty()) {
+//				present (liquid1){
+//					fifo.add(1);
+//				}
+//				present (liquid2){
+//					fifo.add(2);
+//				}
+//				present (liquid3){
+//					fifo.add(3);
+//				}
+//				present (liquid4){
+//					fifo.add(4);
+//				}
+//			}
+//		}
+//	}
+//	}
+//}

@@ -223,6 +223,43 @@ public class Canvas extends JPanel {
 		//Liquid type
 		g.setColor(Color.black);
 		g.setFont( new Font(Font.SANS_SERIF, Font.BOLD,  14));
-		g.drawString(States.Liquid, 230, 660);
+		g.drawString("Liquid 1: ", 60, 720);
+		if(States.noz1) {
+			g.setColor(Color.green);
+		}else {
+			g.setColor(Color.red);
+		}
+		g.fillOval(120, 707, 15, 15);
+		
+		g.setColor(Color.black);
+		g.setFont( new Font(Font.SANS_SERIF, Font.BOLD,  14));
+		g.drawString("Liquid 2:", 160, 720);
+		if(States.noz2) {
+			g.setColor(Color.green);
+		}else {
+			g.setColor(Color.red);
+		}
+		g.fillOval(220, 707, 15, 15);
+		
+		g.setColor(Color.black);
+		g.setFont( new Font(Font.SANS_SERIF, Font.BOLD,  14));
+		g.drawString("Liquid 3: ", 260, 720);
+		if(States.noz3) {
+			g.setColor(Color.green);
+		}else {
+			g.setColor(Color.red);
+		}
+		g.fillOval(320, 707, 15, 15);
+		
+		g.setColor(Color.black);
+		g.setFont( new Font(Font.SANS_SERIF, Font.BOLD,  14));
+		g.drawString("Liquid 4:", 360, 720);
+		if(States.noz4) {
+			g.setColor(Color.green);
+		}else {
+			g.setColor(Color.red);
+		}
+		g.fillOval(420, 707, 15, 15);
+		
 	}
 }

@@ -44,9 +44,9 @@
 			<iSignal Name="i_selNoz2"  Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
 			<iSignal Name="i_selNoz3"  Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
 			<iSignal Name="i_selNoz4"  Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
-			<iChannel Name="liquidBuffer" From="GUIReaderCD.liquidBuffer"/>
+<!-- 			<iChannel Name="liquidBuffer" From="GUIReaderCD.liquidBuffer"/> -->
 			<iSignal Name="sentliquid"  Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
-			<oSignal Name="requestliquid" To="GUIReaderCD.requestliquid" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10000" />
+<!-- 			<oSignal Name="requestliquid" To="GUIReaderCD.requestliquid" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10000" /> -->
 			
 			
 			
@@ -58,16 +58,16 @@
 			
 			<oSignal Name="doneAtPos2" To="RotaryTableCD.doneAtPos2" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10000" />
 		</ClockDomain>
-		<ClockDomain Name="GUIReaderCD" Class="GUIReader">
-			<iSignal Name="placeOrder" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
-			<iSignal Name="liquid1" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
-			<iSignal Name="liquid2" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
-			<iSignal Name="liquid3" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
-			<iSignal Name="liquid4" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
-			<iSignal Name="requestliquid" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
+<!-- 		<ClockDomain Name="GUIReaderCD" Class="GUIReader"> -->
+<!-- 			<iSignal Name="placeOrder" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" /> -->
+<!-- 			<iSignal Name="liquid1" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" /> -->
+<!-- 			<iSignal Name="liquid2" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" /> -->
+<!-- 			<iSignal Name="liquid3" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" /> -->
+<!-- 			<iSignal Name="liquid4" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" /> -->
+<!-- 			<iSignal Name="requestliquid" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" /> -->
 			
-			<oChannel Name="liquidBuffer" To="FillerCD.liquidBuffer"/>
-			<oSignal Name="sentliquid" To="FillerCD.sentliquid" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10000" />
-		</ClockDomain>
+<!-- 			<oChannel Name="liquidBuffer" To="FillerCD.liquidBuffer"/> -->
+<!-- 			<oSignal Name="sentliquid" To="FillerCD.sentliquid" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10000" /> -->
+<!-- 		</ClockDomain> -->
 	</SubSystem>
 </System>
