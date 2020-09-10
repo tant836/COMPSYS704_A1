@@ -207,11 +207,11 @@ Plant(
 				present(rotaryTableTrigger && enable){
 					await(!enable);
 					numTurns++;
-					if(numTurns >= 2 && numTurns < 4) {
+					if(numTurns >= 2 && numTurns < 3) {
 						emit l_putBottleAt2;
-					}else if(numTurns >= 4 && numTurns < 10) {
+					}else if(numTurns >= 3 && numTurns < 4) {
 						emit l_putBottleAt4;
-					}else if(numTurns >= 10) {
+					}else if(numTurns >= 4) {
 						numTurns = 0;
 						emit l_putBottleAt5;
 					}
@@ -245,6 +245,7 @@ Plant(
 		}
 	}
 	//Rotary Table end
+	||
 	//capper
 	{
 		while(true) {//lower gripper

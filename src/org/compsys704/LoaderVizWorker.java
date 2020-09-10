@@ -127,7 +127,7 @@ public class LoaderVizWorker extends Worker {
 			"gripperZAxisLoweredE", "gripperZAxisLiftedE", "gripperTurnHomePosE", "gripperTurnFinalPosE",
 			"valveInjectorOnOffE", "valveInletOnOffE", "dosUnitValveRetractE", "dosUnitEvacE", "dosUnitFilledE",
 			"dosUnitValveExtendE", "emptyE", "armAtDestE", "armAtSourceE", "WPgrippedE", "pusherExtendedE",
-			"pusherRetractedE", "noz1E", "noz2E", "no3E", "noz4E");
+			"pusherRetractedE", "noz1E", "noz2E", "noz3E", "noz4E");
 
 	@Override
 	public boolean hasSignal(String sn) {

@@ -21,7 +21,7 @@ Conveyor(
 }
 
 RotaryTable(
-		input signal tableAlignedWithSensor, bottleAtPos5, capOnBottleAtPos1, bottleAtPos1;
+		input signal tableAlignedWithSensor, bottleAtPos5, capOnBottleAtPos1, bottleAtPos1, doneAtPos2, doneAtPos4;
 		output signal rotaryTableTrigger;
 		)
 ->{
@@ -34,6 +34,16 @@ RotaryTable(
 		abort(bottleAtPos5 || tableAlignedWithSensor){
 			sustain rotaryTableTrigger;
 		}
+		await(doneAtPos2);
+		abort(bottleAtPos5 || tableAlignedWithSensor){
+			sustain rotaryTableTrigger;
+		}
+		await(doneAtPos4);
+		abort(bottleAtPos5 || tableAlignedWithSensor){
+			sustain rotaryTableTrigger;
+		}
+		
+		
 //				abort(tableAlignedWithSensor){
 //					sustain rotaryTableTrigger;
 //				}
@@ -43,7 +53,7 @@ RotaryTable(
 
 Capper(
 		input signal bottleAtPos4, gripperZAxisLowered, gripperZAxisLifted, gripperTurnHomePos, gripperTurnFinalPos;
-		output signal cylPos5ZAxisExtend, gripperTurnRetract, gripperTurnExtend, capGripperPos5Extend, cylClampBottleExtend;
+		output signal cylPos5ZAxisExtend, gripperTurnRetract, gripperTurnExtend, capGripperPos5Extend, cylClampBottleExtend, doneAtPos4;
 		)
 ->{
 /* TODO: Write control-logic */
@@ -96,6 +106,8 @@ Capper(
 		abort(gripperZAxisLifted){
 			sustain cylClampBottleExtend;//clamp bottle
 		}
+		
+		emit doneAtPos4;
 	}
 
 }
@@ -104,7 +116,7 @@ Filler(
 		input signal bottleAtPos2, dosUnitEvac, dosUnitFilled;
 		input signal noz1,noz2,noz3,noz4;
 		input signal  i_selNoz1, i_selNoz2, i_selNoz3, i_selNoz4;
-		output signal valveInjectorOnOff, valveInletOnOff, dosUnitValveRetract, dosUnitValveExtend, turnNozTrigger;
+		output signal valveInjectorOnOff, valveInletOnOff, dosUnitValveRetract, dosUnitValveExtend, turnNozTrigger, doneAtPos2;
 		)
 ->{
 /* TODO: Write control-logic */
@@ -129,6 +141,7 @@ Filler(
 				sustain dosUnitValveExtend;
 			}
 		}
+		emit doneAtPos2;
 	}
 	||
 	loop{
