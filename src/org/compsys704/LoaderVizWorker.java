@@ -90,6 +90,30 @@ public class LoaderVizWorker extends Worker {
 		case "capOnBottleAtPos1E":
 			States.capsonBottleAtPos1 = status;
 			break;
+			
+		case "noz1E":
+			if(status) {
+				States.Liquid = "Liquid 1";
+			}
+			break;
+			
+		case "noz2E":
+			if(status) {
+				States.Liquid = "Liquid 2";
+			}
+			break;
+			
+		case "noz3E":
+			if(status) {
+				States.Liquid = "Liquid 3";
+			}
+			break;
+			
+		case "noz4E":
+			if(status) {
+				States.Liquid = "Liquid 4";
+			}
+			break;
 
 		default:
 			System.err.println("Wrong sig name : " + signame);
@@ -103,7 +127,7 @@ public class LoaderVizWorker extends Worker {
 			"gripperZAxisLoweredE", "gripperZAxisLiftedE", "gripperTurnHomePosE", "gripperTurnFinalPosE",
 			"valveInjectorOnOffE", "valveInletOnOffE", "dosUnitValveRetractE", "dosUnitEvacE", "dosUnitFilledE",
 			"dosUnitValveExtendE", "emptyE", "armAtDestE", "armAtSourceE", "WPgrippedE", "pusherExtendedE",
-			"pusherRetractedE");
+			"pusherRetractedE", "noz1E", "noz2E", "no3E", "noz4E");
 
 	@Override
 	public boolean hasSignal(String sn) {

@@ -8,6 +8,13 @@ public class Ports {
 	public static final int PORT_LOADER_PLANT = 10001;
 	public static final int PORT_LOADER_CONTROLLER = 10000;
 	public static final int PORT_LOADER_VIZ = 20000;
+	public static final int PORT_POS = 30000;
+	
 	
 	public static final String PUT_BOTTLE_POS_5_SIGNAL = "PlantCD.putBottleAt5_FV";
+	
+	public static final String LIQUID_1 = "PlantCD.liquid_1";
+	public static final String LIQUID_2 = "PlantCD.liquid_2";
+	public static final String LIQUID_3 = "PlantCD.liquid_3";
+	public static final String LIQUID_4 = "PlantCD.liquid_4";
 }

@@ -399,7 +399,7 @@ public class Filler extends ClockDomain{
             break;
           
           case 1 : 
-            if(bottleAtPos2.getprestatus()){//sysj\controller.sysj line: 113, column: 9
+            if(bottleAtPos2.getprestatus() && !turnNozTrigger.getprestatus()){//sysj\controller.sysj line: 113, column: 9
               S554=2;
               thread1347(tdone,ends);
               thread1348(tdone,ends);

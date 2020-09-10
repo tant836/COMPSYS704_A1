@@ -9,6 +9,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.JRadioButton;
 
 import org.compsys704.LoaderVizWorker;
+import org.compsys704.Ports;
 import org.compsys704.SignalClient;
 import org.compsys704.SignalServer;
 
@@ -65,19 +66,19 @@ public class OrderingSystem extends JFrame {
   
                 // If condition to check if jRadioButton2 is selected. 
                 if (rdbtnNewRadioButton_1.isSelected()) { 
-                	ActionListener al = new SignalClient(Ports.PORT_LOADER_CONTROLLER, Ports.LIQUID_1);
+                	ActionListener al = new SignalClient(Ports.PORT_LOADER_PLANT, Ports.LIQUID_1);
                 	al.actionPerformed(null);
                     qual = "Liquid 1"; 
                 } else if (rdbtnNewRadioButton_2.isSelected()) { 
-                	ActionListener al = new SignalClient(Ports.PORT_LOADER_CONTROLLER, Ports.LIQUID_2);
+                	ActionListener al = new SignalClient(Ports.PORT_LOADER_PLANT, Ports.LIQUID_2);
                 	al.actionPerformed(null);
                     qual = "Liquid 2"; 
                 }else if (rdbtnNewRadioButton_3.isSelected()) { 
-                	ActionListener al = new SignalClient(Ports.PORT_LOADER_CONTROLLER, Ports.LIQUID_3);
+                	ActionListener al = new SignalClient(Ports.PORT_LOADER_PLANT, Ports.LIQUID_3);
                 	al.actionPerformed(null);
                     qual = "Liquid 3"; 
                 } else { 
-                	ActionListener al = new SignalClient(Ports.PORT_LOADER_CONTROLLER, Ports.LIQUID_4);
+                	ActionListener al = new SignalClient(Ports.PORT_LOADER_PLANT, Ports.LIQUID_4);
                 	al.actionPerformed(null);
                     qual = "Liquid 4"; 
                 }
