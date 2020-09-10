@@ -28,7 +28,7 @@ Plant(
 		input signal valveInjectorOnOff,valveInletOnOff,dosUnitValveRetract,dosUnitValveExtend, selNoz1, selNoz2, selNoz3, selNoz4, turnNozTrigger;
 		
 		output signal valveInjectorOnOffE,valveInletOnOffE,dosUnitValveRetractE,dosUnitValveExtendE, dosUnitFilledE, dosUnitEvacE, dosUnitEvac, dosUnitFilled,noz1,noz2,noz3,noz4;
-		output signal  o_selNoz1, o_selNoz2, o_selNoz3, o_selNoz4;
+		output signal  o_selNoz1, o_selNoz2, o_selNoz3, o_selNoz4, noz1E, noz2E, noz3E, noz4E;
 		)
 ->
 {
@@ -431,6 +431,14 @@ Plant(
 		{while(true) {present(selNoz4){emit o_selNoz4;} pause;}}
 		||
 		{while(true) {present(capOnBottleAtPos1){emit capOnBottleAtPos1E;} pause;}}
+		||
+		{while(true) {present(noz1){emit noz1E;} pause;}}
+		||
+		{while(true) {present(noz2){emit noz2E;} pause;}}
+		||
+		{while(true) {present(noz3){emit noz3E;} pause;}}
+		||
+		{while(true) {present(noz4){emit noz4E;} pause;}}
 
 	}
 }

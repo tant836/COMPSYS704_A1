@@ -110,7 +110,7 @@ Filler(
 /* TODO: Write control-logic */
 	loop{
 		pause;
-		await(bottleAtPos2);
+		await(bottleAtPos2 && !turnNozTrigger);
 		abort(dosUnitFilled){
 			{sustain valveInjectorOnOff;}
 			||

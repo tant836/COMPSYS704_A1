@@ -97,6 +97,11 @@
 			<oSignal Name="dosUnitFilledE"       To="UI.dosUnitFilledE"       Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20000" />
 			<oSignal Name="dosUnitEvacE"       To="UI.dosUnitEvacE"       Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20000" />
 			<oSignal Name="capOnBottleAtPos1E"       To="UI.capOnBottleAtPos1E"       Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20000" />
+			
+			<oSignal Name="noz1E"           To="UI.noz1E"           Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20000" />
+			<oSignal Name="noz2E"           To="UI.noz2E"           Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20000" />
+			<oSignal Name="noz3E"           To="UI.noz3E"           Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20000" />
+			<oSignal Name="noz4E"           To="UI.noz4E"           Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="20000" />
 		</ClockDomain>
 	</SubSystem>
 </System>
