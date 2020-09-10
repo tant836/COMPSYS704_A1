@@ -1,3 +1,4 @@
+import systemj.util.FIFO;
 Conveyor(
 		input signal bottleAtPos1, bottleLeftPos5, bottleAtPos5;
 		output signal motConveyorOn;
@@ -102,9 +103,10 @@ Capper(
 
 Filler(
 		input signal bottleAtPos2, dosUnitEvac, dosUnitFilled;
-		input signal noz1,noz2,noz3,noz4;
+		input signal noz1,noz2,noz3,noz4, sentliquid;
+		input int channel liquidBuffer;
 		input signal  i_selNoz1, i_selNoz2, i_selNoz3, i_selNoz4;
-		output signal valveInjectorOnOff, valveInletOnOff, dosUnitValveRetract, dosUnitValveExtend, turnNozTrigger;
+		output signal valveInjectorOnOff, valveInletOnOff, dosUnitValveRetract, dosUnitValveExtend, turnNozTrigger, nozBusy, requestliquid;
 		)
 ->{
 /* TODO: Write control-logic */
@@ -133,27 +135,107 @@ Filler(
 	||
 	loop{
 		pause;
-		await(i_selNoz1 || i_selNoz2 || i_selNoz3 || i_selNoz4);
-		present(i_selNoz1){
-			abort(noz1){
-				sustain turnNozTrigger;
+		emit requestliquid;
+		present(!sentliquid){
+			receive liquidBuffer;
+			{
+			
+				abort(dosUnitEvac){
+					sustain nozBusy;
+				}
+			}
+			||
+			{
+				if((int)#liquidBuffer == 1) {
+					
+						abort(noz1){
+							sustain turnNozTrigger;
+						}
+						await(noz1 && dosUnitEvac);
+				}else if((int)#liquidBuffer == 2){
+					
+						abort(noz2){
+							sustain turnNozTrigger;
+						}
+						await(noz2 && dosUnitEvac);
+				}else if((int)#liquidBuffer == 3){
+					
+						abort(noz3){
+							sustain turnNozTrigger;
+						}
+						await(noz3 && dosUnitEvac);
+				}else if((int)#liquidBuffer == 4){
+					
+						abort(noz4){
+							sustain turnNozTrigger;
+						}
+						await(noz4 && dosUnitEvac);
+				}
 			}
 		}
-		present(i_selNoz2){
-			abort(noz2){
-				sustain turnNozTrigger;
-			}
-		}
-		present(i_selNoz3){
-			abort(noz3){
-				sustain turnNozTrigger;
-			}
-		}
-		present(i_selNoz4){
-			abort(noz4){
-				sustain turnNozTrigger;
-			}
-		}
-		
 	}
+//	loop{
+//		pause;
+//		await(i_selNoz1 || i_selNoz2 || i_selNoz3 || i_selNoz4);
+//		present(i_selNoz1){
+//			abort(noz1){
+//				sustain turnNozTrigger;
+//			}
+//		}
+//		present(i_selNoz2){
+//			abort(noz2){
+//				sustain turnNozTrigger;
+//			}
+//		}
+//		present(i_selNoz3){
+//			abort(noz3){
+//				sustain turnNozTrigger;
+//			}
+//		}
+//		present(i_selNoz4){
+//			abort(noz4){
+//				sustain turnNozTrigger;
+//			}
+//		}
+//		
+//	}
+}
+
+GUIReader(
+		input signal placeOrder, liquid1, liquid2, liquid3, liquid4, requestliquid;
+		output int channel liquidBuffer;
+		output signal sentliquid;
+		)
+->{
+	FIFO fifo = new FIFO(4);
+	loop{
+		pause;
+		if(requestliquid && !fifo.isEmpty()) {
+			send liquidBuffer(fifo.dequeue());
+		}
+		if(fifo.isEmpty() && requestliquid) {
+			emit sentliquid;
+		}
+	}
+	||
+	loop{
+		pause;
+		present(placeOrder){
+			if(fifio.isEmpty()) {
+				present (liquid1){
+					Fifo.enqueue(1);
+				}
+				present (liquid2){
+					Fifo.enqueue(2);
+				}
+				present (liquid3){
+					Fifo.enqueue(3);
+				}
+				present (liquid4){
+					Fifo.enqueue(4);
+				}
+			}
+		}
+	}
+	
 }
