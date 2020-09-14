@@ -88,7 +88,7 @@ public class OrderingSystem extends JFrame {
                     qual = "Liquid 4"; 
                 }
                 
-                if(!rdbtnNewRadioButton.isSelected() && rdbtnNewRadioButton_1.isSelected() && rdbtnNewRadioButton_2.isSelected() && rdbtnNewRadioButton_3.isSelected()) {
+                if(!rdbtnNewRadioButton.isSelected() && !rdbtnNewRadioButton_1.isSelected() && !rdbtnNewRadioButton_2.isSelected() && !rdbtnNewRadioButton_3.isSelected()) {
                 	JOptionPane.showMessageDialog(OrderingSystem.this, "No liquids selected. \n Order was not made"); 
                 }else {
                 	// MessageDialog to show information selected radion buttons. 
