@@ -22,8 +22,8 @@ public class RotaryTable extends ClockDomain{
   private int S177 = 1;
   private int S67 = 1;
   
-  private int[] ends = new int[22];
-  private int[] tdone = new int[22];
+  private int[] ends = new int[28];
+  private int[] tdone = new int[28];
   
   public void runClockDomain(){
     for(int i=0;i<ends.length;i++){
@@ -72,6 +72,7 @@ public class RotaryTable extends ClockDomain{
                 S67=3;
                 rotaryTableTrigger.setPresent();//sysj\controller.sysj line: 36, column: 4
                 currsigs.addElement(rotaryTableTrigger);
+                System.out.println("Emitted rotaryTableTrigger");
                 active[2]=1;
                 ends[2]=1;
                 break RUN;
@@ -92,6 +93,7 @@ public class RotaryTable extends ClockDomain{
               else {
                 rotaryTableTrigger.setPresent();//sysj\controller.sysj line: 36, column: 4
                 currsigs.addElement(rotaryTableTrigger);
+                System.out.println("Emitted rotaryTableTrigger");
                 active[2]=1;
                 ends[2]=1;
                 break RUN;
@@ -115,6 +117,7 @@ public class RotaryTable extends ClockDomain{
                 S67=6;
                 rotaryTableTrigger.setPresent();//sysj\controller.sysj line: 41, column: 4
                 currsigs.addElement(rotaryTableTrigger);
+                System.out.println("Emitted rotaryTableTrigger");
                 active[2]=1;
                 ends[2]=1;
                 break RUN;
@@ -135,6 +138,7 @@ public class RotaryTable extends ClockDomain{
               else {
                 rotaryTableTrigger.setPresent();//sysj\controller.sysj line: 41, column: 4
                 currsigs.addElement(rotaryTableTrigger);
+                System.out.println("Emitted rotaryTableTrigger");
                 active[2]=1;
                 ends[2]=1;
                 break RUN;
@@ -158,6 +162,7 @@ public class RotaryTable extends ClockDomain{
                 S67=9;
                 rotaryTableTrigger.setPresent();//sysj\controller.sysj line: 46, column: 4
                 currsigs.addElement(rotaryTableTrigger);
+                System.out.println("Emitted rotaryTableTrigger");
                 active[2]=1;
                 ends[2]=1;
                 break RUN;
@@ -178,6 +183,7 @@ public class RotaryTable extends ClockDomain{
               else {
                 rotaryTableTrigger.setPresent();//sysj\controller.sysj line: 46, column: 4
                 currsigs.addElement(rotaryTableTrigger);
+                System.out.println("Emitted rotaryTableTrigger");
                 active[2]=1;
                 ends[2]=1;
                 break RUN;
@@ -190,9 +196,9 @@ public class RotaryTable extends ClockDomain{
   }
 
   public void init(){
-    char [] active1 = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1};
-    char [] paused1 = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-    char [] suspended1 = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+    char [] active1 = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1};
+    char [] paused1 = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+    char [] suspended1 = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
     paused = paused1;
     active = active1;
     suspended = suspended1;
