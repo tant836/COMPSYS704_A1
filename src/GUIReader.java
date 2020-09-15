@@ -28,28 +28,28 @@ public class GUIReader extends ClockDomain{
   private Signal kill2_22;
   private Signal kill3_22;
   private Signal kill4_22;
-  private FIFO fifo_thread_23;//sysj\controller.sysj line: 250, column: 3
-  private Integer integer1_thread_23;//sysj\controller.sysj line: 281, column: 6
-  private Integer liquidval_thread_23;//sysj\controller.sysj line: 252, column: 3
-  private int S100130 = 1;
-  private int S100048 = 1;
-  private int S2477 = 1;
-  private int S2525 = 1;
-  private int S2520 = 1;
-  private int S100068 = 1;
-  private int S100054 = 1;
-  private int S100088 = 1;
-  private int S100074 = 1;
-  private int S100108 = 1;
-  private int S100094 = 1;
-  private int S100128 = 1;
-  private int S100114 = 1;
+  private FIFO fifo_thread_23;//sysj\controller.sysj line: 257, column: 3
+  private Integer integer1_thread_23;//sysj\controller.sysj line: 288, column: 6
+  private Integer liquidval_thread_23;//sysj\controller.sysj line: 259, column: 3
+  private int S7019 = 1;
+  private int S6937 = 1;
+  private int S2616 = 1;
+  private int S2698 = 1;
+  private int S2693 = 1;
+  private int S6957 = 1;
+  private int S6943 = 1;
+  private int S6977 = 1;
+  private int S6963 = 1;
+  private int S6997 = 1;
+  private int S6983 = 1;
+  private int S7017 = 1;
+  private int S7003 = 1;
   
   private int[] ends = new int[28];
   private int[] tdone = new int[28];
   
-  public void thread100211(int [] tdone, int [] ends){
-        switch(S100128){
+  public void thread7100(int [] tdone, int [] ends){
+        switch(S7017){
       case 0 : 
         active[27]=0;
         ends[27]=0;
@@ -57,18 +57,17 @@ public class GUIReader extends ClockDomain{
         break;
       
       case 1 : 
-        switch(S100114){
+        switch(S7003){
           case 0 : 
-            if(kill4_22.getprestatus()){//sysj\controller.sysj line: 297, column: 39
-              S100114=1;
+            if(kill4_22.getprestatus()){//sysj\controller.sysj line: 304, column: 39
+              S7003=1;
               active[27]=1;
               ends[27]=1;
               tdone[27]=1;
             }
             else {
-              liq4_22.setPresent();//sysj\controller.sysj line: 297, column: 46
+              liq4_22.setPresent();//sysj\controller.sysj line: 304, column: 46
               currsigs.addElement(liq4_22);
-              System.out.println("Emitted liq4_22");
               active[27]=1;
               ends[27]=1;
               tdone[27]=1;
@@ -76,18 +75,17 @@ public class GUIReader extends ClockDomain{
             break;
           
           case 1 : 
-            S100114=1;
-            S100114=0;
-            if(liquid4.getprestatus()){//sysj\controller.sysj line: 297, column: 24
-              liq4_22.setPresent();//sysj\controller.sysj line: 297, column: 46
+            S7003=1;
+            S7003=0;
+            if(liquid4.getprestatus()){//sysj\controller.sysj line: 304, column: 24
+              liq4_22.setPresent();//sysj\controller.sysj line: 304, column: 46
               currsigs.addElement(liq4_22);
-              System.out.println("Emitted liq4_22");
               active[27]=1;
               ends[27]=1;
               tdone[27]=1;
             }
             else {
-              S100114=1;
+              S7003=1;
               active[27]=1;
               ends[27]=1;
               tdone[27]=1;
@@ -100,8 +98,8 @@ public class GUIReader extends ClockDomain{
     }
   }
 
-  public void thread100210(int [] tdone, int [] ends){
-        switch(S100108){
+  public void thread7099(int [] tdone, int [] ends){
+        switch(S6997){
       case 0 : 
         active[26]=0;
         ends[26]=0;
@@ -109,18 +107,17 @@ public class GUIReader extends ClockDomain{
         break;
       
       case 1 : 
-        switch(S100094){
+        switch(S6983){
           case 0 : 
-            if(kill3_22.getprestatus()){//sysj\controller.sysj line: 295, column: 39
-              S100094=1;
+            if(kill3_22.getprestatus()){//sysj\controller.sysj line: 302, column: 39
+              S6983=1;
               active[26]=1;
               ends[26]=1;
               tdone[26]=1;
             }
             else {
-              liq3_22.setPresent();//sysj\controller.sysj line: 295, column: 46
+              liq3_22.setPresent();//sysj\controller.sysj line: 302, column: 46
               currsigs.addElement(liq3_22);
-              System.out.println("Emitted liq3_22");
               active[26]=1;
               ends[26]=1;
               tdone[26]=1;
@@ -128,18 +125,17 @@ public class GUIReader extends ClockDomain{
             break;
           
           case 1 : 
-            S100094=1;
-            S100094=0;
-            if(liquid3.getprestatus()){//sysj\controller.sysj line: 295, column: 24
-              liq3_22.setPresent();//sysj\controller.sysj line: 295, column: 46
+            S6983=1;
+            S6983=0;
+            if(liquid3.getprestatus()){//sysj\controller.sysj line: 302, column: 24
+              liq3_22.setPresent();//sysj\controller.sysj line: 302, column: 46
               currsigs.addElement(liq3_22);
-              System.out.println("Emitted liq3_22");
               active[26]=1;
               ends[26]=1;
               tdone[26]=1;
             }
             else {
-              S100094=1;
+              S6983=1;
               active[26]=1;
               ends[26]=1;
               tdone[26]=1;
@@ -152,8 +148,8 @@ public class GUIReader extends ClockDomain{
     }
   }
 
-  public void thread100209(int [] tdone, int [] ends){
-        switch(S100088){
+  public void thread7098(int [] tdone, int [] ends){
+        switch(S6977){
       case 0 : 
         active[25]=0;
         ends[25]=0;
@@ -161,18 +157,17 @@ public class GUIReader extends ClockDomain{
         break;
       
       case 1 : 
-        switch(S100074){
+        switch(S6963){
           case 0 : 
-            if(kill2_22.getprestatus()){//sysj\controller.sysj line: 293, column: 39
-              S100074=1;
+            if(kill2_22.getprestatus()){//sysj\controller.sysj line: 300, column: 39
+              S6963=1;
               active[25]=1;
               ends[25]=1;
               tdone[25]=1;
             }
             else {
-              liq2_22.setPresent();//sysj\controller.sysj line: 293, column: 46
+              liq2_22.setPresent();//sysj\controller.sysj line: 300, column: 46
               currsigs.addElement(liq2_22);
-              System.out.println("Emitted liq2_22");
               active[25]=1;
               ends[25]=1;
               tdone[25]=1;
@@ -180,18 +175,17 @@ public class GUIReader extends ClockDomain{
             break;
           
           case 1 : 
-            S100074=1;
-            S100074=0;
-            if(liquid2.getprestatus()){//sysj\controller.sysj line: 293, column: 24
-              liq2_22.setPresent();//sysj\controller.sysj line: 293, column: 46
+            S6963=1;
+            S6963=0;
+            if(liquid2.getprestatus()){//sysj\controller.sysj line: 300, column: 24
+              liq2_22.setPresent();//sysj\controller.sysj line: 300, column: 46
               currsigs.addElement(liq2_22);
-              System.out.println("Emitted liq2_22");
               active[25]=1;
               ends[25]=1;
               tdone[25]=1;
             }
             else {
-              S100074=1;
+              S6963=1;
               active[25]=1;
               ends[25]=1;
               tdone[25]=1;
@@ -204,8 +198,8 @@ public class GUIReader extends ClockDomain{
     }
   }
 
-  public void thread100208(int [] tdone, int [] ends){
-        switch(S100068){
+  public void thread7097(int [] tdone, int [] ends){
+        switch(S6957){
       case 0 : 
         active[24]=0;
         ends[24]=0;
@@ -213,18 +207,17 @@ public class GUIReader extends ClockDomain{
         break;
       
       case 1 : 
-        switch(S100054){
+        switch(S6943){
           case 0 : 
-            if(kill1_22.getprestatus()){//sysj\controller.sysj line: 291, column: 39
-              S100054=1;
+            if(kill1_22.getprestatus()){//sysj\controller.sysj line: 298, column: 39
+              S6943=1;
               active[24]=1;
               ends[24]=1;
               tdone[24]=1;
             }
             else {
-              liq1_22.setPresent();//sysj\controller.sysj line: 291, column: 46
+              liq1_22.setPresent();//sysj\controller.sysj line: 298, column: 46
               currsigs.addElement(liq1_22);
-              System.out.println("Emitted liq1_22");
               active[24]=1;
               ends[24]=1;
               tdone[24]=1;
@@ -232,18 +225,17 @@ public class GUIReader extends ClockDomain{
             break;
           
           case 1 : 
-            S100054=1;
-            S100054=0;
-            if(liquid1.getprestatus()){//sysj\controller.sysj line: 291, column: 24
-              liq1_22.setPresent();//sysj\controller.sysj line: 291, column: 46
+            S6943=1;
+            S6943=0;
+            if(liquid1.getprestatus()){//sysj\controller.sysj line: 298, column: 24
+              liq1_22.setPresent();//sysj\controller.sysj line: 298, column: 46
               currsigs.addElement(liq1_22);
-              System.out.println("Emitted liq1_22");
               active[24]=1;
               ends[24]=1;
               tdone[24]=1;
             }
             else {
-              S100054=1;
+              S6943=1;
               active[24]=1;
               ends[24]=1;
               tdone[24]=1;
@@ -256,8 +248,8 @@ public class GUIReader extends ClockDomain{
     }
   }
 
-  public void thread100207(int [] tdone, int [] ends){
-        switch(S100048){
+  public void thread7096(int [] tdone, int [] ends){
+        switch(S6937){
       case 0 : 
         active[23]=0;
         ends[23]=0;
@@ -265,1197 +257,255 @@ public class GUIReader extends ClockDomain{
         break;
       
       case 1 : 
-        switch(S2477){
+        switch(S2616){
           case 0 : 
-            S2477=0;
-            if(placeOrder.getprestatus()){//sysj\controller.sysj line: 254, column: 11
-              if(liq1_22.getprestatus()){//sysj\controller.sysj line: 256, column: 15
-                liquidval_thread_23 += 1;//sysj\controller.sysj line: 258, column: 7
-                kill1_22.setPresent();//sysj\controller.sysj line: 260, column: 6
+            S2616=0;
+            S2616=1;
+            if(placeOrder.getprestatus()){//sysj\controller.sysj line: 261, column: 11
+              if(liquid1.getprestatus()){//sysj\controller.sysj line: 263, column: 15
+                liquidval_thread_23 += 1;//sysj\controller.sysj line: 264, column: 7
+                kill1_22.setPresent();//sysj\controller.sysj line: 266, column: 6
                 currsigs.addElement(kill1_22);
-                System.out.println("Emitted kill1_22");
-                if(liq2_22.getprestatus()){//sysj\controller.sysj line: 261, column: 15
-                  liquidval_thread_23 += 2;//sysj\controller.sysj line: 263, column: 7
-                  kill2_22.setPresent();//sysj\controller.sysj line: 265, column: 6
+                if(liquid2.getprestatus()){//sysj\controller.sysj line: 267, column: 15
+                  liquidval_thread_23 += 2;//sysj\controller.sysj line: 269, column: 7
+                  kill2_22.setPresent();//sysj\controller.sysj line: 271, column: 6
                   currsigs.addElement(kill2_22);
-                  System.out.println("Emitted kill2_22");
-                  if(liq3_22.getprestatus()){//sysj\controller.sysj line: 266, column: 15
-                    liquidval_thread_23 += 4;//sysj\controller.sysj line: 267, column: 7
-                    kill3_22.setPresent();//sysj\controller.sysj line: 269, column: 6
+                  if(liquid3.getprestatus()){//sysj\controller.sysj line: 272, column: 15
+                    liquidval_thread_23 += 4;//sysj\controller.sysj line: 273, column: 7
+                    kill3_22.setPresent();//sysj\controller.sysj line: 275, column: 6
                     currsigs.addElement(kill3_22);
-                    System.out.println("Emitted kill3_22");
-                    if(liq4_22.getprestatus()){//sysj\controller.sysj line: 270, column: 15
-                      liquidval_thread_23 += 8;//sysj\controller.sysj line: 272, column: 7
-                      kill4_22.setPresent();//sysj\controller.sysj line: 274, column: 6
+                    if(liquid4.getprestatus()){//sysj\controller.sysj line: 276, column: 15
+                      liquidval_thread_23 += 8;//sysj\controller.sysj line: 278, column: 7
+                      kill4_22.setPresent();//sysj\controller.sysj line: 280, column: 6
                       currsigs.addElement(kill4_22);
-                      System.out.println("Emitted kill4_22");
-                      fifo_thread_23.add(liquidval_thread_23);//sysj\controller.sysj line: 275, column: 6
-                      System.out.println(liquidval_thread_23);//sysj\controller.sysj line: 276, column: 6
-                      S2477=1;
-                      if(requestliquid.getprestatus()){//sysj\controller.sysj line: 278, column: 12
-                        if(!fifo_thread_23.isEmpty()){//sysj\controller.sysj line: 279, column: 8
-                          System.out.println("picked fifo");//sysj\controller.sysj line: 280, column: 6
-                          integer1_thread_23 = fifo_thread_23.poll();//sysj\controller.sysj line: 281, column: 6
-                          sentliquid.setPresent();//sysj\controller.sysj line: 282, column: 6
-                          currsigs.addElement(sentliquid);
-                          System.out.println("Emitted sentliquid");
-                          S2525=0;
-                          if(!liquidBuffer_o.isPartnerPresent() || liquidBuffer_o.isPartnerPreempted()){//sysj\controller.sysj line: 283, column: 6
-                            liquidBuffer_o.setREQ(false);//sysj\controller.sysj line: 283, column: 6
-                            S2525=1;
-                            active[23]=1;
-                            ends[23]=1;
-                            tdone[23]=1;
-                          }
-                          else {
-                            S2520=0;
-                            if(liquidBuffer_o.isACK()){//sysj\controller.sysj line: 283, column: 6
-                              liquidBuffer_o.setVal(integer1_thread_23);//sysj\controller.sysj line: 283, column: 6
-                              S2520=1;
-                              if(!liquidBuffer_o.isACK()){//sysj\controller.sysj line: 283, column: 6
-                                liquidBuffer_o.setREQ(false);//sysj\controller.sysj line: 283, column: 6
-                                ends[23]=2;
-                                ;//sysj\controller.sysj line: 283, column: 6
-                                System.out.println(integer1_thread_23);//sysj\controller.sysj line: 284, column: 6
-                                liquidval_thread_23 = 0;//sysj\controller.sysj line: 252, column: 3
-                                S2477=0;
-                                active[23]=1;
-                                ends[23]=1;
-                                tdone[23]=1;
-                              }
-                              else {
-                                active[23]=1;
-                                ends[23]=1;
-                                tdone[23]=1;
-                              }
-                            }
-                            else {
-                              active[23]=1;
-                              ends[23]=1;
-                              tdone[23]=1;
-                            }
-                          }
-                        }
-                        else {
-                          liquidval_thread_23 = 0;//sysj\controller.sysj line: 252, column: 3
-                          S2477=0;
-                          active[23]=1;
-                          ends[23]=1;
-                          tdone[23]=1;
-                        }
-                      }
-                      else {
-                        liquidval_thread_23 = 0;//sysj\controller.sysj line: 252, column: 3
-                        S2477=0;
-                        active[23]=1;
-                        ends[23]=1;
-                        tdone[23]=1;
-                      }
+                      fifo_thread_23.add(liquidval_thread_23);//sysj\controller.sysj line: 281, column: 6
+                      System.out.println(liquidval_thread_23);//sysj\controller.sysj line: 282, column: 6
+                      active[23]=1;
+                      ends[23]=1;
+                      tdone[23]=1;
                     }
                     else {
-                      kill4_22.setPresent();//sysj\controller.sysj line: 274, column: 6
+                      kill4_22.setPresent();//sysj\controller.sysj line: 280, column: 6
                       currsigs.addElement(kill4_22);
-                      System.out.println("Emitted kill4_22");
-                      fifo_thread_23.add(liquidval_thread_23);//sysj\controller.sysj line: 275, column: 6
-                      System.out.println(liquidval_thread_23);//sysj\controller.sysj line: 276, column: 6
-                      S2477=1;
-                      if(requestliquid.getprestatus()){//sysj\controller.sysj line: 278, column: 12
-                        if(!fifo_thread_23.isEmpty()){//sysj\controller.sysj line: 279, column: 8
-                          System.out.println("picked fifo");//sysj\controller.sysj line: 280, column: 6
-                          integer1_thread_23 = fifo_thread_23.poll();//sysj\controller.sysj line: 281, column: 6
-                          sentliquid.setPresent();//sysj\controller.sysj line: 282, column: 6
-                          currsigs.addElement(sentliquid);
-                          System.out.println("Emitted sentliquid");
-                          S2525=0;
-                          if(!liquidBuffer_o.isPartnerPresent() || liquidBuffer_o.isPartnerPreempted()){//sysj\controller.sysj line: 283, column: 6
-                            liquidBuffer_o.setREQ(false);//sysj\controller.sysj line: 283, column: 6
-                            S2525=1;
-                            active[23]=1;
-                            ends[23]=1;
-                            tdone[23]=1;
-                          }
-                          else {
-                            S2520=0;
-                            if(liquidBuffer_o.isACK()){//sysj\controller.sysj line: 283, column: 6
-                              liquidBuffer_o.setVal(integer1_thread_23);//sysj\controller.sysj line: 283, column: 6
-                              S2520=1;
-                              if(!liquidBuffer_o.isACK()){//sysj\controller.sysj line: 283, column: 6
-                                liquidBuffer_o.setREQ(false);//sysj\controller.sysj line: 283, column: 6
-                                ends[23]=2;
-                                ;//sysj\controller.sysj line: 283, column: 6
-                                System.out.println(integer1_thread_23);//sysj\controller.sysj line: 284, column: 6
-                                liquidval_thread_23 = 0;//sysj\controller.sysj line: 252, column: 3
-                                S2477=0;
-                                active[23]=1;
-                                ends[23]=1;
-                                tdone[23]=1;
-                              }
-                              else {
-                                active[23]=1;
-                                ends[23]=1;
-                                tdone[23]=1;
-                              }
-                            }
-                            else {
-                              active[23]=1;
-                              ends[23]=1;
-                              tdone[23]=1;
-                            }
-                          }
-                        }
-                        else {
-                          liquidval_thread_23 = 0;//sysj\controller.sysj line: 252, column: 3
-                          S2477=0;
-                          active[23]=1;
-                          ends[23]=1;
-                          tdone[23]=1;
-                        }
-                      }
-                      else {
-                        liquidval_thread_23 = 0;//sysj\controller.sysj line: 252, column: 3
-                        S2477=0;
-                        active[23]=1;
-                        ends[23]=1;
-                        tdone[23]=1;
-                      }
+                      fifo_thread_23.add(liquidval_thread_23);//sysj\controller.sysj line: 281, column: 6
+                      System.out.println(liquidval_thread_23);//sysj\controller.sysj line: 282, column: 6
+                      active[23]=1;
+                      ends[23]=1;
+                      tdone[23]=1;
                     }
                   }
                   else {
-                    kill3_22.setPresent();//sysj\controller.sysj line: 269, column: 6
+                    kill3_22.setPresent();//sysj\controller.sysj line: 275, column: 6
                     currsigs.addElement(kill3_22);
-                    System.out.println("Emitted kill3_22");
-                    if(liq4_22.getprestatus()){//sysj\controller.sysj line: 270, column: 15
-                      liquidval_thread_23 += 8;//sysj\controller.sysj line: 272, column: 7
-                      kill4_22.setPresent();//sysj\controller.sysj line: 274, column: 6
+                    if(liquid4.getprestatus()){//sysj\controller.sysj line: 276, column: 15
+                      liquidval_thread_23 += 8;//sysj\controller.sysj line: 278, column: 7
+                      kill4_22.setPresent();//sysj\controller.sysj line: 280, column: 6
                       currsigs.addElement(kill4_22);
-                      System.out.println("Emitted kill4_22");
-                      fifo_thread_23.add(liquidval_thread_23);//sysj\controller.sysj line: 275, column: 6
-                      System.out.println(liquidval_thread_23);//sysj\controller.sysj line: 276, column: 6
-                      S2477=1;
-                      if(requestliquid.getprestatus()){//sysj\controller.sysj line: 278, column: 12
-                        if(!fifo_thread_23.isEmpty()){//sysj\controller.sysj line: 279, column: 8
-                          System.out.println("picked fifo");//sysj\controller.sysj line: 280, column: 6
-                          integer1_thread_23 = fifo_thread_23.poll();//sysj\controller.sysj line: 281, column: 6
-                          sentliquid.setPresent();//sysj\controller.sysj line: 282, column: 6
-                          currsigs.addElement(sentliquid);
-                          System.out.println("Emitted sentliquid");
-                          S2525=0;
-                          if(!liquidBuffer_o.isPartnerPresent() || liquidBuffer_o.isPartnerPreempted()){//sysj\controller.sysj line: 283, column: 6
-                            liquidBuffer_o.setREQ(false);//sysj\controller.sysj line: 283, column: 6
-                            S2525=1;
-                            active[23]=1;
-                            ends[23]=1;
-                            tdone[23]=1;
-                          }
-                          else {
-                            S2520=0;
-                            if(liquidBuffer_o.isACK()){//sysj\controller.sysj line: 283, column: 6
-                              liquidBuffer_o.setVal(integer1_thread_23);//sysj\controller.sysj line: 283, column: 6
-                              S2520=1;
-                              if(!liquidBuffer_o.isACK()){//sysj\controller.sysj line: 283, column: 6
-                                liquidBuffer_o.setREQ(false);//sysj\controller.sysj line: 283, column: 6
-                                ends[23]=2;
-                                ;//sysj\controller.sysj line: 283, column: 6
-                                System.out.println(integer1_thread_23);//sysj\controller.sysj line: 284, column: 6
-                                liquidval_thread_23 = 0;//sysj\controller.sysj line: 252, column: 3
-                                S2477=0;
-                                active[23]=1;
-                                ends[23]=1;
-                                tdone[23]=1;
-                              }
-                              else {
-                                active[23]=1;
-                                ends[23]=1;
-                                tdone[23]=1;
-                              }
-                            }
-                            else {
-                              active[23]=1;
-                              ends[23]=1;
-                              tdone[23]=1;
-                            }
-                          }
-                        }
-                        else {
-                          liquidval_thread_23 = 0;//sysj\controller.sysj line: 252, column: 3
-                          S2477=0;
-                          active[23]=1;
-                          ends[23]=1;
-                          tdone[23]=1;
-                        }
-                      }
-                      else {
-                        liquidval_thread_23 = 0;//sysj\controller.sysj line: 252, column: 3
-                        S2477=0;
-                        active[23]=1;
-                        ends[23]=1;
-                        tdone[23]=1;
-                      }
+                      fifo_thread_23.add(liquidval_thread_23);//sysj\controller.sysj line: 281, column: 6
+                      System.out.println(liquidval_thread_23);//sysj\controller.sysj line: 282, column: 6
+                      active[23]=1;
+                      ends[23]=1;
+                      tdone[23]=1;
                     }
                     else {
-                      kill4_22.setPresent();//sysj\controller.sysj line: 274, column: 6
+                      kill4_22.setPresent();//sysj\controller.sysj line: 280, column: 6
                       currsigs.addElement(kill4_22);
-                      System.out.println("Emitted kill4_22");
-                      fifo_thread_23.add(liquidval_thread_23);//sysj\controller.sysj line: 275, column: 6
-                      System.out.println(liquidval_thread_23);//sysj\controller.sysj line: 276, column: 6
-                      S2477=1;
-                      if(requestliquid.getprestatus()){//sysj\controller.sysj line: 278, column: 12
-                        if(!fifo_thread_23.isEmpty()){//sysj\controller.sysj line: 279, column: 8
-                          System.out.println("picked fifo");//sysj\controller.sysj line: 280, column: 6
-                          integer1_thread_23 = fifo_thread_23.poll();//sysj\controller.sysj line: 281, column: 6
-                          sentliquid.setPresent();//sysj\controller.sysj line: 282, column: 6
-                          currsigs.addElement(sentliquid);
-                          System.out.println("Emitted sentliquid");
-                          S2525=0;
-                          if(!liquidBuffer_o.isPartnerPresent() || liquidBuffer_o.isPartnerPreempted()){//sysj\controller.sysj line: 283, column: 6
-                            liquidBuffer_o.setREQ(false);//sysj\controller.sysj line: 283, column: 6
-                            S2525=1;
-                            active[23]=1;
-                            ends[23]=1;
-                            tdone[23]=1;
-                          }
-                          else {
-                            S2520=0;
-                            if(liquidBuffer_o.isACK()){//sysj\controller.sysj line: 283, column: 6
-                              liquidBuffer_o.setVal(integer1_thread_23);//sysj\controller.sysj line: 283, column: 6
-                              S2520=1;
-                              if(!liquidBuffer_o.isACK()){//sysj\controller.sysj line: 283, column: 6
-                                liquidBuffer_o.setREQ(false);//sysj\controller.sysj line: 283, column: 6
-                                ends[23]=2;
-                                ;//sysj\controller.sysj line: 283, column: 6
-                                System.out.println(integer1_thread_23);//sysj\controller.sysj line: 284, column: 6
-                                liquidval_thread_23 = 0;//sysj\controller.sysj line: 252, column: 3
-                                S2477=0;
-                                active[23]=1;
-                                ends[23]=1;
-                                tdone[23]=1;
-                              }
-                              else {
-                                active[23]=1;
-                                ends[23]=1;
-                                tdone[23]=1;
-                              }
-                            }
-                            else {
-                              active[23]=1;
-                              ends[23]=1;
-                              tdone[23]=1;
-                            }
-                          }
-                        }
-                        else {
-                          liquidval_thread_23 = 0;//sysj\controller.sysj line: 252, column: 3
-                          S2477=0;
-                          active[23]=1;
-                          ends[23]=1;
-                          tdone[23]=1;
-                        }
-                      }
-                      else {
-                        liquidval_thread_23 = 0;//sysj\controller.sysj line: 252, column: 3
-                        S2477=0;
-                        active[23]=1;
-                        ends[23]=1;
-                        tdone[23]=1;
-                      }
+                      fifo_thread_23.add(liquidval_thread_23);//sysj\controller.sysj line: 281, column: 6
+                      System.out.println(liquidval_thread_23);//sysj\controller.sysj line: 282, column: 6
+                      active[23]=1;
+                      ends[23]=1;
+                      tdone[23]=1;
                     }
                   }
                 }
                 else {
-                  kill2_22.setPresent();//sysj\controller.sysj line: 265, column: 6
+                  kill2_22.setPresent();//sysj\controller.sysj line: 271, column: 6
                   currsigs.addElement(kill2_22);
-                  System.out.println("Emitted kill2_22");
-                  if(liq3_22.getprestatus()){//sysj\controller.sysj line: 266, column: 15
-                    liquidval_thread_23 += 4;//sysj\controller.sysj line: 267, column: 7
-                    kill3_22.setPresent();//sysj\controller.sysj line: 269, column: 6
+                  if(liquid3.getprestatus()){//sysj\controller.sysj line: 272, column: 15
+                    liquidval_thread_23 += 4;//sysj\controller.sysj line: 273, column: 7
+                    kill3_22.setPresent();//sysj\controller.sysj line: 275, column: 6
                     currsigs.addElement(kill3_22);
-                    System.out.println("Emitted kill3_22");
-                    if(liq4_22.getprestatus()){//sysj\controller.sysj line: 270, column: 15
-                      liquidval_thread_23 += 8;//sysj\controller.sysj line: 272, column: 7
-                      kill4_22.setPresent();//sysj\controller.sysj line: 274, column: 6
+                    if(liquid4.getprestatus()){//sysj\controller.sysj line: 276, column: 15
+                      liquidval_thread_23 += 8;//sysj\controller.sysj line: 278, column: 7
+                      kill4_22.setPresent();//sysj\controller.sysj line: 280, column: 6
                       currsigs.addElement(kill4_22);
-                      System.out.println("Emitted kill4_22");
-                      fifo_thread_23.add(liquidval_thread_23);//sysj\controller.sysj line: 275, column: 6
-                      System.out.println(liquidval_thread_23);//sysj\controller.sysj line: 276, column: 6
-                      S2477=1;
-                      if(requestliquid.getprestatus()){//sysj\controller.sysj line: 278, column: 12
-                        if(!fifo_thread_23.isEmpty()){//sysj\controller.sysj line: 279, column: 8
-                          System.out.println("picked fifo");//sysj\controller.sysj line: 280, column: 6
-                          integer1_thread_23 = fifo_thread_23.poll();//sysj\controller.sysj line: 281, column: 6
-                          sentliquid.setPresent();//sysj\controller.sysj line: 282, column: 6
-                          currsigs.addElement(sentliquid);
-                          System.out.println("Emitted sentliquid");
-                          S2525=0;
-                          if(!liquidBuffer_o.isPartnerPresent() || liquidBuffer_o.isPartnerPreempted()){//sysj\controller.sysj line: 283, column: 6
-                            liquidBuffer_o.setREQ(false);//sysj\controller.sysj line: 283, column: 6
-                            S2525=1;
-                            active[23]=1;
-                            ends[23]=1;
-                            tdone[23]=1;
-                          }
-                          else {
-                            S2520=0;
-                            if(liquidBuffer_o.isACK()){//sysj\controller.sysj line: 283, column: 6
-                              liquidBuffer_o.setVal(integer1_thread_23);//sysj\controller.sysj line: 283, column: 6
-                              S2520=1;
-                              if(!liquidBuffer_o.isACK()){//sysj\controller.sysj line: 283, column: 6
-                                liquidBuffer_o.setREQ(false);//sysj\controller.sysj line: 283, column: 6
-                                ends[23]=2;
-                                ;//sysj\controller.sysj line: 283, column: 6
-                                System.out.println(integer1_thread_23);//sysj\controller.sysj line: 284, column: 6
-                                liquidval_thread_23 = 0;//sysj\controller.sysj line: 252, column: 3
-                                S2477=0;
-                                active[23]=1;
-                                ends[23]=1;
-                                tdone[23]=1;
-                              }
-                              else {
-                                active[23]=1;
-                                ends[23]=1;
-                                tdone[23]=1;
-                              }
-                            }
-                            else {
-                              active[23]=1;
-                              ends[23]=1;
-                              tdone[23]=1;
-                            }
-                          }
-                        }
-                        else {
-                          liquidval_thread_23 = 0;//sysj\controller.sysj line: 252, column: 3
-                          S2477=0;
-                          active[23]=1;
-                          ends[23]=1;
-                          tdone[23]=1;
-                        }
-                      }
-                      else {
-                        liquidval_thread_23 = 0;//sysj\controller.sysj line: 252, column: 3
-                        S2477=0;
-                        active[23]=1;
-                        ends[23]=1;
-                        tdone[23]=1;
-                      }
+                      fifo_thread_23.add(liquidval_thread_23);//sysj\controller.sysj line: 281, column: 6
+                      System.out.println(liquidval_thread_23);//sysj\controller.sysj line: 282, column: 6
+                      active[23]=1;
+                      ends[23]=1;
+                      tdone[23]=1;
                     }
                     else {
-                      kill4_22.setPresent();//sysj\controller.sysj line: 274, column: 6
+                      kill4_22.setPresent();//sysj\controller.sysj line: 280, column: 6
                       currsigs.addElement(kill4_22);
-                      System.out.println("Emitted kill4_22");
-                      fifo_thread_23.add(liquidval_thread_23);//sysj\controller.sysj line: 275, column: 6
-                      System.out.println(liquidval_thread_23);//sysj\controller.sysj line: 276, column: 6
-                      S2477=1;
-                      if(requestliquid.getprestatus()){//sysj\controller.sysj line: 278, column: 12
-                        if(!fifo_thread_23.isEmpty()){//sysj\controller.sysj line: 279, column: 8
-                          System.out.println("picked fifo");//sysj\controller.sysj line: 280, column: 6
-                          integer1_thread_23 = fifo_thread_23.poll();//sysj\controller.sysj line: 281, column: 6
-                          sentliquid.setPresent();//sysj\controller.sysj line: 282, column: 6
-                          currsigs.addElement(sentliquid);
-                          System.out.println("Emitted sentliquid");
-                          S2525=0;
-                          if(!liquidBuffer_o.isPartnerPresent() || liquidBuffer_o.isPartnerPreempted()){//sysj\controller.sysj line: 283, column: 6
-                            liquidBuffer_o.setREQ(false);//sysj\controller.sysj line: 283, column: 6
-                            S2525=1;
-                            active[23]=1;
-                            ends[23]=1;
-                            tdone[23]=1;
-                          }
-                          else {
-                            S2520=0;
-                            if(liquidBuffer_o.isACK()){//sysj\controller.sysj line: 283, column: 6
-                              liquidBuffer_o.setVal(integer1_thread_23);//sysj\controller.sysj line: 283, column: 6
-                              S2520=1;
-                              if(!liquidBuffer_o.isACK()){//sysj\controller.sysj line: 283, column: 6
-                                liquidBuffer_o.setREQ(false);//sysj\controller.sysj line: 283, column: 6
-                                ends[23]=2;
-                                ;//sysj\controller.sysj line: 283, column: 6
-                                System.out.println(integer1_thread_23);//sysj\controller.sysj line: 284, column: 6
-                                liquidval_thread_23 = 0;//sysj\controller.sysj line: 252, column: 3
-                                S2477=0;
-                                active[23]=1;
-                                ends[23]=1;
-                                tdone[23]=1;
-                              }
-                              else {
-                                active[23]=1;
-                                ends[23]=1;
-                                tdone[23]=1;
-                              }
-                            }
-                            else {
-                              active[23]=1;
-                              ends[23]=1;
-                              tdone[23]=1;
-                            }
-                          }
-                        }
-                        else {
-                          liquidval_thread_23 = 0;//sysj\controller.sysj line: 252, column: 3
-                          S2477=0;
-                          active[23]=1;
-                          ends[23]=1;
-                          tdone[23]=1;
-                        }
-                      }
-                      else {
-                        liquidval_thread_23 = 0;//sysj\controller.sysj line: 252, column: 3
-                        S2477=0;
-                        active[23]=1;
-                        ends[23]=1;
-                        tdone[23]=1;
-                      }
+                      fifo_thread_23.add(liquidval_thread_23);//sysj\controller.sysj line: 281, column: 6
+                      System.out.println(liquidval_thread_23);//sysj\controller.sysj line: 282, column: 6
+                      active[23]=1;
+                      ends[23]=1;
+                      tdone[23]=1;
                     }
                   }
                   else {
-                    kill3_22.setPresent();//sysj\controller.sysj line: 269, column: 6
+                    kill3_22.setPresent();//sysj\controller.sysj line: 275, column: 6
                     currsigs.addElement(kill3_22);
-                    System.out.println("Emitted kill3_22");
-                    if(liq4_22.getprestatus()){//sysj\controller.sysj line: 270, column: 15
-                      liquidval_thread_23 += 8;//sysj\controller.sysj line: 272, column: 7
-                      kill4_22.setPresent();//sysj\controller.sysj line: 274, column: 6
+                    if(liquid4.getprestatus()){//sysj\controller.sysj line: 276, column: 15
+                      liquidval_thread_23 += 8;//sysj\controller.sysj line: 278, column: 7
+                      kill4_22.setPresent();//sysj\controller.sysj line: 280, column: 6
                       currsigs.addElement(kill4_22);
-                      System.out.println("Emitted kill4_22");
-                      fifo_thread_23.add(liquidval_thread_23);//sysj\controller.sysj line: 275, column: 6
-                      System.out.println(liquidval_thread_23);//sysj\controller.sysj line: 276, column: 6
-                      S2477=1;
-                      if(requestliquid.getprestatus()){//sysj\controller.sysj line: 278, column: 12
-                        if(!fifo_thread_23.isEmpty()){//sysj\controller.sysj line: 279, column: 8
-                          System.out.println("picked fifo");//sysj\controller.sysj line: 280, column: 6
-                          integer1_thread_23 = fifo_thread_23.poll();//sysj\controller.sysj line: 281, column: 6
-                          sentliquid.setPresent();//sysj\controller.sysj line: 282, column: 6
-                          currsigs.addElement(sentliquid);
-                          System.out.println("Emitted sentliquid");
-                          S2525=0;
-                          if(!liquidBuffer_o.isPartnerPresent() || liquidBuffer_o.isPartnerPreempted()){//sysj\controller.sysj line: 283, column: 6
-                            liquidBuffer_o.setREQ(false);//sysj\controller.sysj line: 283, column: 6
-                            S2525=1;
-                            active[23]=1;
-                            ends[23]=1;
-                            tdone[23]=1;
-                          }
-                          else {
-                            S2520=0;
-                            if(liquidBuffer_o.isACK()){//sysj\controller.sysj line: 283, column: 6
-                              liquidBuffer_o.setVal(integer1_thread_23);//sysj\controller.sysj line: 283, column: 6
-                              S2520=1;
-                              if(!liquidBuffer_o.isACK()){//sysj\controller.sysj line: 283, column: 6
-                                liquidBuffer_o.setREQ(false);//sysj\controller.sysj line: 283, column: 6
-                                ends[23]=2;
-                                ;//sysj\controller.sysj line: 283, column: 6
-                                System.out.println(integer1_thread_23);//sysj\controller.sysj line: 284, column: 6
-                                liquidval_thread_23 = 0;//sysj\controller.sysj line: 252, column: 3
-                                S2477=0;
-                                active[23]=1;
-                                ends[23]=1;
-                                tdone[23]=1;
-                              }
-                              else {
-                                active[23]=1;
-                                ends[23]=1;
-                                tdone[23]=1;
-                              }
-                            }
-                            else {
-                              active[23]=1;
-                              ends[23]=1;
-                              tdone[23]=1;
-                            }
-                          }
-                        }
-                        else {
-                          liquidval_thread_23 = 0;//sysj\controller.sysj line: 252, column: 3
-                          S2477=0;
-                          active[23]=1;
-                          ends[23]=1;
-                          tdone[23]=1;
-                        }
-                      }
-                      else {
-                        liquidval_thread_23 = 0;//sysj\controller.sysj line: 252, column: 3
-                        S2477=0;
-                        active[23]=1;
-                        ends[23]=1;
-                        tdone[23]=1;
-                      }
+                      fifo_thread_23.add(liquidval_thread_23);//sysj\controller.sysj line: 281, column: 6
+                      System.out.println(liquidval_thread_23);//sysj\controller.sysj line: 282, column: 6
+                      active[23]=1;
+                      ends[23]=1;
+                      tdone[23]=1;
                     }
                     else {
-                      kill4_22.setPresent();//sysj\controller.sysj line: 274, column: 6
+                      kill4_22.setPresent();//sysj\controller.sysj line: 280, column: 6
                       currsigs.addElement(kill4_22);
-                      System.out.println("Emitted kill4_22");
-                      fifo_thread_23.add(liquidval_thread_23);//sysj\controller.sysj line: 275, column: 6
-                      System.out.println(liquidval_thread_23);//sysj\controller.sysj line: 276, column: 6
-                      S2477=1;
-                      if(requestliquid.getprestatus()){//sysj\controller.sysj line: 278, column: 12
-                        if(!fifo_thread_23.isEmpty()){//sysj\controller.sysj line: 279, column: 8
-                          System.out.println("picked fifo");//sysj\controller.sysj line: 280, column: 6
-                          integer1_thread_23 = fifo_thread_23.poll();//sysj\controller.sysj line: 281, column: 6
-                          sentliquid.setPresent();//sysj\controller.sysj line: 282, column: 6
-                          currsigs.addElement(sentliquid);
-                          System.out.println("Emitted sentliquid");
-                          S2525=0;
-                          if(!liquidBuffer_o.isPartnerPresent() || liquidBuffer_o.isPartnerPreempted()){//sysj\controller.sysj line: 283, column: 6
-                            liquidBuffer_o.setREQ(false);//sysj\controller.sysj line: 283, column: 6
-                            S2525=1;
-                            active[23]=1;
-                            ends[23]=1;
-                            tdone[23]=1;
-                          }
-                          else {
-                            S2520=0;
-                            if(liquidBuffer_o.isACK()){//sysj\controller.sysj line: 283, column: 6
-                              liquidBuffer_o.setVal(integer1_thread_23);//sysj\controller.sysj line: 283, column: 6
-                              S2520=1;
-                              if(!liquidBuffer_o.isACK()){//sysj\controller.sysj line: 283, column: 6
-                                liquidBuffer_o.setREQ(false);//sysj\controller.sysj line: 283, column: 6
-                                ends[23]=2;
-                                ;//sysj\controller.sysj line: 283, column: 6
-                                System.out.println(integer1_thread_23);//sysj\controller.sysj line: 284, column: 6
-                                liquidval_thread_23 = 0;//sysj\controller.sysj line: 252, column: 3
-                                S2477=0;
-                                active[23]=1;
-                                ends[23]=1;
-                                tdone[23]=1;
-                              }
-                              else {
-                                active[23]=1;
-                                ends[23]=1;
-                                tdone[23]=1;
-                              }
-                            }
-                            else {
-                              active[23]=1;
-                              ends[23]=1;
-                              tdone[23]=1;
-                            }
-                          }
-                        }
-                        else {
-                          liquidval_thread_23 = 0;//sysj\controller.sysj line: 252, column: 3
-                          S2477=0;
-                          active[23]=1;
-                          ends[23]=1;
-                          tdone[23]=1;
-                        }
-                      }
-                      else {
-                        liquidval_thread_23 = 0;//sysj\controller.sysj line: 252, column: 3
-                        S2477=0;
-                        active[23]=1;
-                        ends[23]=1;
-                        tdone[23]=1;
-                      }
+                      fifo_thread_23.add(liquidval_thread_23);//sysj\controller.sysj line: 281, column: 6
+                      System.out.println(liquidval_thread_23);//sysj\controller.sysj line: 282, column: 6
+                      active[23]=1;
+                      ends[23]=1;
+                      tdone[23]=1;
                     }
                   }
                 }
               }
               else {
-                kill1_22.setPresent();//sysj\controller.sysj line: 260, column: 6
+                kill1_22.setPresent();//sysj\controller.sysj line: 266, column: 6
                 currsigs.addElement(kill1_22);
-                System.out.println("Emitted kill1_22");
-                if(liq2_22.getprestatus()){//sysj\controller.sysj line: 261, column: 15
-                  liquidval_thread_23 += 2;//sysj\controller.sysj line: 263, column: 7
-                  kill2_22.setPresent();//sysj\controller.sysj line: 265, column: 6
+                if(liquid2.getprestatus()){//sysj\controller.sysj line: 267, column: 15
+                  liquidval_thread_23 += 2;//sysj\controller.sysj line: 269, column: 7
+                  kill2_22.setPresent();//sysj\controller.sysj line: 271, column: 6
                   currsigs.addElement(kill2_22);
-                  System.out.println("Emitted kill2_22");
-                  if(liq3_22.getprestatus()){//sysj\controller.sysj line: 266, column: 15
-                    liquidval_thread_23 += 4;//sysj\controller.sysj line: 267, column: 7
-                    kill3_22.setPresent();//sysj\controller.sysj line: 269, column: 6
+                  if(liquid3.getprestatus()){//sysj\controller.sysj line: 272, column: 15
+                    liquidval_thread_23 += 4;//sysj\controller.sysj line: 273, column: 7
+                    kill3_22.setPresent();//sysj\controller.sysj line: 275, column: 6
                     currsigs.addElement(kill3_22);
-                    System.out.println("Emitted kill3_22");
-                    if(liq4_22.getprestatus()){//sysj\controller.sysj line: 270, column: 15
-                      liquidval_thread_23 += 8;//sysj\controller.sysj line: 272, column: 7
-                      kill4_22.setPresent();//sysj\controller.sysj line: 274, column: 6
+                    if(liquid4.getprestatus()){//sysj\controller.sysj line: 276, column: 15
+                      liquidval_thread_23 += 8;//sysj\controller.sysj line: 278, column: 7
+                      kill4_22.setPresent();//sysj\controller.sysj line: 280, column: 6
                       currsigs.addElement(kill4_22);
-                      System.out.println("Emitted kill4_22");
-                      fifo_thread_23.add(liquidval_thread_23);//sysj\controller.sysj line: 275, column: 6
-                      System.out.println(liquidval_thread_23);//sysj\controller.sysj line: 276, column: 6
-                      S2477=1;
-                      if(requestliquid.getprestatus()){//sysj\controller.sysj line: 278, column: 12
-                        if(!fifo_thread_23.isEmpty()){//sysj\controller.sysj line: 279, column: 8
-                          System.out.println("picked fifo");//sysj\controller.sysj line: 280, column: 6
-                          integer1_thread_23 = fifo_thread_23.poll();//sysj\controller.sysj line: 281, column: 6
-                          sentliquid.setPresent();//sysj\controller.sysj line: 282, column: 6
-                          currsigs.addElement(sentliquid);
-                          System.out.println("Emitted sentliquid");
-                          S2525=0;
-                          if(!liquidBuffer_o.isPartnerPresent() || liquidBuffer_o.isPartnerPreempted()){//sysj\controller.sysj line: 283, column: 6
-                            liquidBuffer_o.setREQ(false);//sysj\controller.sysj line: 283, column: 6
-                            S2525=1;
-                            active[23]=1;
-                            ends[23]=1;
-                            tdone[23]=1;
-                          }
-                          else {
-                            S2520=0;
-                            if(liquidBuffer_o.isACK()){//sysj\controller.sysj line: 283, column: 6
-                              liquidBuffer_o.setVal(integer1_thread_23);//sysj\controller.sysj line: 283, column: 6
-                              S2520=1;
-                              if(!liquidBuffer_o.isACK()){//sysj\controller.sysj line: 283, column: 6
-                                liquidBuffer_o.setREQ(false);//sysj\controller.sysj line: 283, column: 6
-                                ends[23]=2;
-                                ;//sysj\controller.sysj line: 283, column: 6
-                                System.out.println(integer1_thread_23);//sysj\controller.sysj line: 284, column: 6
-                                liquidval_thread_23 = 0;//sysj\controller.sysj line: 252, column: 3
-                                S2477=0;
-                                active[23]=1;
-                                ends[23]=1;
-                                tdone[23]=1;
-                              }
-                              else {
-                                active[23]=1;
-                                ends[23]=1;
-                                tdone[23]=1;
-                              }
-                            }
-                            else {
-                              active[23]=1;
-                              ends[23]=1;
-                              tdone[23]=1;
-                            }
-                          }
-                        }
-                        else {
-                          liquidval_thread_23 = 0;//sysj\controller.sysj line: 252, column: 3
-                          S2477=0;
-                          active[23]=1;
-                          ends[23]=1;
-                          tdone[23]=1;
-                        }
-                      }
-                      else {
-                        liquidval_thread_23 = 0;//sysj\controller.sysj line: 252, column: 3
-                        S2477=0;
-                        active[23]=1;
-                        ends[23]=1;
-                        tdone[23]=1;
-                      }
+                      fifo_thread_23.add(liquidval_thread_23);//sysj\controller.sysj line: 281, column: 6
+                      System.out.println(liquidval_thread_23);//sysj\controller.sysj line: 282, column: 6
+                      active[23]=1;
+                      ends[23]=1;
+                      tdone[23]=1;
                     }
                     else {
-                      kill4_22.setPresent();//sysj\controller.sysj line: 274, column: 6
+                      kill4_22.setPresent();//sysj\controller.sysj line: 280, column: 6
                       currsigs.addElement(kill4_22);
-                      System.out.println("Emitted kill4_22");
-                      fifo_thread_23.add(liquidval_thread_23);//sysj\controller.sysj line: 275, column: 6
-                      System.out.println(liquidval_thread_23);//sysj\controller.sysj line: 276, column: 6
-                      S2477=1;
-                      if(requestliquid.getprestatus()){//sysj\controller.sysj line: 278, column: 12
-                        if(!fifo_thread_23.isEmpty()){//sysj\controller.sysj line: 279, column: 8
-                          System.out.println("picked fifo");//sysj\controller.sysj line: 280, column: 6
-                          integer1_thread_23 = fifo_thread_23.poll();//sysj\controller.sysj line: 281, column: 6
-                          sentliquid.setPresent();//sysj\controller.sysj line: 282, column: 6
-                          currsigs.addElement(sentliquid);
-                          System.out.println("Emitted sentliquid");
-                          S2525=0;
-                          if(!liquidBuffer_o.isPartnerPresent() || liquidBuffer_o.isPartnerPreempted()){//sysj\controller.sysj line: 283, column: 6
-                            liquidBuffer_o.setREQ(false);//sysj\controller.sysj line: 283, column: 6
-                            S2525=1;
-                            active[23]=1;
-                            ends[23]=1;
-                            tdone[23]=1;
-                          }
-                          else {
-                            S2520=0;
-                            if(liquidBuffer_o.isACK()){//sysj\controller.sysj line: 283, column: 6
-                              liquidBuffer_o.setVal(integer1_thread_23);//sysj\controller.sysj line: 283, column: 6
-                              S2520=1;
-                              if(!liquidBuffer_o.isACK()){//sysj\controller.sysj line: 283, column: 6
-                                liquidBuffer_o.setREQ(false);//sysj\controller.sysj line: 283, column: 6
-                                ends[23]=2;
-                                ;//sysj\controller.sysj line: 283, column: 6
-                                System.out.println(integer1_thread_23);//sysj\controller.sysj line: 284, column: 6
-                                liquidval_thread_23 = 0;//sysj\controller.sysj line: 252, column: 3
-                                S2477=0;
-                                active[23]=1;
-                                ends[23]=1;
-                                tdone[23]=1;
-                              }
-                              else {
-                                active[23]=1;
-                                ends[23]=1;
-                                tdone[23]=1;
-                              }
-                            }
-                            else {
-                              active[23]=1;
-                              ends[23]=1;
-                              tdone[23]=1;
-                            }
-                          }
-                        }
-                        else {
-                          liquidval_thread_23 = 0;//sysj\controller.sysj line: 252, column: 3
-                          S2477=0;
-                          active[23]=1;
-                          ends[23]=1;
-                          tdone[23]=1;
-                        }
-                      }
-                      else {
-                        liquidval_thread_23 = 0;//sysj\controller.sysj line: 252, column: 3
-                        S2477=0;
-                        active[23]=1;
-                        ends[23]=1;
-                        tdone[23]=1;
-                      }
+                      fifo_thread_23.add(liquidval_thread_23);//sysj\controller.sysj line: 281, column: 6
+                      System.out.println(liquidval_thread_23);//sysj\controller.sysj line: 282, column: 6
+                      active[23]=1;
+                      ends[23]=1;
+                      tdone[23]=1;
                     }
                   }
                   else {
-                    kill3_22.setPresent();//sysj\controller.sysj line: 269, column: 6
+                    kill3_22.setPresent();//sysj\controller.sysj line: 275, column: 6
                     currsigs.addElement(kill3_22);
-                    System.out.println("Emitted kill3_22");
-                    if(liq4_22.getprestatus()){//sysj\controller.sysj line: 270, column: 15
-                      liquidval_thread_23 += 8;//sysj\controller.sysj line: 272, column: 7
-                      kill4_22.setPresent();//sysj\controller.sysj line: 274, column: 6
+                    if(liquid4.getprestatus()){//sysj\controller.sysj line: 276, column: 15
+                      liquidval_thread_23 += 8;//sysj\controller.sysj line: 278, column: 7
+                      kill4_22.setPresent();//sysj\controller.sysj line: 280, column: 6
                       currsigs.addElement(kill4_22);
-                      System.out.println("Emitted kill4_22");
-                      fifo_thread_23.add(liquidval_thread_23);//sysj\controller.sysj line: 275, column: 6
-                      System.out.println(liquidval_thread_23);//sysj\controller.sysj line: 276, column: 6
-                      S2477=1;
-                      if(requestliquid.getprestatus()){//sysj\controller.sysj line: 278, column: 12
-                        if(!fifo_thread_23.isEmpty()){//sysj\controller.sysj line: 279, column: 8
-                          System.out.println("picked fifo");//sysj\controller.sysj line: 280, column: 6
-                          integer1_thread_23 = fifo_thread_23.poll();//sysj\controller.sysj line: 281, column: 6
-                          sentliquid.setPresent();//sysj\controller.sysj line: 282, column: 6
-                          currsigs.addElement(sentliquid);
-                          System.out.println("Emitted sentliquid");
-                          S2525=0;
-                          if(!liquidBuffer_o.isPartnerPresent() || liquidBuffer_o.isPartnerPreempted()){//sysj\controller.sysj line: 283, column: 6
-                            liquidBuffer_o.setREQ(false);//sysj\controller.sysj line: 283, column: 6
-                            S2525=1;
-                            active[23]=1;
-                            ends[23]=1;
-                            tdone[23]=1;
-                          }
-                          else {
-                            S2520=0;
-                            if(liquidBuffer_o.isACK()){//sysj\controller.sysj line: 283, column: 6
-                              liquidBuffer_o.setVal(integer1_thread_23);//sysj\controller.sysj line: 283, column: 6
-                              S2520=1;
-                              if(!liquidBuffer_o.isACK()){//sysj\controller.sysj line: 283, column: 6
-                                liquidBuffer_o.setREQ(false);//sysj\controller.sysj line: 283, column: 6
-                                ends[23]=2;
-                                ;//sysj\controller.sysj line: 283, column: 6
-                                System.out.println(integer1_thread_23);//sysj\controller.sysj line: 284, column: 6
-                                liquidval_thread_23 = 0;//sysj\controller.sysj line: 252, column: 3
-                                S2477=0;
-                                active[23]=1;
-                                ends[23]=1;
-                                tdone[23]=1;
-                              }
-                              else {
-                                active[23]=1;
-                                ends[23]=1;
-                                tdone[23]=1;
-                              }
-                            }
-                            else {
-                              active[23]=1;
-                              ends[23]=1;
-                              tdone[23]=1;
-                            }
-                          }
-                        }
-                        else {
-                          liquidval_thread_23 = 0;//sysj\controller.sysj line: 252, column: 3
-                          S2477=0;
-                          active[23]=1;
-                          ends[23]=1;
-                          tdone[23]=1;
-                        }
-                      }
-                      else {
-                        liquidval_thread_23 = 0;//sysj\controller.sysj line: 252, column: 3
-                        S2477=0;
-                        active[23]=1;
-                        ends[23]=1;
-                        tdone[23]=1;
-                      }
+                      fifo_thread_23.add(liquidval_thread_23);//sysj\controller.sysj line: 281, column: 6
+                      System.out.println(liquidval_thread_23);//sysj\controller.sysj line: 282, column: 6
+                      active[23]=1;
+                      ends[23]=1;
+                      tdone[23]=1;
                     }
                     else {
-                      kill4_22.setPresent();//sysj\controller.sysj line: 274, column: 6
+                      kill4_22.setPresent();//sysj\controller.sysj line: 280, column: 6
                       currsigs.addElement(kill4_22);
-                      System.out.println("Emitted kill4_22");
-                      fifo_thread_23.add(liquidval_thread_23);//sysj\controller.sysj line: 275, column: 6
-                      System.out.println(liquidval_thread_23);//sysj\controller.sysj line: 276, column: 6
-                      S2477=1;
-                      if(requestliquid.getprestatus()){//sysj\controller.sysj line: 278, column: 12
-                        if(!fifo_thread_23.isEmpty()){//sysj\controller.sysj line: 279, column: 8
-                          System.out.println("picked fifo");//sysj\controller.sysj line: 280, column: 6
-                          integer1_thread_23 = fifo_thread_23.poll();//sysj\controller.sysj line: 281, column: 6
-                          sentliquid.setPresent();//sysj\controller.sysj line: 282, column: 6
-                          currsigs.addElement(sentliquid);
-                          System.out.println("Emitted sentliquid");
-                          S2525=0;
-                          if(!liquidBuffer_o.isPartnerPresent() || liquidBuffer_o.isPartnerPreempted()){//sysj\controller.sysj line: 283, column: 6
-                            liquidBuffer_o.setREQ(false);//sysj\controller.sysj line: 283, column: 6
-                            S2525=1;
-                            active[23]=1;
-                            ends[23]=1;
-                            tdone[23]=1;
-                          }
-                          else {
-                            S2520=0;
-                            if(liquidBuffer_o.isACK()){//sysj\controller.sysj line: 283, column: 6
-                              liquidBuffer_o.setVal(integer1_thread_23);//sysj\controller.sysj line: 283, column: 6
-                              S2520=1;
-                              if(!liquidBuffer_o.isACK()){//sysj\controller.sysj line: 283, column: 6
-                                liquidBuffer_o.setREQ(false);//sysj\controller.sysj line: 283, column: 6
-                                ends[23]=2;
-                                ;//sysj\controller.sysj line: 283, column: 6
-                                System.out.println(integer1_thread_23);//sysj\controller.sysj line: 284, column: 6
-                                liquidval_thread_23 = 0;//sysj\controller.sysj line: 252, column: 3
-                                S2477=0;
-                                active[23]=1;
-                                ends[23]=1;
-                                tdone[23]=1;
-                              }
-                              else {
-                                active[23]=1;
-                                ends[23]=1;
-                                tdone[23]=1;
-                              }
-                            }
-                            else {
-                              active[23]=1;
-                              ends[23]=1;
-                              tdone[23]=1;
-                            }
-                          }
-                        }
-                        else {
-                          liquidval_thread_23 = 0;//sysj\controller.sysj line: 252, column: 3
-                          S2477=0;
-                          active[23]=1;
-                          ends[23]=1;
-                          tdone[23]=1;
-                        }
-                      }
-                      else {
-                        liquidval_thread_23 = 0;//sysj\controller.sysj line: 252, column: 3
-                        S2477=0;
-                        active[23]=1;
-                        ends[23]=1;
-                        tdone[23]=1;
-                      }
+                      fifo_thread_23.add(liquidval_thread_23);//sysj\controller.sysj line: 281, column: 6
+                      System.out.println(liquidval_thread_23);//sysj\controller.sysj line: 282, column: 6
+                      active[23]=1;
+                      ends[23]=1;
+                      tdone[23]=1;
                     }
                   }
                 }
                 else {
-                  kill2_22.setPresent();//sysj\controller.sysj line: 265, column: 6
+                  kill2_22.setPresent();//sysj\controller.sysj line: 271, column: 6
                   currsigs.addElement(kill2_22);
-                  System.out.println("Emitted kill2_22");
-                  if(liq3_22.getprestatus()){//sysj\controller.sysj line: 266, column: 15
-                    liquidval_thread_23 += 4;//sysj\controller.sysj line: 267, column: 7
-                    kill3_22.setPresent();//sysj\controller.sysj line: 269, column: 6
+                  if(liquid3.getprestatus()){//sysj\controller.sysj line: 272, column: 15
+                    liquidval_thread_23 += 4;//sysj\controller.sysj line: 273, column: 7
+                    kill3_22.setPresent();//sysj\controller.sysj line: 275, column: 6
                     currsigs.addElement(kill3_22);
-                    System.out.println("Emitted kill3_22");
-                    if(liq4_22.getprestatus()){//sysj\controller.sysj line: 270, column: 15
-                      liquidval_thread_23 += 8;//sysj\controller.sysj line: 272, column: 7
-                      kill4_22.setPresent();//sysj\controller.sysj line: 274, column: 6
+                    if(liquid4.getprestatus()){//sysj\controller.sysj line: 276, column: 15
+                      liquidval_thread_23 += 8;//sysj\controller.sysj line: 278, column: 7
+                      kill4_22.setPresent();//sysj\controller.sysj line: 280, column: 6
                       currsigs.addElement(kill4_22);
-                      System.out.println("Emitted kill4_22");
-                      fifo_thread_23.add(liquidval_thread_23);//sysj\controller.sysj line: 275, column: 6
-                      System.out.println(liquidval_thread_23);//sysj\controller.sysj line: 276, column: 6
-                      S2477=1;
-                      if(requestliquid.getprestatus()){//sysj\controller.sysj line: 278, column: 12
-                        if(!fifo_thread_23.isEmpty()){//sysj\controller.sysj line: 279, column: 8
-                          System.out.println("picked fifo");//sysj\controller.sysj line: 280, column: 6
-                          integer1_thread_23 = fifo_thread_23.poll();//sysj\controller.sysj line: 281, column: 6
-                          sentliquid.setPresent();//sysj\controller.sysj line: 282, column: 6
-                          currsigs.addElement(sentliquid);
-                          System.out.println("Emitted sentliquid");
-                          S2525=0;
-                          if(!liquidBuffer_o.isPartnerPresent() || liquidBuffer_o.isPartnerPreempted()){//sysj\controller.sysj line: 283, column: 6
-                            liquidBuffer_o.setREQ(false);//sysj\controller.sysj line: 283, column: 6
-                            S2525=1;
-                            active[23]=1;
-                            ends[23]=1;
-                            tdone[23]=1;
-                          }
-                          else {
-                            S2520=0;
-                            if(liquidBuffer_o.isACK()){//sysj\controller.sysj line: 283, column: 6
-                              liquidBuffer_o.setVal(integer1_thread_23);//sysj\controller.sysj line: 283, column: 6
-                              S2520=1;
-                              if(!liquidBuffer_o.isACK()){//sysj\controller.sysj line: 283, column: 6
-                                liquidBuffer_o.setREQ(false);//sysj\controller.sysj line: 283, column: 6
-                                ends[23]=2;
-                                ;//sysj\controller.sysj line: 283, column: 6
-                                System.out.println(integer1_thread_23);//sysj\controller.sysj line: 284, column: 6
-                                liquidval_thread_23 = 0;//sysj\controller.sysj line: 252, column: 3
-                                S2477=0;
-                                active[23]=1;
-                                ends[23]=1;
-                                tdone[23]=1;
-                              }
-                              else {
-                                active[23]=1;
-                                ends[23]=1;
-                                tdone[23]=1;
-                              }
-                            }
-                            else {
-                              active[23]=1;
-                              ends[23]=1;
-                              tdone[23]=1;
-                            }
-                          }
-                        }
-                        else {
-                          liquidval_thread_23 = 0;//sysj\controller.sysj line: 252, column: 3
-                          S2477=0;
-                          active[23]=1;
-                          ends[23]=1;
-                          tdone[23]=1;
-                        }
-                      }
-                      else {
-                        liquidval_thread_23 = 0;//sysj\controller.sysj line: 252, column: 3
-                        S2477=0;
-                        active[23]=1;
-                        ends[23]=1;
-                        tdone[23]=1;
-                      }
+                      fifo_thread_23.add(liquidval_thread_23);//sysj\controller.sysj line: 281, column: 6
+                      System.out.println(liquidval_thread_23);//sysj\controller.sysj line: 282, column: 6
+                      active[23]=1;
+                      ends[23]=1;
+                      tdone[23]=1;
                     }
                     else {
-                      kill4_22.setPresent();//sysj\controller.sysj line: 274, column: 6
+                      kill4_22.setPresent();//sysj\controller.sysj line: 280, column: 6
                       currsigs.addElement(kill4_22);
-                      System.out.println("Emitted kill4_22");
-                      fifo_thread_23.add(liquidval_thread_23);//sysj\controller.sysj line: 275, column: 6
-                      System.out.println(liquidval_thread_23);//sysj\controller.sysj line: 276, column: 6
-                      S2477=1;
-                      if(requestliquid.getprestatus()){//sysj\controller.sysj line: 278, column: 12
-                        if(!fifo_thread_23.isEmpty()){//sysj\controller.sysj line: 279, column: 8
-                          System.out.println("picked fifo");//sysj\controller.sysj line: 280, column: 6
-                          integer1_thread_23 = fifo_thread_23.poll();//sysj\controller.sysj line: 281, column: 6
-                          sentliquid.setPresent();//sysj\controller.sysj line: 282, column: 6
-                          currsigs.addElement(sentliquid);
-                          System.out.println("Emitted sentliquid");
-                          S2525=0;
-                          if(!liquidBuffer_o.isPartnerPresent() || liquidBuffer_o.isPartnerPreempted()){//sysj\controller.sysj line: 283, column: 6
-                            liquidBuffer_o.setREQ(false);//sysj\controller.sysj line: 283, column: 6
-                            S2525=1;
-                            active[23]=1;
-                            ends[23]=1;
-                            tdone[23]=1;
-                          }
-                          else {
-                            S2520=0;
-                            if(liquidBuffer_o.isACK()){//sysj\controller.sysj line: 283, column: 6
-                              liquidBuffer_o.setVal(integer1_thread_23);//sysj\controller.sysj line: 283, column: 6
-                              S2520=1;
-                              if(!liquidBuffer_o.isACK()){//sysj\controller.sysj line: 283, column: 6
-                                liquidBuffer_o.setREQ(false);//sysj\controller.sysj line: 283, column: 6
-                                ends[23]=2;
-                                ;//sysj\controller.sysj line: 283, column: 6
-                                System.out.println(integer1_thread_23);//sysj\controller.sysj line: 284, column: 6
-                                liquidval_thread_23 = 0;//sysj\controller.sysj line: 252, column: 3
-                                S2477=0;
-                                active[23]=1;
-                                ends[23]=1;
-                                tdone[23]=1;
-                              }
-                              else {
-                                active[23]=1;
-                                ends[23]=1;
-                                tdone[23]=1;
-                              }
-                            }
-                            else {
-                              active[23]=1;
-                              ends[23]=1;
-                              tdone[23]=1;
-                            }
-                          }
-                        }
-                        else {
-                          liquidval_thread_23 = 0;//sysj\controller.sysj line: 252, column: 3
-                          S2477=0;
-                          active[23]=1;
-                          ends[23]=1;
-                          tdone[23]=1;
-                        }
-                      }
-                      else {
-                        liquidval_thread_23 = 0;//sysj\controller.sysj line: 252, column: 3
-                        S2477=0;
-                        active[23]=1;
-                        ends[23]=1;
-                        tdone[23]=1;
-                      }
+                      fifo_thread_23.add(liquidval_thread_23);//sysj\controller.sysj line: 281, column: 6
+                      System.out.println(liquidval_thread_23);//sysj\controller.sysj line: 282, column: 6
+                      active[23]=1;
+                      ends[23]=1;
+                      tdone[23]=1;
                     }
                   }
                   else {
-                    kill3_22.setPresent();//sysj\controller.sysj line: 269, column: 6
+                    kill3_22.setPresent();//sysj\controller.sysj line: 275, column: 6
                     currsigs.addElement(kill3_22);
-                    System.out.println("Emitted kill3_22");
-                    if(liq4_22.getprestatus()){//sysj\controller.sysj line: 270, column: 15
-                      liquidval_thread_23 += 8;//sysj\controller.sysj line: 272, column: 7
-                      kill4_22.setPresent();//sysj\controller.sysj line: 274, column: 6
+                    if(liquid4.getprestatus()){//sysj\controller.sysj line: 276, column: 15
+                      liquidval_thread_23 += 8;//sysj\controller.sysj line: 278, column: 7
+                      kill4_22.setPresent();//sysj\controller.sysj line: 280, column: 6
                       currsigs.addElement(kill4_22);
-                      System.out.println("Emitted kill4_22");
-                      fifo_thread_23.add(liquidval_thread_23);//sysj\controller.sysj line: 275, column: 6
-                      System.out.println(liquidval_thread_23);//sysj\controller.sysj line: 276, column: 6
-                      S2477=1;
-                      if(requestliquid.getprestatus()){//sysj\controller.sysj line: 278, column: 12
-                        if(!fifo_thread_23.isEmpty()){//sysj\controller.sysj line: 279, column: 8
-                          System.out.println("picked fifo");//sysj\controller.sysj line: 280, column: 6
-                          integer1_thread_23 = fifo_thread_23.poll();//sysj\controller.sysj line: 281, column: 6
-                          sentliquid.setPresent();//sysj\controller.sysj line: 282, column: 6
-                          currsigs.addElement(sentliquid);
-                          System.out.println("Emitted sentliquid");
-                          S2525=0;
-                          if(!liquidBuffer_o.isPartnerPresent() || liquidBuffer_o.isPartnerPreempted()){//sysj\controller.sysj line: 283, column: 6
-                            liquidBuffer_o.setREQ(false);//sysj\controller.sysj line: 283, column: 6
-                            S2525=1;
-                            active[23]=1;
-                            ends[23]=1;
-                            tdone[23]=1;
-                          }
-                          else {
-                            S2520=0;
-                            if(liquidBuffer_o.isACK()){//sysj\controller.sysj line: 283, column: 6
-                              liquidBuffer_o.setVal(integer1_thread_23);//sysj\controller.sysj line: 283, column: 6
-                              S2520=1;
-                              if(!liquidBuffer_o.isACK()){//sysj\controller.sysj line: 283, column: 6
-                                liquidBuffer_o.setREQ(false);//sysj\controller.sysj line: 283, column: 6
-                                ends[23]=2;
-                                ;//sysj\controller.sysj line: 283, column: 6
-                                System.out.println(integer1_thread_23);//sysj\controller.sysj line: 284, column: 6
-                                liquidval_thread_23 = 0;//sysj\controller.sysj line: 252, column: 3
-                                S2477=0;
-                                active[23]=1;
-                                ends[23]=1;
-                                tdone[23]=1;
-                              }
-                              else {
-                                active[23]=1;
-                                ends[23]=1;
-                                tdone[23]=1;
-                              }
-                            }
-                            else {
-                              active[23]=1;
-                              ends[23]=1;
-                              tdone[23]=1;
-                            }
-                          }
-                        }
-                        else {
-                          liquidval_thread_23 = 0;//sysj\controller.sysj line: 252, column: 3
-                          S2477=0;
-                          active[23]=1;
-                          ends[23]=1;
-                          tdone[23]=1;
-                        }
-                      }
-                      else {
-                        liquidval_thread_23 = 0;//sysj\controller.sysj line: 252, column: 3
-                        S2477=0;
-                        active[23]=1;
-                        ends[23]=1;
-                        tdone[23]=1;
-                      }
+                      fifo_thread_23.add(liquidval_thread_23);//sysj\controller.sysj line: 281, column: 6
+                      System.out.println(liquidval_thread_23);//sysj\controller.sysj line: 282, column: 6
+                      active[23]=1;
+                      ends[23]=1;
+                      tdone[23]=1;
                     }
                     else {
-                      kill4_22.setPresent();//sysj\controller.sysj line: 274, column: 6
+                      kill4_22.setPresent();//sysj\controller.sysj line: 280, column: 6
                       currsigs.addElement(kill4_22);
-                      System.out.println("Emitted kill4_22");
-                      fifo_thread_23.add(liquidval_thread_23);//sysj\controller.sysj line: 275, column: 6
-                      System.out.println(liquidval_thread_23);//sysj\controller.sysj line: 276, column: 6
-                      S2477=1;
-                      if(requestliquid.getprestatus()){//sysj\controller.sysj line: 278, column: 12
-                        if(!fifo_thread_23.isEmpty()){//sysj\controller.sysj line: 279, column: 8
-                          System.out.println("picked fifo");//sysj\controller.sysj line: 280, column: 6
-                          integer1_thread_23 = fifo_thread_23.poll();//sysj\controller.sysj line: 281, column: 6
-                          sentliquid.setPresent();//sysj\controller.sysj line: 282, column: 6
-                          currsigs.addElement(sentliquid);
-                          System.out.println("Emitted sentliquid");
-                          S2525=0;
-                          if(!liquidBuffer_o.isPartnerPresent() || liquidBuffer_o.isPartnerPreempted()){//sysj\controller.sysj line: 283, column: 6
-                            liquidBuffer_o.setREQ(false);//sysj\controller.sysj line: 283, column: 6
-                            S2525=1;
-                            active[23]=1;
-                            ends[23]=1;
-                            tdone[23]=1;
-                          }
-                          else {
-                            S2520=0;
-                            if(liquidBuffer_o.isACK()){//sysj\controller.sysj line: 283, column: 6
-                              liquidBuffer_o.setVal(integer1_thread_23);//sysj\controller.sysj line: 283, column: 6
-                              S2520=1;
-                              if(!liquidBuffer_o.isACK()){//sysj\controller.sysj line: 283, column: 6
-                                liquidBuffer_o.setREQ(false);//sysj\controller.sysj line: 283, column: 6
-                                ends[23]=2;
-                                ;//sysj\controller.sysj line: 283, column: 6
-                                System.out.println(integer1_thread_23);//sysj\controller.sysj line: 284, column: 6
-                                liquidval_thread_23 = 0;//sysj\controller.sysj line: 252, column: 3
-                                S2477=0;
-                                active[23]=1;
-                                ends[23]=1;
-                                tdone[23]=1;
-                              }
-                              else {
-                                active[23]=1;
-                                ends[23]=1;
-                                tdone[23]=1;
-                              }
-                            }
-                            else {
-                              active[23]=1;
-                              ends[23]=1;
-                              tdone[23]=1;
-                            }
-                          }
-                        }
-                        else {
-                          liquidval_thread_23 = 0;//sysj\controller.sysj line: 252, column: 3
-                          S2477=0;
-                          active[23]=1;
-                          ends[23]=1;
-                          tdone[23]=1;
-                        }
-                      }
-                      else {
-                        liquidval_thread_23 = 0;//sysj\controller.sysj line: 252, column: 3
-                        S2477=0;
-                        active[23]=1;
-                        ends[23]=1;
-                        tdone[23]=1;
-                      }
+                      fifo_thread_23.add(liquidval_thread_23);//sysj\controller.sysj line: 281, column: 6
+                      System.out.println(liquidval_thread_23);//sysj\controller.sysj line: 282, column: 6
+                      active[23]=1;
+                      ends[23]=1;
+                      tdone[23]=1;
                     }
                   }
                 }
               }
             }
             else {
-              S2477=1;
-              if(requestliquid.getprestatus()){//sysj\controller.sysj line: 278, column: 12
-                if(!fifo_thread_23.isEmpty()){//sysj\controller.sysj line: 279, column: 8
-                  System.out.println("picked fifo");//sysj\controller.sysj line: 280, column: 6
-                  integer1_thread_23 = fifo_thread_23.poll();//sysj\controller.sysj line: 281, column: 6
-                  sentliquid.setPresent();//sysj\controller.sysj line: 282, column: 6
+              S2616=2;
+              if(requestliquid.getprestatus()){//sysj\controller.sysj line: 285, column: 12
+                if(!fifo_thread_23.isEmpty()){//sysj\controller.sysj line: 286, column: 8
+                  System.out.println("picked fifo");//sysj\controller.sysj line: 287, column: 6
+                  integer1_thread_23 = fifo_thread_23.poll();//sysj\controller.sysj line: 288, column: 6
+                  sentliquid.setPresent();//sysj\controller.sysj line: 289, column: 6
                   currsigs.addElement(sentliquid);
-                  System.out.println("Emitted sentliquid");
-                  S2525=0;
-                  if(!liquidBuffer_o.isPartnerPresent() || liquidBuffer_o.isPartnerPreempted()){//sysj\controller.sysj line: 283, column: 6
-                    liquidBuffer_o.setREQ(false);//sysj\controller.sysj line: 283, column: 6
-                    S2525=1;
+                  S2698=0;
+                  if(!liquidBuffer_o.isPartnerPresent() || liquidBuffer_o.isPartnerPreempted()){//sysj\controller.sysj line: 290, column: 6
+                    liquidBuffer_o.setREQ(false);//sysj\controller.sysj line: 290, column: 6
+                    S2698=1;
                     active[23]=1;
                     ends[23]=1;
                     tdone[23]=1;
                   }
                   else {
-                    S2520=0;
-                    if(liquidBuffer_o.isACK()){//sysj\controller.sysj line: 283, column: 6
-                      liquidBuffer_o.setVal(integer1_thread_23);//sysj\controller.sysj line: 283, column: 6
-                      S2520=1;
-                      if(!liquidBuffer_o.isACK()){//sysj\controller.sysj line: 283, column: 6
-                        liquidBuffer_o.setREQ(false);//sysj\controller.sysj line: 283, column: 6
+                    S2693=0;
+                    if(liquidBuffer_o.isACK()){//sysj\controller.sysj line: 290, column: 6
+                      liquidBuffer_o.setVal(integer1_thread_23);//sysj\controller.sysj line: 290, column: 6
+                      S2693=1;
+                      if(!liquidBuffer_o.isACK()){//sysj\controller.sysj line: 290, column: 6
+                        liquidBuffer_o.setREQ(false);//sysj\controller.sysj line: 290, column: 6
                         ends[23]=2;
-                        ;//sysj\controller.sysj line: 283, column: 6
-                        System.out.println(integer1_thread_23);//sysj\controller.sysj line: 284, column: 6
-                        liquidval_thread_23 = 0;//sysj\controller.sysj line: 252, column: 3
-                        S2477=0;
+                        ;//sysj\controller.sysj line: 290, column: 6
+                        System.out.println(integer1_thread_23);//sysj\controller.sysj line: 291, column: 6
+                        liquidval_thread_23 = 0;//sysj\controller.sysj line: 259, column: 3
+                        S2616=0;
                         active[23]=1;
                         ends[23]=1;
                         tdone[23]=1;
@@ -1474,16 +524,16 @@ public class GUIReader extends ClockDomain{
                   }
                 }
                 else {
-                  liquidval_thread_23 = 0;//sysj\controller.sysj line: 252, column: 3
-                  S2477=0;
+                  liquidval_thread_23 = 0;//sysj\controller.sysj line: 259, column: 3
+                  S2616=0;
                   active[23]=1;
                   ends[23]=1;
                   tdone[23]=1;
                 }
               }
               else {
-                liquidval_thread_23 = 0;//sysj\controller.sysj line: 252, column: 3
-                S2477=0;
+                liquidval_thread_23 = 0;//sysj\controller.sysj line: 259, column: 3
+                S2616=0;
                 active[23]=1;
                 ends[23]=1;
                 tdone[23]=1;
@@ -1492,28 +542,97 @@ public class GUIReader extends ClockDomain{
             break;
           
           case 1 : 
-            switch(S2525){
+            if(!placeOrder.getprestatus()){//sysj\controller.sysj line: 283, column: 12
+              S2616=2;
+              if(requestliquid.getprestatus()){//sysj\controller.sysj line: 285, column: 12
+                if(!fifo_thread_23.isEmpty()){//sysj\controller.sysj line: 286, column: 8
+                  System.out.println("picked fifo");//sysj\controller.sysj line: 287, column: 6
+                  integer1_thread_23 = fifo_thread_23.poll();//sysj\controller.sysj line: 288, column: 6
+                  sentliquid.setPresent();//sysj\controller.sysj line: 289, column: 6
+                  currsigs.addElement(sentliquid);
+                  S2698=0;
+                  if(!liquidBuffer_o.isPartnerPresent() || liquidBuffer_o.isPartnerPreempted()){//sysj\controller.sysj line: 290, column: 6
+                    liquidBuffer_o.setREQ(false);//sysj\controller.sysj line: 290, column: 6
+                    S2698=1;
+                    active[23]=1;
+                    ends[23]=1;
+                    tdone[23]=1;
+                  }
+                  else {
+                    S2693=0;
+                    if(liquidBuffer_o.isACK()){//sysj\controller.sysj line: 290, column: 6
+                      liquidBuffer_o.setVal(integer1_thread_23);//sysj\controller.sysj line: 290, column: 6
+                      S2693=1;
+                      if(!liquidBuffer_o.isACK()){//sysj\controller.sysj line: 290, column: 6
+                        liquidBuffer_o.setREQ(false);//sysj\controller.sysj line: 290, column: 6
+                        ends[23]=2;
+                        ;//sysj\controller.sysj line: 290, column: 6
+                        System.out.println(integer1_thread_23);//sysj\controller.sysj line: 291, column: 6
+                        liquidval_thread_23 = 0;//sysj\controller.sysj line: 259, column: 3
+                        S2616=0;
+                        active[23]=1;
+                        ends[23]=1;
+                        tdone[23]=1;
+                      }
+                      else {
+                        active[23]=1;
+                        ends[23]=1;
+                        tdone[23]=1;
+                      }
+                    }
+                    else {
+                      active[23]=1;
+                      ends[23]=1;
+                      tdone[23]=1;
+                    }
+                  }
+                }
+                else {
+                  liquidval_thread_23 = 0;//sysj\controller.sysj line: 259, column: 3
+                  S2616=0;
+                  active[23]=1;
+                  ends[23]=1;
+                  tdone[23]=1;
+                }
+              }
+              else {
+                liquidval_thread_23 = 0;//sysj\controller.sysj line: 259, column: 3
+                S2616=0;
+                active[23]=1;
+                ends[23]=1;
+                tdone[23]=1;
+              }
+            }
+            else {
+              active[23]=1;
+              ends[23]=1;
+              tdone[23]=1;
+            }
+            break;
+          
+          case 2 : 
+            switch(S2698){
               case 0 : 
-                if(!liquidBuffer_o.isPartnerPresent() || liquidBuffer_o.isPartnerPreempted()){//sysj\controller.sysj line: 283, column: 6
-                  liquidBuffer_o.setREQ(false);//sysj\controller.sysj line: 283, column: 6
-                  S2525=1;
+                if(!liquidBuffer_o.isPartnerPresent() || liquidBuffer_o.isPartnerPreempted()){//sysj\controller.sysj line: 290, column: 6
+                  liquidBuffer_o.setREQ(false);//sysj\controller.sysj line: 290, column: 6
+                  S2698=1;
                   active[23]=1;
                   ends[23]=1;
                   tdone[23]=1;
                 }
                 else {
-                  switch(S2520){
+                  switch(S2693){
                     case 0 : 
-                      if(liquidBuffer_o.isACK()){//sysj\controller.sysj line: 283, column: 6
-                        liquidBuffer_o.setVal(integer1_thread_23);//sysj\controller.sysj line: 283, column: 6
-                        S2520=1;
-                        if(!liquidBuffer_o.isACK()){//sysj\controller.sysj line: 283, column: 6
-                          liquidBuffer_o.setREQ(false);//sysj\controller.sysj line: 283, column: 6
+                      if(liquidBuffer_o.isACK()){//sysj\controller.sysj line: 290, column: 6
+                        liquidBuffer_o.setVal(integer1_thread_23);//sysj\controller.sysj line: 290, column: 6
+                        S2693=1;
+                        if(!liquidBuffer_o.isACK()){//sysj\controller.sysj line: 290, column: 6
+                          liquidBuffer_o.setREQ(false);//sysj\controller.sysj line: 290, column: 6
                           ends[23]=2;
-                          ;//sysj\controller.sysj line: 283, column: 6
-                          System.out.println(integer1_thread_23);//sysj\controller.sysj line: 284, column: 6
-                          liquidval_thread_23 = 0;//sysj\controller.sysj line: 252, column: 3
-                          S2477=0;
+                          ;//sysj\controller.sysj line: 290, column: 6
+                          System.out.println(integer1_thread_23);//sysj\controller.sysj line: 291, column: 6
+                          liquidval_thread_23 = 0;//sysj\controller.sysj line: 259, column: 3
+                          S2616=0;
                           active[23]=1;
                           ends[23]=1;
                           tdone[23]=1;
@@ -1532,13 +651,13 @@ public class GUIReader extends ClockDomain{
                       break;
                     
                     case 1 : 
-                      if(!liquidBuffer_o.isACK()){//sysj\controller.sysj line: 283, column: 6
-                        liquidBuffer_o.setREQ(false);//sysj\controller.sysj line: 283, column: 6
+                      if(!liquidBuffer_o.isACK()){//sysj\controller.sysj line: 290, column: 6
+                        liquidBuffer_o.setREQ(false);//sysj\controller.sysj line: 290, column: 6
                         ends[23]=2;
-                        ;//sysj\controller.sysj line: 283, column: 6
-                        System.out.println(integer1_thread_23);//sysj\controller.sysj line: 284, column: 6
-                        liquidval_thread_23 = 0;//sysj\controller.sysj line: 252, column: 3
-                        S2477=0;
+                        ;//sysj\controller.sysj line: 290, column: 6
+                        System.out.println(integer1_thread_23);//sysj\controller.sysj line: 291, column: 6
+                        liquidval_thread_23 = 0;//sysj\controller.sysj line: 259, column: 3
+                        S2616=0;
                         active[23]=1;
                         ends[23]=1;
                         tdone[23]=1;
@@ -1555,27 +674,27 @@ public class GUIReader extends ClockDomain{
                 break;
               
               case 1 : 
-                S2525=1;
-                S2525=0;
-                if(!liquidBuffer_o.isPartnerPresent() || liquidBuffer_o.isPartnerPreempted()){//sysj\controller.sysj line: 283, column: 6
-                  liquidBuffer_o.setREQ(false);//sysj\controller.sysj line: 283, column: 6
-                  S2525=1;
+                S2698=1;
+                S2698=0;
+                if(!liquidBuffer_o.isPartnerPresent() || liquidBuffer_o.isPartnerPreempted()){//sysj\controller.sysj line: 290, column: 6
+                  liquidBuffer_o.setREQ(false);//sysj\controller.sysj line: 290, column: 6
+                  S2698=1;
                   active[23]=1;
                   ends[23]=1;
                   tdone[23]=1;
                 }
                 else {
-                  S2520=0;
-                  if(liquidBuffer_o.isACK()){//sysj\controller.sysj line: 283, column: 6
-                    liquidBuffer_o.setVal(integer1_thread_23);//sysj\controller.sysj line: 283, column: 6
-                    S2520=1;
-                    if(!liquidBuffer_o.isACK()){//sysj\controller.sysj line: 283, column: 6
-                      liquidBuffer_o.setREQ(false);//sysj\controller.sysj line: 283, column: 6
+                  S2693=0;
+                  if(liquidBuffer_o.isACK()){//sysj\controller.sysj line: 290, column: 6
+                    liquidBuffer_o.setVal(integer1_thread_23);//sysj\controller.sysj line: 290, column: 6
+                    S2693=1;
+                    if(!liquidBuffer_o.isACK()){//sysj\controller.sysj line: 290, column: 6
+                      liquidBuffer_o.setREQ(false);//sysj\controller.sysj line: 290, column: 6
                       ends[23]=2;
-                      ;//sysj\controller.sysj line: 283, column: 6
-                      System.out.println(integer1_thread_23);//sysj\controller.sysj line: 284, column: 6
-                      liquidval_thread_23 = 0;//sysj\controller.sysj line: 252, column: 3
-                      S2477=0;
+                      ;//sysj\controller.sysj line: 290, column: 6
+                      System.out.println(integer1_thread_23);//sysj\controller.sysj line: 291, column: 6
+                      liquidval_thread_23 = 0;//sysj\controller.sysj line: 259, column: 3
+                      S2616=0;
                       active[23]=1;
                       ends[23]=1;
                       tdone[23]=1;
@@ -1603,87 +722,83 @@ public class GUIReader extends ClockDomain{
     }
   }
 
-  public void thread100205(int [] tdone, int [] ends){
-        S100128=1;
-    S100114=0;
-    if(liquid4.getprestatus()){//sysj\controller.sysj line: 297, column: 24
-      liq4_22.setPresent();//sysj\controller.sysj line: 297, column: 46
+  public void thread7094(int [] tdone, int [] ends){
+        S7017=1;
+    S7003=0;
+    if(liquid4.getprestatus()){//sysj\controller.sysj line: 304, column: 24
+      liq4_22.setPresent();//sysj\controller.sysj line: 304, column: 46
       currsigs.addElement(liq4_22);
-      System.out.println("Emitted liq4_22");
       active[27]=1;
       ends[27]=1;
       tdone[27]=1;
     }
     else {
-      S100114=1;
+      S7003=1;
       active[27]=1;
       ends[27]=1;
       tdone[27]=1;
     }
   }
 
-  public void thread100204(int [] tdone, int [] ends){
-        S100108=1;
-    S100094=0;
-    if(liquid3.getprestatus()){//sysj\controller.sysj line: 295, column: 24
-      liq3_22.setPresent();//sysj\controller.sysj line: 295, column: 46
+  public void thread7093(int [] tdone, int [] ends){
+        S6997=1;
+    S6983=0;
+    if(liquid3.getprestatus()){//sysj\controller.sysj line: 302, column: 24
+      liq3_22.setPresent();//sysj\controller.sysj line: 302, column: 46
       currsigs.addElement(liq3_22);
-      System.out.println("Emitted liq3_22");
       active[26]=1;
       ends[26]=1;
       tdone[26]=1;
     }
     else {
-      S100094=1;
+      S6983=1;
       active[26]=1;
       ends[26]=1;
       tdone[26]=1;
     }
   }
 
-  public void thread100203(int [] tdone, int [] ends){
-        S100088=1;
-    S100074=0;
-    if(liquid2.getprestatus()){//sysj\controller.sysj line: 293, column: 24
-      liq2_22.setPresent();//sysj\controller.sysj line: 293, column: 46
+  public void thread7092(int [] tdone, int [] ends){
+        S6977=1;
+    S6963=0;
+    if(liquid2.getprestatus()){//sysj\controller.sysj line: 300, column: 24
+      liq2_22.setPresent();//sysj\controller.sysj line: 300, column: 46
       currsigs.addElement(liq2_22);
-      System.out.println("Emitted liq2_22");
       active[25]=1;
       ends[25]=1;
       tdone[25]=1;
     }
     else {
-      S100074=1;
+      S6963=1;
       active[25]=1;
       ends[25]=1;
       tdone[25]=1;
     }
   }
 
-  public void thread100202(int [] tdone, int [] ends){
-        S100068=1;
-    S100054=0;
-    if(liquid1.getprestatus()){//sysj\controller.sysj line: 291, column: 24
-      liq1_22.setPresent();//sysj\controller.sysj line: 291, column: 46
+  public void thread7091(int [] tdone, int [] ends){
+        S6957=1;
+    S6943=0;
+    if(liquid1.getprestatus()){//sysj\controller.sysj line: 298, column: 24
+      liq1_22.setPresent();//sysj\controller.sysj line: 298, column: 46
       currsigs.addElement(liq1_22);
-      System.out.println("Emitted liq1_22");
       active[24]=1;
       ends[24]=1;
       tdone[24]=1;
     }
     else {
-      S100054=1;
+      S6943=1;
       active[24]=1;
       ends[24]=1;
       tdone[24]=1;
     }
   }
 
-  public void thread100201(int [] tdone, int [] ends){
-        S100048=1;
-    fifo_thread_23 = new FIFO();//sysj\controller.sysj line: 250, column: 3
-    liquidval_thread_23 = 0;//sysj\controller.sysj line: 252, column: 3
-    S2477=0;
+  public void thread7090(int [] tdone, int [] ends){
+        S6937=1;
+    fifo_thread_23 = new FIFO();//sysj\controller.sysj line: 257, column: 3
+    liquidval_thread_23 = 0;//sysj\controller.sysj line: 259, column: 3
+    S2616=0;
     active[23]=1;
     ends[23]=1;
     tdone[23]=1;
@@ -1696,90 +811,90 @@ public class GUIReader extends ClockDomain{
     }
     
     RUN: while(true){
-      switch(S100130){
+      switch(S7019){
         case 0 : 
-          S100130=0;
+          S7019=0;
           break RUN;
         
         case 1 : 
-          S100130=2;
-          S100130=2;
-          liq1_22.setClear();//sysj\controller.sysj line: 234, column: 2
-          liq2_22.setClear();//sysj\controller.sysj line: 234, column: 2
-          liq3_22.setClear();//sysj\controller.sysj line: 234, column: 2
-          liq4_22.setClear();//sysj\controller.sysj line: 234, column: 2
-          kill1_22.setClear();//sysj\controller.sysj line: 235, column: 2
-          kill2_22.setClear();//sysj\controller.sysj line: 235, column: 2
-          kill3_22.setClear();//sysj\controller.sysj line: 235, column: 2
-          kill4_22.setClear();//sysj\controller.sysj line: 235, column: 2
-          thread100201(tdone,ends);
-          thread100202(tdone,ends);
-          thread100203(tdone,ends);
-          thread100204(tdone,ends);
-          thread100205(tdone,ends);
-          int biggest100206 = 0;
-          if(ends[23]>=biggest100206){
-            biggest100206=ends[23];
+          S7019=2;
+          S7019=2;
+          liq1_22.setClear();//sysj\controller.sysj line: 241, column: 2
+          liq2_22.setClear();//sysj\controller.sysj line: 241, column: 2
+          liq3_22.setClear();//sysj\controller.sysj line: 241, column: 2
+          liq4_22.setClear();//sysj\controller.sysj line: 241, column: 2
+          kill1_22.setClear();//sysj\controller.sysj line: 242, column: 2
+          kill2_22.setClear();//sysj\controller.sysj line: 242, column: 2
+          kill3_22.setClear();//sysj\controller.sysj line: 242, column: 2
+          kill4_22.setClear();//sysj\controller.sysj line: 242, column: 2
+          thread7090(tdone,ends);
+          thread7091(tdone,ends);
+          thread7092(tdone,ends);
+          thread7093(tdone,ends);
+          thread7094(tdone,ends);
+          int biggest7095 = 0;
+          if(ends[23]>=biggest7095){
+            biggest7095=ends[23];
           }
-          if(ends[24]>=biggest100206){
-            biggest100206=ends[24];
+          if(ends[24]>=biggest7095){
+            biggest7095=ends[24];
           }
-          if(ends[25]>=biggest100206){
-            biggest100206=ends[25];
+          if(ends[25]>=biggest7095){
+            biggest7095=ends[25];
           }
-          if(ends[26]>=biggest100206){
-            biggest100206=ends[26];
+          if(ends[26]>=biggest7095){
+            biggest7095=ends[26];
           }
-          if(ends[27]>=biggest100206){
-            biggest100206=ends[27];
+          if(ends[27]>=biggest7095){
+            biggest7095=ends[27];
           }
-          if(biggest100206 == 1){
+          if(biggest7095 == 1){
             active[22]=1;
             ends[22]=1;
             break RUN;
           }
         
         case 2 : 
-          liq1_22.setClear();//sysj\controller.sysj line: 234, column: 2
-          liq2_22.setClear();//sysj\controller.sysj line: 234, column: 2
-          liq3_22.setClear();//sysj\controller.sysj line: 234, column: 2
-          liq4_22.setClear();//sysj\controller.sysj line: 234, column: 2
-          kill1_22.setClear();//sysj\controller.sysj line: 235, column: 2
-          kill2_22.setClear();//sysj\controller.sysj line: 235, column: 2
-          kill3_22.setClear();//sysj\controller.sysj line: 235, column: 2
-          kill4_22.setClear();//sysj\controller.sysj line: 235, column: 2
-          thread100207(tdone,ends);
-          thread100208(tdone,ends);
-          thread100209(tdone,ends);
-          thread100210(tdone,ends);
-          thread100211(tdone,ends);
-          int biggest100212 = 0;
-          if(ends[23]>=biggest100212){
-            biggest100212=ends[23];
+          liq1_22.setClear();//sysj\controller.sysj line: 241, column: 2
+          liq2_22.setClear();//sysj\controller.sysj line: 241, column: 2
+          liq3_22.setClear();//sysj\controller.sysj line: 241, column: 2
+          liq4_22.setClear();//sysj\controller.sysj line: 241, column: 2
+          kill1_22.setClear();//sysj\controller.sysj line: 242, column: 2
+          kill2_22.setClear();//sysj\controller.sysj line: 242, column: 2
+          kill3_22.setClear();//sysj\controller.sysj line: 242, column: 2
+          kill4_22.setClear();//sysj\controller.sysj line: 242, column: 2
+          thread7096(tdone,ends);
+          thread7097(tdone,ends);
+          thread7098(tdone,ends);
+          thread7099(tdone,ends);
+          thread7100(tdone,ends);
+          int biggest7101 = 0;
+          if(ends[23]>=biggest7101){
+            biggest7101=ends[23];
           }
-          if(ends[24]>=biggest100212){
-            biggest100212=ends[24];
+          if(ends[24]>=biggest7101){
+            biggest7101=ends[24];
           }
-          if(ends[25]>=biggest100212){
-            biggest100212=ends[25];
+          if(ends[25]>=biggest7101){
+            biggest7101=ends[25];
           }
-          if(ends[26]>=biggest100212){
-            biggest100212=ends[26];
+          if(ends[26]>=biggest7101){
+            biggest7101=ends[26];
           }
-          if(ends[27]>=biggest100212){
-            biggest100212=ends[27];
+          if(ends[27]>=biggest7101){
+            biggest7101=ends[27];
           }
-          if(biggest100212 == 1){
+          if(biggest7101 == 1){
             active[22]=1;
             ends[22]=1;
             break RUN;
           }
           //FINXME code
-          if(biggest100212 == 0){
-            S100130=0;
+          if(biggest7101 == 0){
+            S7019=0;
             active[22]=0;
             ends[22]=0;
-            S100130=0;
+            S7019=0;
             break RUN;
           }
         

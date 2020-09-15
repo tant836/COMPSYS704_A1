@@ -72,7 +72,6 @@ public class RotaryTable extends ClockDomain{
                 S67=3;
                 rotaryTableTrigger.setPresent();//sysj\controller.sysj line: 36, column: 4
                 currsigs.addElement(rotaryTableTrigger);
-                System.out.println("Emitted rotaryTableTrigger");
                 active[2]=1;
                 ends[2]=1;
                 break RUN;
@@ -93,7 +92,6 @@ public class RotaryTable extends ClockDomain{
               else {
                 rotaryTableTrigger.setPresent();//sysj\controller.sysj line: 36, column: 4
                 currsigs.addElement(rotaryTableTrigger);
-                System.out.println("Emitted rotaryTableTrigger");
                 active[2]=1;
                 ends[2]=1;
                 break RUN;
@@ -117,7 +115,6 @@ public class RotaryTable extends ClockDomain{
                 S67=6;
                 rotaryTableTrigger.setPresent();//sysj\controller.sysj line: 41, column: 4
                 currsigs.addElement(rotaryTableTrigger);
-                System.out.println("Emitted rotaryTableTrigger");
                 active[2]=1;
                 ends[2]=1;
                 break RUN;
@@ -138,7 +135,6 @@ public class RotaryTable extends ClockDomain{
               else {
                 rotaryTableTrigger.setPresent();//sysj\controller.sysj line: 41, column: 4
                 currsigs.addElement(rotaryTableTrigger);
-                System.out.println("Emitted rotaryTableTrigger");
                 active[2]=1;
                 ends[2]=1;
                 break RUN;
@@ -162,7 +158,6 @@ public class RotaryTable extends ClockDomain{
                 S67=9;
                 rotaryTableTrigger.setPresent();//sysj\controller.sysj line: 46, column: 4
                 currsigs.addElement(rotaryTableTrigger);
-                System.out.println("Emitted rotaryTableTrigger");
                 active[2]=1;
                 ends[2]=1;
                 break RUN;
@@ -183,7 +178,6 @@ public class RotaryTable extends ClockDomain{
               else {
                 rotaryTableTrigger.setPresent();//sysj\controller.sysj line: 46, column: 4
                 currsigs.addElement(rotaryTableTrigger);
-                System.out.println("Emitted rotaryTableTrigger");
                 active[2]=1;
                 ends[2]=1;
                 break RUN;

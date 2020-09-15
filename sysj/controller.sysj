@@ -124,6 +124,7 @@ Filler(
 		output signal valveInjectorOnOff, valveInletOnOff, dosUnitValveRetract, dosUnitValveExtend, turnNozTrigger, doneAtPos2,  nozBusy, requestliquid;
 		)
 ->{
+	signal finishfillorder;
 /* TODO: Write control-logic */
 	loop{
 		pause;
@@ -146,7 +147,9 @@ Filler(
 				sustain dosUnitValveExtend;
 			}
 		}
+		present(dosUnitEvac && finishfillorder){
 		emit doneAtPos2;
+		}
 	}
 	||
 	loop{
@@ -159,14 +162,15 @@ Filler(
 			receive liquidBuffer;
 			System.out.println("receive liquidBuffer");
 			{
-			
-				abort(dosUnitEvac){
+				
+				abort(dosUnitEvac && finishfillorder){
 					sustain nozBusy;
-				}
+					}
 			}
 			||
 			{
 				Integer liquidval = (int)#liquidBuffer;
+				System.out.println(liquidval);
 				if((liquidval & (1 << 0)) != 0) {
 					
 						abort(noz1){
@@ -195,6 +199,9 @@ Filler(
 						}
 						await(noz4 && dosUnitEvac);
 				}
+				emit finishfillorder;
+				
+				
 		}
 	}
 //	loop{
@@ -253,27 +260,27 @@ GUIReader(
 		pause;
 		present(placeOrder){
 					
-					present (liq1){
-						
+					present (liquid1){
 						liquidval  += 1;
 					}
 					emit kill1;
-					present (liq2){
+					present (liquid2){
 						
 						liquidval  += 2;
 					}
 					emit kill2;
-					present (liq3){
+					present (liquid3){
 						liquidval  += 4;
 					}
 					emit kill3;
-					present (liq4){
+					present (liquid4){
 
 						liquidval  += 8;
 					}
 					emit kill4;
 					fifo.add(liquidval);
 					System.out.println(liquidval);
+					await(!placeOrder);
 		}
 			present(requestliquid){
 				if(!fifo.isEmpty()) {

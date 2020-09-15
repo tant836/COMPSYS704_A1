@@ -12,6 +12,7 @@ import javax.swing.JRadioButton;
 
 import org.compsys704.LoaderVizWorker;
 import org.compsys704.Ports;
+import org.compsys704.SignalCheckBoxClient;
 import org.compsys704.SignalClient;
 import org.compsys704.SignalServer;
 
@@ -38,16 +39,24 @@ public class OrderingSystem extends JFrame {
 		panel.add(lblNewLabel);
 		
 		JCheckBox rdbtnNewRadioButton_1 = new JCheckBox("Liquid 1");
+		rdbtnNewRadioButton_1.setEnabled(true);
+		rdbtnNewRadioButton_1.addItemListener(new SignalCheckBoxClient(Ports.PORT_LOADER_CONTROLLER, Ports.LIQUID_1));
 		panel.add(rdbtnNewRadioButton_1);
 		
 		JCheckBox rdbtnNewRadioButton_2 = new JCheckBox("Liquid 2");
+		rdbtnNewRadioButton_2.setEnabled(true);
+		rdbtnNewRadioButton_2.addItemListener(new SignalCheckBoxClient(Ports.PORT_LOADER_CONTROLLER, Ports.LIQUID_2));
 		panel.add(rdbtnNewRadioButton_2);
 		
 		JCheckBox rdbtnNewRadioButton_3 = new JCheckBox("Liquid 3");
+		rdbtnNewRadioButton_3.setEnabled(true);
+		rdbtnNewRadioButton_3.addItemListener(new SignalCheckBoxClient(Ports.PORT_LOADER_CONTROLLER, Ports.LIQUID_3));
 		panel.add(rdbtnNewRadioButton_3);
 		
-		JCheckBox rdbtnNewRadioButton = new JCheckBox("Liquid 4");
-		panel.add(rdbtnNewRadioButton);
+		JCheckBox rdbtnNewRadioButton_4 = new JCheckBox("Liquid 4");
+		rdbtnNewRadioButton_4.setEnabled(true);
+		rdbtnNewRadioButton_4.addItemListener(new SignalCheckBoxClient(Ports.PORT_LOADER_CONTROLLER, Ports.LIQUID_4));
+		panel.add(rdbtnNewRadioButton_4);
 		
 //		G1.add(rdbtnNewRadioButton_1);
 //		G1.add(rdbtnNewRadioButton_2);
@@ -68,38 +77,40 @@ public class OrderingSystem extends JFrame {
   
                 // If condition to check if jRadioButton2 is selected. 
                 
-                if(!rdbtnNewRadioButton.isSelected() && !rdbtnNewRadioButton_1.isSelected() && !rdbtnNewRadioButton_2.isSelected() && !rdbtnNewRadioButton_3.isSelected()) {
+                if(!rdbtnNewRadioButton_4.isSelected() && !rdbtnNewRadioButton_1.isSelected() && !rdbtnNewRadioButton_2.isSelected() && !rdbtnNewRadioButton_3.isSelected()) {
                 	JOptionPane.showMessageDialog(OrderingSystem.this, "No liquids selected. \n Order was not made"); 
                 }else {
+                	
+//                	if (rdbtnNewRadioButton_1.isSelected()) { 
+//                    	ActionListener al1 = new SignalClient(Ports.PORT_LOADER_CONTROLLER, Ports.LIQUID_1);
+//                    	al1.actionPerformed(null);
+//                        qual = "Liquid 1"; 
+//                        System.out.println("Liq1 sent");
+//                    } 
+//                    if (rdbtnNewRadioButton_2.isSelected()) { 
+//                    	ActionListener al2 = new SignalClient(Ports.PORT_LOADER_CONTROLLER, Ports.LIQUID_2);
+//                    	al2.actionPerformed(null);
+//                        qual = "Liquid 2";
+//                        System.out.println("Liq2 sent");
+//                    }
+//                    if (rdbtnNewRadioButton_3.isSelected()) { 
+//                    	ActionListener al3 = new SignalClient(Ports.PORT_LOADER_CONTROLLER, Ports.LIQUID_3);
+//                    	al3.actionPerformed(null);
+//                        qual = "Liquid 3";
+//                        System.out.println("Liq3 sent");
+//                    } 
+//                    if (rdbtnNewRadioButton_4.isSelected()) { 
+//                    	ActionListener al4 = new SignalClient(Ports.PORT_LOADER_CONTROLLER, Ports.LIQUID_4);
+//                    	al4.actionPerformed(null);
+//                        qual = "Liquid 4"; 
+//                        System.out.println("Liq4 sent");
+//                    }
+                    
                 	// MessageDialog to show information selected radion buttons. 
                     JOptionPane.showMessageDialog(OrderingSystem.this, "Order made: \n" + qual); 
                     ActionListener al = new SignalClient(Ports.PORT_LOADER_CONTROLLER, Ports.PLACE_ORDER);
                 	al.actionPerformed(null);
-                	if (rdbtnNewRadioButton_1.isSelected()) { 
-                    	ActionListener al1 = new SignalClient(Ports.PORT_LOADER_CONTROLLER, Ports.LIQUID_1);
-                    	al1.actionPerformed(null);
-                        qual = "Liquid 1"; 
-                        System.out.println("Liq1 sent");
-                    } 
-                    if (rdbtnNewRadioButton_2.isSelected()) { 
-                    	ActionListener al2 = new SignalClient(Ports.PORT_LOADER_CONTROLLER, Ports.LIQUID_2);
-                    	al2.actionPerformed(null);
-                        qual = "Liquid 2";
-                        System.out.println("Liq2 sent");
-                    }
-                    if (rdbtnNewRadioButton_3.isSelected()) { 
-                    	ActionListener al3 = new SignalClient(Ports.PORT_LOADER_CONTROLLER, Ports.LIQUID_3);
-                    	al3.actionPerformed(null);
-                        qual = "Liquid 3";
-                        System.out.println("Liq3 sent");
-                    } 
-                    if (rdbtnNewRadioButton.isSelected()) { 
-                    	ActionListener al4 = new SignalClient(Ports.PORT_LOADER_CONTROLLER, Ports.LIQUID_4);
-                    	al4.actionPerformed(null);
-                        qual = "Liquid 4"; 
-                        System.out.println("Liq4 sent");
-                    }
-                    
+                	
                 }
                 
                 
