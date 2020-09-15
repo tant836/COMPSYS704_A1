@@ -3,7 +3,6 @@ import com.systemj.ClockDomain;
 import com.systemj.Signal;
 import com.systemj.input_Channel;
 import com.systemj.output_Channel;
-import org.compsys704.FIFO;//sysj\controller.sysj line: 1, column: 2
 
 public class RotaryTable extends ClockDomain{
   public RotaryTable(String name){super(name);}
@@ -22,8 +21,8 @@ public class RotaryTable extends ClockDomain{
   private int S177 = 1;
   private int S67 = 1;
   
-  private int[] ends = new int[28];
-  private int[] tdone = new int[28];
+  private int[] ends = new int[22];
+  private int[] tdone = new int[22];
   
   public void runClockDomain(){
     for(int i=0;i<ends.length;i++){
@@ -55,7 +54,7 @@ public class RotaryTable extends ClockDomain{
               break RUN;
             
             case 1 : 
-              if(bottleAtPos1.getprestatus()){//sysj\controller.sysj line: 33, column: 9
+              if(bottleAtPos1.getprestatus()){//sysj\controller.sysj line: 32, column: 9
                 S67=2;
                 active[2]=1;
                 ends[2]=1;
@@ -68,11 +67,10 @@ public class RotaryTable extends ClockDomain{
               }
             
             case 2 : 
-              if(!capOnBottleAtPos1.getprestatus()){//sysj\controller.sysj line: 34, column: 9
+              if(!capOnBottleAtPos1.getprestatus()){//sysj\controller.sysj line: 33, column: 9
                 S67=3;
-                rotaryTableTrigger.setPresent();//sysj\controller.sysj line: 36, column: 4
+                rotaryTableTrigger.setPresent();//sysj\controller.sysj line: 35, column: 4
                 currsigs.addElement(rotaryTableTrigger);
-                System.out.println("Emitted rotaryTableTrigger");
                 active[2]=1;
                 ends[2]=1;
                 break RUN;
@@ -84,23 +82,22 @@ public class RotaryTable extends ClockDomain{
               }
             
             case 3 : 
-              if(bottleAtPos5.getprestatus() || tableAlignedWithSensor.getprestatus()){//sysj\controller.sysj line: 35, column: 9
+              if(bottleAtPos5.getprestatus() || tableAlignedWithSensor.getprestatus()){//sysj\controller.sysj line: 34, column: 9
                 S67=4;
                 active[2]=1;
                 ends[2]=1;
                 break RUN;
               }
               else {
-                rotaryTableTrigger.setPresent();//sysj\controller.sysj line: 36, column: 4
+                rotaryTableTrigger.setPresent();//sysj\controller.sysj line: 35, column: 4
                 currsigs.addElement(rotaryTableTrigger);
-                System.out.println("Emitted rotaryTableTrigger");
                 active[2]=1;
                 ends[2]=1;
                 break RUN;
               }
             
             case 4 : 
-              if(doneAtPos2.getprestatus()){//sysj\controller.sysj line: 38, column: 9
+              if(doneAtPos2.getprestatus()){//sysj\controller.sysj line: 37, column: 9
                 S67=5;
                 active[2]=1;
                 ends[2]=1;
@@ -113,11 +110,10 @@ public class RotaryTable extends ClockDomain{
               }
             
             case 5 : 
-              if(!doneAtPos2.getprestatus()){//sysj\controller.sysj line: 39, column: 9
+              if(!doneAtPos2.getprestatus()){//sysj\controller.sysj line: 38, column: 9
                 S67=6;
-                rotaryTableTrigger.setPresent();//sysj\controller.sysj line: 41, column: 4
+                rotaryTableTrigger.setPresent();//sysj\controller.sysj line: 40, column: 4
                 currsigs.addElement(rotaryTableTrigger);
-                System.out.println("Emitted rotaryTableTrigger");
                 active[2]=1;
                 ends[2]=1;
                 break RUN;
@@ -129,23 +125,22 @@ public class RotaryTable extends ClockDomain{
               }
             
             case 6 : 
-              if(bottleAtPos5.getprestatus() || tableAlignedWithSensor.getprestatus()){//sysj\controller.sysj line: 40, column: 9
+              if(bottleAtPos5.getprestatus() || tableAlignedWithSensor.getprestatus()){//sysj\controller.sysj line: 39, column: 9
                 S67=7;
                 active[2]=1;
                 ends[2]=1;
                 break RUN;
               }
               else {
-                rotaryTableTrigger.setPresent();//sysj\controller.sysj line: 41, column: 4
+                rotaryTableTrigger.setPresent();//sysj\controller.sysj line: 40, column: 4
                 currsigs.addElement(rotaryTableTrigger);
-                System.out.println("Emitted rotaryTableTrigger");
                 active[2]=1;
                 ends[2]=1;
                 break RUN;
               }
             
             case 7 : 
-              if(doneAtPos4.getprestatus()){//sysj\controller.sysj line: 43, column: 9
+              if(doneAtPos4.getprestatus()){//sysj\controller.sysj line: 42, column: 9
                 S67=8;
                 active[2]=1;
                 ends[2]=1;
@@ -158,11 +153,10 @@ public class RotaryTable extends ClockDomain{
               }
             
             case 8 : 
-              if(!doneAtPos4.getprestatus()){//sysj\controller.sysj line: 44, column: 9
+              if(!doneAtPos4.getprestatus()){//sysj\controller.sysj line: 43, column: 9
                 S67=9;
-                rotaryTableTrigger.setPresent();//sysj\controller.sysj line: 46, column: 4
+                rotaryTableTrigger.setPresent();//sysj\controller.sysj line: 45, column: 4
                 currsigs.addElement(rotaryTableTrigger);
-                System.out.println("Emitted rotaryTableTrigger");
                 active[2]=1;
                 ends[2]=1;
                 break RUN;
@@ -174,16 +168,15 @@ public class RotaryTable extends ClockDomain{
               }
             
             case 9 : 
-              if(bottleAtPos5.getprestatus() || tableAlignedWithSensor.getprestatus()){//sysj\controller.sysj line: 45, column: 9
+              if(bottleAtPos5.getprestatus() || tableAlignedWithSensor.getprestatus()){//sysj\controller.sysj line: 44, column: 9
                 S67=0;
                 active[2]=1;
                 ends[2]=1;
                 break RUN;
               }
               else {
-                rotaryTableTrigger.setPresent();//sysj\controller.sysj line: 46, column: 4
+                rotaryTableTrigger.setPresent();//sysj\controller.sysj line: 45, column: 4
                 currsigs.addElement(rotaryTableTrigger);
-                System.out.println("Emitted rotaryTableTrigger");
                 active[2]=1;
                 ends[2]=1;
                 break RUN;
@@ -196,9 +189,9 @@ public class RotaryTable extends ClockDomain{
   }
 
   public void init(){
-    char [] active1 = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1};
-    char [] paused1 = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-    char [] suspended1 = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+    char [] active1 = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1};
+    char [] paused1 = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+    char [] suspended1 = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
     paused = paused1;
     active = active1;
     suspended = suspended1;

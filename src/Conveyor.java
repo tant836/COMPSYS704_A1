@@ -3,7 +3,6 @@ import com.systemj.ClockDomain;
 import com.systemj.Signal;
 import com.systemj.input_Channel;
 import com.systemj.output_Channel;
-import org.compsys704.FIFO;//sysj\controller.sysj line: 1, column: 2
 
 public class Conveyor extends ClockDomain{
   public Conveyor(String name){super(name);}
@@ -19,8 +18,8 @@ public class Conveyor extends ClockDomain{
   private int S64 = 1;
   private int S2 = 1;
   
-  private int[] ends = new int[28];
-  private int[] tdone = new int[28];
+  private int[] ends = new int[22];
+  private int[] tdone = new int[22];
   
   public void runClockDomain(){
     for(int i=0;i<ends.length;i++){
@@ -52,11 +51,10 @@ public class Conveyor extends ClockDomain{
               break RUN;
             
             case 1 : 
-              if(!bottleLeftPos5.getprestatus()){//sysj\controller.sysj line: 11, column: 9
+              if(!bottleLeftPos5.getprestatus()){//sysj\controller.sysj line: 10, column: 9
                 S2=2;
-                motConveyorOn.setPresent();//sysj\controller.sysj line: 13, column: 4
+                motConveyorOn.setPresent();//sysj\controller.sysj line: 12, column: 4
                 currsigs.addElement(motConveyorOn);
-                System.out.println("Emitted motConveyorOn");
                 active[1]=1;
                 ends[1]=1;
                 break RUN;
@@ -68,27 +66,25 @@ public class Conveyor extends ClockDomain{
               }
             
             case 2 : 
-              if(bottleAtPos1.getprestatus()){//sysj\controller.sysj line: 12, column: 9
+              if(bottleAtPos1.getprestatus()){//sysj\controller.sysj line: 11, column: 9
                 S2=3;
                 active[1]=1;
                 ends[1]=1;
                 break RUN;
               }
               else {
-                motConveyorOn.setPresent();//sysj\controller.sysj line: 13, column: 4
+                motConveyorOn.setPresent();//sysj\controller.sysj line: 12, column: 4
                 currsigs.addElement(motConveyorOn);
-                System.out.println("Emitted motConveyorOn");
                 active[1]=1;
                 ends[1]=1;
                 break RUN;
               }
             
             case 3 : 
-              if(bottleAtPos5.getprestatus()){//sysj\controller.sysj line: 15, column: 9
+              if(bottleAtPos5.getprestatus()){//sysj\controller.sysj line: 14, column: 9
                 S2=4;
-                motConveyorOn.setPresent();//sysj\controller.sysj line: 17, column: 4
+                motConveyorOn.setPresent();//sysj\controller.sysj line: 16, column: 4
                 currsigs.addElement(motConveyorOn);
-                System.out.println("Emitted motConveyorOn");
                 active[1]=1;
                 ends[1]=1;
                 break RUN;
@@ -100,16 +96,15 @@ public class Conveyor extends ClockDomain{
               }
             
             case 4 : 
-              if(bottleLeftPos5.getprestatus()){//sysj\controller.sysj line: 16, column: 9
+              if(bottleLeftPos5.getprestatus()){//sysj\controller.sysj line: 15, column: 9
                 S2=0;
                 active[1]=1;
                 ends[1]=1;
                 break RUN;
               }
               else {
-                motConveyorOn.setPresent();//sysj\controller.sysj line: 17, column: 4
+                motConveyorOn.setPresent();//sysj\controller.sysj line: 16, column: 4
                 currsigs.addElement(motConveyorOn);
-                System.out.println("Emitted motConveyorOn");
                 active[1]=1;
                 ends[1]=1;
                 break RUN;
@@ -122,9 +117,9 @@ public class Conveyor extends ClockDomain{
   }
 
   public void init(){
-    char [] active1 = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1};
-    char [] paused1 = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-    char [] suspended1 = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+    char [] active1 = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1};
+    char [] paused1 = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+    char [] suspended1 = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
     paused = paused1;
     active = active1;
     suspended = suspended1;

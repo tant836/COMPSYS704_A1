@@ -6,7 +6,10 @@ import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.net.ConnectException;
 import java.net.InetSocketAddress;
+import java.net.ServerSocket;
 import java.net.Socket;
+
+import org.json.simple.JSONObject;
 
 
 public class SignalClient implements ActionListener{
@@ -52,5 +55,38 @@ public class SignalClient implements ActionListener{
 			}
 		}
 		
+	}
+	
+	public void sendInteger(int value) {
+		try {
+			if(s.isClosed()){
+				s = new Socket();
+				s.connect(new InetSocketAddress(ip, port), 10);
+				oos = new ObjectOutputStream(s.getOutputStream());
+			}
+			
+			JSONObject obj = new JSONObject();
+			
+//			obj.put("name", dest.split("\\.")[1]);
+//		    obj.put("cd", dest.split("\\.")[0]);
+//		    obj.put("status", true);
+//		    obj.put("value", new Integer(value));
+			obj.put("name", "sentliquid");
+		    obj.put("cd", "FillerCD");
+		    obj.put("status", true);
+		    obj.put("value", new Integer(value));
+		    oos.writeObject(obj);
+			System.out.println("sent");
+			Thread.sleep(50);
+			obj.put("status", false);
+			oos.writeObject(obj);
+			System.out.println("done");
+		}
+		catch (IOException | InterruptedException ee) {
+			try {s.close();} catch (IOException e1) {
+				e1.printStackTrace();
+				//System.exit(1);
+			}
+		}
 	}
 }

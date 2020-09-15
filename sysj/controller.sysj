@@ -1,4 +1,3 @@
-	import org.compsys704.FIFO;
 Conveyor(
 		input signal bottleAtPos1, bottleLeftPos5, bottleAtPos5;
 		output signal motConveyorOn;
@@ -117,86 +116,93 @@ Capper(
 
 Filler(
 		input signal bottleAtPos2, dosUnitEvac, dosUnitFilled;
-		input signal noz1,noz2,noz3,noz4, sentliquid;
-		input int channel liquidBuffer;
+		input signal noz1,noz2,noz3,noz4;
+		input Integer signal sentliquid;
 		input signal  i_selNoz1, i_selNoz2, i_selNoz3, i_selNoz4;
 
 		output signal valveInjectorOnOff, valveInletOnOff, dosUnitValveRetract, dosUnitValveExtend, turnNozTrigger, doneAtPos2,  nozBusy, requestliquid;
 		)
 ->{
 /* TODO: Write control-logic */
-	loop{
-		pause;
-		await(bottleAtPos2 && !turnNozTrigger);
-		abort(dosUnitFilled){
-			{sustain valveInjectorOnOff;}
-			||
-			{
-				present(dosUnitEvac){
-					sustain dosUnitValveRetract;
-				}
-			}
-			
-		}
-		
-		abort(dosUnitEvac){
-			{sustain valveInletOnOff;}
-			||
-			{
-				sustain dosUnitValveExtend;
-			}
-		}
-		emit doneAtPos2;
-	}
-	||
+	{
 	loop{
 		pause;
 		
 		abort (sentliquid){
-			sustain requestliquid;
+			loop{
+				emit requestliquid;
+				pause;
+			}
+			
 		}
 		
-			receive liquidBuffer;
-			System.out.println("receive liquidBuffer");
-			{
-			
-				abort(dosUnitEvac){
-					sustain nozBusy;
-				}
+		System.out.println("receive liquidBuffer");
+		{
+		
+			abort(dosUnitEvac){
+				sustain nozBusy;
 			}
-			||
-			{
-				Integer liquidval = (int)#liquidBuffer;
-				if((liquidval & (1 << 0)) != 0) {
-					
-						abort(noz1){
-							sustain turnNozTrigger;
-						}
-						await(noz1 && dosUnitEvac);
-				}
-				if((liquidval & (1 << 1)) != 0){
-					
-						abort(noz2){
-							sustain turnNozTrigger;
-						}
-						await(noz2 && dosUnitEvac);
-				}
-				if((liquidval & (1 << 2)) != 0){
-					
-						abort(noz3){
-							sustain turnNozTrigger;
-						}
-						await(noz3 && dosUnitEvac);
-				}
-				if((liquidval & (1 << 3)) != 0){
-					
-						abort(noz4){
-							sustain turnNozTrigger;
-						}
-						await(noz4 && dosUnitEvac);
-				}
+		}
+		||
+		{
+			Integer liquidval = (int)#sentliquid;
+			if((liquidval & (1 << 0)) != 0) {
+				
+					abort(noz1){
+						sustain turnNozTrigger;
+					}
+					await(noz1 && dosUnitEvac);
+			}
+			if((liquidval & (1 << 1)) != 0){
+				
+					abort(noz2){
+						sustain turnNozTrigger;
+					}
+					await(noz2 && dosUnitEvac);
+			}
+			if((liquidval & (1 << 2)) != 0){
+				
+					abort(noz3){
+						sustain turnNozTrigger;
+					}
+					await(noz3 && dosUnitEvac);
+			}
+			if((liquidval & (1 << 3)) != 0){
+				
+					abort(noz4){
+						sustain turnNozTrigger;
+					}
+					await(noz4 && dosUnitEvac);
+			}
 		}
 	}
+	}
+	||
+	{
+		loop{
+			pause;
+			await(bottleAtPos2 && !turnNozTrigger);
+			abort(dosUnitFilled){
+				{sustain valveInjectorOnOff;}
+				||
+				{
+					present(dosUnitEvac){
+						sustain dosUnitValveRetract;
+					}
+				}
+				
+			}
+			
+			abort(dosUnitEvac){
+				{sustain valveInletOnOff;}
+				||
+				{
+					sustain dosUnitValveExtend;
+				}
+			}
+			emit doneAtPos2;
+		}
+		}
 //	loop{
 //		pause;
 //		await(i_selNoz1 || i_selNoz2 || i_selNoz3 || i_selNoz4);
@@ -224,75 +230,75 @@ Filler(
 //	}
 }
 
-GUIReader(
-		input signal placeOrder, liquid1, liquid2, liquid3, liquid4, requestliquid;
-		output int channel liquidBuffer;
-		output signal sentliquid;
-		)
-->{
-	
-	signal liq1,liq2,liq3,liq4;
-	signal kill1,kill2,kill3,kill4;
+//GUIReader(
+//		input signal placeOrder, liquid1, liquid2, liquid3, liquid4, requestliquid;
+//		output int channel liquidBuffer;
+//		output signal sentliquid;
+//		)
+//->{
+//	
+//	signal liq1,liq2,liq3,liq4;
+//	signal kill1,kill2,kill3,kill4;
+////	{
+////		loop{
+////			pause;
+////			if(requestliquid && !fifoempty) {
+////				Integer integer1 = fifo.poll();
+////				send liquidBuffer(integer1);
+////			}
+////			if(fifoempty && requestliquid) {
+////				emit sentliquid;
+////			}
+////		}
+////	}
+////	||
 //	{
-//		loop{
-//			pause;
-//			if(requestliquid && !fifoempty) {
-//				Integer integer1 = fifo.poll();
-//				send liquidBuffer(integer1);
-//			}
-//			if(fifoempty && requestliquid) {
-//				emit sentliquid;
+//		FIFO fifo = new FIFO();
+//	loop{
+//		Integer liquidval = 0;
+//		pause;
+//		present(placeOrder){
+//					
+//					present (liq1){
+//						System.out.println("l1-");
+//						liquidval  += 1;
+//					}
+//					emit kill1;
+//					present (liq2){
+//						
+//						liquidval  += 2;
+//					}
+//					emit kill2;
+//					present (liq3){
+//						liquidval  += 4;
+//					}
+//					emit kill3;
+//					present (liq4){
+//
+//						liquidval  += 8;
+//					}
+//					emit kill4;
+//					fifo.add(liquidval);
+//					System.out.println(liquidval);
+//		}
+//			present(requestliquid){
+//				if(!fifo.isEmpty()) {
+//					System.out.println("picked fifo");
+//					Integer integer1 = fifo.poll();
+//					emit sentliquid;
+//					send liquidBuffer(integer1);
+//					System.out.println(integer1);
+//					
+//				}
 //			}
 //		}
 //	}
 //	||
-	{
-		FIFO fifo = new FIFO();
-	loop{
-		Integer liquidval = 0;
-		pause;
-		present(placeOrder){
-					
-					present (liq1){
-						
-						liquidval  += 1;
-					}
-					emit kill1;
-					present (liq2){
-						
-						liquidval  += 2;
-					}
-					emit kill2;
-					present (liq3){
-						liquidval  += 4;
-					}
-					emit kill3;
-					present (liq4){
-
-						liquidval  += 8;
-					}
-					emit kill4;
-					fifo.add(liquidval);
-					System.out.println(liquidval);
-		}
-			present(requestliquid){
-				if(!fifo.isEmpty()) {
-					System.out.println("picked fifo");
-					Integer integer1 = fifo.poll();
-					emit sentliquid;
-					send liquidBuffer(integer1);
-					System.out.println(integer1);
-					
-				}
-			}
-		}
-	}
-	||
-	{while(true) {present(liquid1){abort(kill1){sustain liq1;}}pause;}}
-	||
-	{while(true) {present(liquid2){abort(kill2){sustain liq2;}}pause;}}
-	||
-	{while(true) {present(liquid3){abort(kill3){sustain liq3;}}pause;}}
-	||
-	{while(true) {present(liquid4){abort(kill4){sustain liq4;}}pause;}}
-}
+//	{while(true) {present(liquid1){System.out.println("l1"); abort(kill1){sustain liq1;}}pause;}}
+//	||
+//	{while(true) {present(liquid2){abort(kill2){sustain liq2;}}pause;}}
+//	||
+//	{while(true) {present(liquid3){abort(kill3){sustain liq3;}}pause;}}
+//	||
+//	{while(true) {present(liquid4){abort(kill4){sustain liq4;}}pause;}}
+//}

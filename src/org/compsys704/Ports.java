@@ -18,4 +18,6 @@ public class Ports {
 	public static final String LIQUID_3 = "GUIReaderCD.liquid3";
 	public static final String LIQUID_4 = "GUIReaderCD.liquid4";
 	public static final String PLACE_ORDER = "GUIReaderCD.placeOrder";
+	
+	public static final String sentliquid = "FillerCD.sentliquid";
 }

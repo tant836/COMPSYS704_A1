@@ -16,5 +16,6 @@
 	<classpathentry kind="lib" path="lib/sjrt-v2.1-37-g7941c30-SNAPSHOT-base.jar"/>
 	<classpathentry kind="lib" path="lib/sjrt-v2.1-37-g7941c30-SNAPSHOT-desktop.jar"/>
 	<classpathentry kind="lib" path="lib/sysjnetapi-SNAPSHOT-e1801c7.jar"/>
+	<classpathentry kind="lib" path="lib/json-simple-1.1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

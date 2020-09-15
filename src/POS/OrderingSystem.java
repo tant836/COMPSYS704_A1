@@ -7,19 +7,21 @@ import javax.swing.JCheckBox;
 
 import java.awt.BorderLayout;
 import java.awt.event.ActionListener;
+import java.util.LinkedList;
+import java.util.Queue;
 import java.awt.event.ActionEvent;
 import javax.swing.JRadioButton;
 
 import org.compsys704.LoaderVizWorker;
 import org.compsys704.Ports;
 import org.compsys704.SignalClient;
-import org.compsys704.SignalServer;
 
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 public class OrderingSystem extends JFrame {
+	
 	public OrderingSystem() {
 		
 		JButton btnNewButton = new JButton("Place Order");
@@ -73,32 +75,33 @@ public class OrderingSystem extends JFrame {
                 }else {
                 	// MessageDialog to show information selected radion buttons. 
                     JOptionPane.showMessageDialog(OrderingSystem.this, "Order made: \n" + qual); 
-                    ActionListener al = new SignalClient(Ports.PORT_LOADER_CONTROLLER, Ports.PLACE_ORDER);
-                	al.actionPerformed(null);
+//                    ActionListener al = new SignalClient(Ports.PORT_LOADER_CONTROLLER, Ports.PLACE_ORDER);
+//                	al.actionPerformed(null);
+                	
+                	Integer liquidval = 0;
+                	
                 	if (rdbtnNewRadioButton_1.isSelected()) { 
-                    	ActionListener al1 = new SignalClient(Ports.PORT_LOADER_CONTROLLER, Ports.LIQUID_1);
-                    	al1.actionPerformed(null);
+                		liquidval  += 1;
                         qual = "Liquid 1"; 
                         System.out.println("Liq1 sent");
                     } 
                     if (rdbtnNewRadioButton_2.isSelected()) { 
-                    	ActionListener al2 = new SignalClient(Ports.PORT_LOADER_CONTROLLER, Ports.LIQUID_2);
-                    	al2.actionPerformed(null);
+                    	liquidval  += 2;
                         qual = "Liquid 2";
                         System.out.println("Liq2 sent");
                     }
                     if (rdbtnNewRadioButton_3.isSelected()) { 
-                    	ActionListener al3 = new SignalClient(Ports.PORT_LOADER_CONTROLLER, Ports.LIQUID_3);
-                    	al3.actionPerformed(null);
+                    	liquidval  += 4;
                         qual = "Liquid 3";
                         System.out.println("Liq3 sent");
                     } 
                     if (rdbtnNewRadioButton.isSelected()) { 
-                    	ActionListener al4 = new SignalClient(Ports.PORT_LOADER_CONTROLLER, Ports.LIQUID_4);
-                    	al4.actionPerformed(null);
+                    	liquidval  += 8;
                         qual = "Liquid 4"; 
                         System.out.println("Liq4 sent");
                     }
+                    
+                    FIFO.add(liquidval);
                     
                 }
                 
@@ -121,7 +124,7 @@ public class OrderingSystem extends JFrame {
 		oS.pack();
 		oS.setVisible(true);
 		System.out.println("Begin");
-		SignalServer<LoaderVizWorker> server = new SignalServer<LoaderVizWorker>(Ports.PORT_POS, LoaderVizWorker.class);
+		SignalServer server = new SignalServer(Ports.PORT_POS);
 		new Thread(server).start();
 		while(true){
 			try {
