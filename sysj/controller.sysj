@@ -123,7 +123,7 @@ Filler(
 		output signal valveInjectorOnOff, valveInletOnOff, dosUnitValveRetract, dosUnitValveExtend, turnNozTrigger, doneAtPos2,  nozBusy, requestliquid;
 		)
 ->{
-	signal doneFilling, doneAllLiquids;
+	signal doneFilling, doneAllLiquids, nozzlePlaced, doneAtPos2_L;
 	
 /* TODO: Write control-logic */
 	{
@@ -148,40 +148,59 @@ Filler(
 					abort(noz1){
 						sustain turnNozTrigger;
 					}
-					await(doneFilling);
+					abort(doneFilling){
+						sustain nozzlePlaced;
+					}
 			}
 			
 			if((liquidval & (1 << 1)) != 0){
 					abort(noz2){
 						sustain turnNozTrigger;
 					}
-					await(doneFilling);
+					abort(doneFilling){
+						sustain nozzlePlaced;
+					}
 			}
+			System.out.println("-- 1");
 			if((liquidval & (1 << 2)) != 0){
+				System.out.println("-- 2");
 					abort(noz3){
 						sustain turnNozTrigger;
 					}
-					System.out.println("filler 0");
-					await(doneFilling);
-					System.out.println("filler 1");
+					System.out.println("-- 3");
+					abort(doneFilling){
+						sustain nozzlePlaced;
+					}
+					System.out.println("-- 4");
 			}
+			System.out.println("-- 5");
 			if((liquidval & (1 << 3)) != 0){
-				System.out.println("filler 2");
 					abort(noz4){
 						sustain turnNozTrigger;
 					}
-					System.out.println("filler 3");
-					await(doneFilling);
+					abort(doneFilling){
+						sustain nozzlePlaced;
+					}
 			}
-			System.out.println("filler 4");
-			emit doneAllLiquids;
+			System.out.println("-- 6");
+			abort(doneAtPos2_L){
+				sustain doneAllLiquids;
+			}
+			System.out.println("-- 7");
 		}
 	}
 	||
 	{
 		loop{
 			pause;
-			await(bottleAtPos2 && !turnNozTrigger);
+			System.out.println("-- 11");
+			present(doneAllLiquids){
+				System.out.println("-- 8");
+				emit doneAtPos2;
+				emit doneAtPos2_L;
+				System.out.println("-- 9");
+			}
+			present(bottleAtPos2 && nozzlePlaced){
 			abort(dosUnitFilled){
 				{sustain valveInjectorOnOff;}
 				||
@@ -202,9 +221,9 @@ Filler(
 			}
 			
 			emit doneFilling;
-			present(doneAllLiquids){
-				emit doneAtPos2;
-			}
+			
+			System.out.println("-- 10");
+		}
 		}
 	}
 }

@@ -330,33 +330,80 @@ Plant(
 	||
 	{
 		//Filler nozzle control
-		int nozzlenum = 0;
-		while(true) {
-			pause;
-			abort(!turnNozTrigger){
+		Integer signal s_nozzlenum;
+		{
+			int nozzlenum = 0;
+			
+			while(true) {
+				pause;
 				present(turnNozTrigger && enable){
 					await(!enable);
 					nozzlenum++;
-					System.out.println(nozzlenum);
-					if(nozzlenum == 1) {
-						abort(turnNozTrigger){
-							sustain noz1;
-							await(!turnNozTrigger);
-						}
-						//emit noz1;
-					}else if(nozzlenum == 2) {
-						abort(turnNozTrigger){
-							sustain noz2;
-						}
-					}else if(nozzlenum == 3) {
-						abort(turnNozTrigger){
-							sustain noz3;
-						}
-					}else {
-						abort(turnNozTrigger){
-							sustain noz4;
-						}
+					if(nozzlenum > 4) {
 						nozzlenum = 0;
+					}
+					abort(turnNozTrigger && enable){
+						sustain s_nozzlenum(nozzlenum);
+					}
+//					System.out.println(nozzlenum);
+//					if(nozzlenum == 1) {
+//						sustain noz1;
+//					}else if(nozzlenum == 2) {
+//						sustain noz2;
+//					}else if(nozzlenum == 3) {
+//						sustain noz3;
+//					}else {
+//						sustain noz4;
+//						nozzlenum = 0;
+//					}
+				}
+			}
+		}
+		||
+		{
+			while(true) {
+				pause;
+				await(s_nozzlenum);
+				if(#s_nozzlenum == 1) {
+					abort(!s_nozzlenum){
+						sustain noz1;
+					}
+					
+				}
+			}
+		}
+		||
+		{
+			while(true) {
+				pause;
+				await(s_nozzlenum);
+				if(#s_nozzlenum == 2) {
+					abort(!s_nozzlenum){
+						sustain noz2;
+					}
+				}
+			}
+		}
+		||
+		{
+			while(true) {
+				pause;
+				await(s_nozzlenum);
+				if(#s_nozzlenum == 3) {
+					abort(!s_nozzlenum){
+						sustain noz3;
+					}
+				}
+			}
+		}
+		||
+		{
+			while(true) {
+				pause;
+				await(s_nozzlenum);
+				if(#s_nozzlenum == 4) {
+					abort(!s_nozzlenum){
+						sustain noz4;
 					}
 				}
 			}
