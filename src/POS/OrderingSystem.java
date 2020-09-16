@@ -103,6 +103,7 @@ public class OrderingSystem extends JFrame {
                     
                     FIFO.add(liquidval);
                     
+                    
                 }
                 
                 

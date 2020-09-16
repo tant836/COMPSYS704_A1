@@ -4,10 +4,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
 import java.net.ConnectException;
 import java.net.InetSocketAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.nio.charset.StandardCharsets;
 
 import org.json.simple.JSONObject;
 
@@ -58,12 +61,19 @@ public class SignalClient implements ActionListener{
 	}
 	
 	public void sendInteger(int value) {
+		PrintWriter out;
+    	//Socket clientSocket;
 		try {
 			if(s.isClosed()){
-				s = new Socket();
-				s.connect(new InetSocketAddress(ip, port), 10);
-				oos = new ObjectOutputStream(s.getOutputStream());
+				s = new Socket("127.0.0.1", 12345);
+				//s.connect(new InetSocketAddress(ip, port), 10);
+				//oos = new ObjectOutputStream(s.getOutputStream());
+				
+				
 			}
+			out = new PrintWriter(s.getOutputStream(), true);
+			
+			//OutputStreamWriter out = new OutputStreamWriter(s.getOutputStream(), StandardCharsets.UTF_8);
 			
 			JSONObject obj = new JSONObject();
 			
@@ -75,18 +85,43 @@ public class SignalClient implements ActionListener{
 		    obj.put("cd", "FillerCD");
 		    obj.put("status", true);
 		    obj.put("value", new Integer(value));
-		    oos.writeObject(obj);
+		    
+		    //oos.writeObject(obj);
+		    out.println(obj.toString());
 			System.out.println("sent");
 			Thread.sleep(50);
 			obj.put("status", false);
-			oos.writeObject(obj);
+			
+			out.println(obj.toString());
 			System.out.println("done");
+			
+//			
+//        	
+//            try {
+//				clientSocket = new Socket("127.0.0.1", 12345);
+//				out = new PrintWriter(clientSocket.getOutputStream(), true);
+//        		
+//				JSONObject obj = new JSONObject();
+//				
+//				obj.put("name", "sentliquid");
+//			    obj.put("cd", "FillerCD");
+//			    obj.put("status", true);
+//			    obj.put("value", new Integer(23432));
+//				
+//        		out.println(obj.toString());
+//			} catch (IOException e1) {
+//				// TODO Auto-generated catch block
+//				e1.printStackTrace();
+//			}
 		}
-		catch (IOException | InterruptedException ee) {
+		catch (IOException ee) {
 			try {s.close();} catch (IOException e1) {
 				e1.printStackTrace();
 				//System.exit(1);
 			}
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 }
