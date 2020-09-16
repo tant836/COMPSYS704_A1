@@ -45,6 +45,7 @@
 			<iSignal Name="i_selNoz2"  Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
 			<iSignal Name="i_selNoz3"  Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
 			<iSignal Name="i_selNoz4"  Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
+			<iSignal Name="bottleAdded"  Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
 <!-- 			<iChannel Name="liquidBuffer" From="GUIReaderCD.liquidBuffer"/> -->
 			
 			<oSignal Name="requestliquid" To="POS.requestliquid" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="30000" />

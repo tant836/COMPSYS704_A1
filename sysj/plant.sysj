@@ -28,7 +28,7 @@ Plant(
 		input signal valveInjectorOnOff,valveInletOnOff,dosUnitValveRetract,dosUnitValveExtend, selNoz1, selNoz2, selNoz3, selNoz4, turnNozTrigger;
 		
 		output signal valveInjectorOnOffE,valveInletOnOffE,dosUnitValveRetractE,dosUnitValveExtendE, dosUnitFilledE, dosUnitEvacE, dosUnitEvac, dosUnitFilled,noz1,noz2,noz3,noz4;
-		output signal  o_selNoz1, o_selNoz2, o_selNoz3, o_selNoz4, noz1E, noz2E, noz3E, noz4E;
+		output signal  o_selNoz1, o_selNoz2, o_selNoz3, o_selNoz4, noz1E, noz2E, noz3E, noz4E, bottleAddedC;
 		)
 ->
 {
@@ -337,14 +337,25 @@ Plant(
 				present(turnNozTrigger && enable){
 					await(!enable);
 					nozzlenum++;
+					System.out.println(nozzlenum);
 					if(nozzlenum == 1) {
-						emit noz1;
+						abort(turnNozTrigger){
+							sustain noz1;
+							await(!turnNozTrigger);
+						}
+						//emit noz1;
 					}else if(nozzlenum == 2) {
-						emit noz2;
+						abort(turnNozTrigger){
+							sustain noz2;
+						}
 					}else if(nozzlenum == 3) {
-						emit noz3;
+						abort(turnNozTrigger){
+							sustain noz3;
+						}
 					}else {
-						emit noz4;
+						abort(turnNozTrigger){
+							sustain noz4;
+						}
 						nozzlenum = 0;
 					}
 				}
@@ -444,6 +455,8 @@ Plant(
 		{while(true) {present(noz3){emit noz3E;} pause;}}
 		||
 		{while(true) {present(noz4){emit noz4E;} pause;}}
+		||
+		{while(true) {present(bottleAdded){emit bottleAddedC;} pause;}}
 
 	}
 }
