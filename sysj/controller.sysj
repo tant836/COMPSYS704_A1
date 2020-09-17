@@ -35,12 +35,10 @@ RotaryTable(
 			sustain rotaryTableTrigger;
 		}
 		await(doneAtPos2);
-		await(!doneAtPos2);
 		abort(bottleAtPos5 || tableAlignedWithSensor){
 			sustain rotaryTableTrigger;
 		}
 		await(doneAtPos4);
-		await(!doneAtPos4);
 		abort(bottleAtPos5 || tableAlignedWithSensor){
 			sustain rotaryTableTrigger;
 		}
@@ -110,6 +108,7 @@ Capper(
 		}
 		
 		emit doneAtPos4;
+		await(!bottleAtPos4);
 	}
 
 }
@@ -193,14 +192,23 @@ Filler(
 	{
 		loop{
 			pause;
-			System.out.println("-- 11");
+			await(doneAllLiquids || nozzlePlaced);
 			present(doneAllLiquids){
-				System.out.println("-- 8");
-				emit doneAtPos2;
-				emit doneAtPos2_L;
-				System.out.println("-- 9");
+				System.out.println("-- 21");
+					{
+						emit doneAtPos2;
+						await(!bottleAtPos2);
+					}
+					||
+					{
+						emit doneAtPos2_L;
+					}
 			}
-			present(bottleAtPos2 && nozzlePlaced){
+			
+			System.out.println("-- 19");
+			
+			abort(!bottleAtPos2){
+			present(bottleAtPos2){
 			abort(dosUnitFilled){
 				{sustain valveInjectorOnOff;}
 				||
@@ -222,81 +230,8 @@ Filler(
 			
 			emit doneFilling;
 			
-			System.out.println("-- 10");
 		}
+			}
 		}
 	}
 }
-
-//GUIReader(
-//		input signal placeOrder, liquid1, liquid2, liquid3, liquid4, requestliquid;
-//		output int channel liquidBuffer;
-//		output signal sentliquid;
-//		)
-//->{
-//	
-//	signal liq1,liq2,liq3,liq4;
-//	signal kill1,kill2,kill3,kill4;
-////	{
-////		loop{
-////			pause;
-////			if(requestliquid && !fifoempty) {
-////				Integer integer1 = fifo.poll();
-////				send liquidBuffer(integer1);
-////			}
-////			if(fifoempty && requestliquid) {
-////				emit sentliquid;
-////			}
-////		}
-////	}
-////	||
-//	{
-//		FIFO fifo = new FIFO();
-//	loop{
-//		Integer liquidval = 0;
-//		pause;
-//		present(placeOrder){
-//					
-//					present (liq1){
-//						System.out.println("l1-");
-//						liquidval  += 1;
-//					}
-//					emit kill1;
-//					present (liq2){
-//						
-//						liquidval  += 2;
-//					}
-//					emit kill2;
-//					present (liq3){
-//						liquidval  += 4;
-//					}
-//					emit kill3;
-//					present (liq4){
-//
-//						liquidval  += 8;
-//					}
-//					emit kill4;
-//					fifo.add(liquidval);
-//					System.out.println(liquidval);
-//		}
-//			present(requestliquid){
-//				if(!fifo.isEmpty()) {
-//					System.out.println("picked fifo");
-//					Integer integer1 = fifo.poll();
-//					emit sentliquid;
-//					send liquidBuffer(integer1);
-//					System.out.println(integer1);
-//					
-//				}
-//			}
-//		}
-//	}
-//	||
-//	{while(true) {present(liquid1){System.out.println("l1"); abort(kill1){sustain liq1;}}pause;}}
-//	||
-//	{while(true) {present(liquid2){abort(kill2){sustain liq2;}}pause;}}
-//	||
-//	{while(true) {present(liquid3){abort(kill3){sustain liq3;}}pause;}}
-//	||
-//	{while(true) {present(liquid4){abort(kill4){sustain liq4;}}pause;}}
-//}

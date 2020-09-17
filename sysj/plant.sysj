@@ -267,7 +267,7 @@ Plant(
 			pause;
 			present(gripperTurnExtend && enable && !gripperTurnRetract){
 				await(!enable);
-				abort(!gripperTurnExtend && gripperTurnRetract){
+				abort(!gripperTurnExtend && gripperTurnRetract && enable){
 					sustain gripperTurnFinalPos;
 				}
 			}
@@ -279,7 +279,7 @@ Plant(
 			pause;
 			present(gripperTurnRetract && enable && !gripperTurnExtend){
 				await(!enable);
-				abort(!gripperTurnRetract && gripperTurnExtend){
+				abort(!gripperTurnRetract && gripperTurnExtend && enable){
 					sustain gripperTurnHomePos;
 				}
 			}
@@ -309,7 +309,7 @@ Plant(
 			pause;
 			present(dosUnitValveExtend && enable && valveInletOnOff){
 				await(!enable);
-				abort(!dosUnitValveExtend && dosUnitValveRetract){
+				abort(!dosUnitValveExtend && dosUnitValveRetract && enable){
 					sustain dosUnitEvac;
 				}
 			}
