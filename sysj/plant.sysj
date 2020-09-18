@@ -2,6 +2,7 @@ Plant(
 		//global plant signals
 		input signal enable,refill, removeBottle;
 		
+		output signal pusherExtendE, vacOnE, armSourceE, armDestE, bottleAtPos3, bottleAtPos3E;
 		
 		//Conveyor
 		input signal motConveyorOn, bottleAdded, putBottleAt5_FV;
@@ -41,9 +42,10 @@ Plant(
 
 	signal capDec;
 	signal l_bottleAdded;
-	signal l_putBottleAt5, l_putBottleAt4, l_putBottleAt2;
+	signal l_putBottleAt5, l_putBottleAt4, l_putBottleAt2, l_putBottleAt3;
 	int signal capPos;
 	emit capPos(0);
+	
 	{// Arm
 		while(true){
 			abort(armSource && enable){
@@ -179,9 +181,22 @@ Plant(
 		while(true) {
 			pause;
 			present(l_putBottleAt2){
-				abort((bottleAtPos4)){
+				abort((bottleAtPos3)){
 					await(!enable);
 					sustain bottleAtPos2;
+				}
+			}
+		}
+	}
+	||
+	{
+		while(true) {
+			pause;
+			present(l_putBottleAt3){
+				System.out.println("putting at pos 3 proper");
+				abort((bottleAtPos4)){
+					await(!enable);
+					sustain bottleAtPos3;
 				}
 			}
 		}
@@ -212,11 +227,18 @@ Plant(
 						sustain tableAlignedWithSensor;
 					}
 				}else if(numTurns >= 3 && numTurns < 4) {
+					emit l_putBottleAt3;
+					System.out.println("putting at pos 3");
+					abort(rotaryTableTrigger){
+						sustain tableAlignedWithSensor;
+					}
+					
+				}else if(numTurns >= 4 && numTurns < 5) {
 					emit l_putBottleAt4;
 					abort(rotaryTableTrigger){
 						sustain tableAlignedWithSensor;
 					}
-				}else if(numTurns >= 4) {
+				}else if(numTurns >= 5) {
 					numTurns = 0;
 					emit l_putBottleAt5;
 					abort(rotaryTableTrigger){
@@ -505,5 +527,113 @@ Plant(
 		||
 		{while(true) {present(bottleAdded){emit bottleAddedC;} pause;}}
 
+	}
+	||
+	{// Arm
+		while(true){
+			abort(armSource && enable){
+				sustain armAtDest;
+			}
+			await(!enable);
+			abort(armDest && enable){
+				sustain armAtSource;
+			}
+			await(!enable);
+		}
+	}
+	||
+	{// Pusher
+		while(true){
+			abort(pusherExtend && enable){
+				sustain pusherRetracted;
+			}
+			await(!enable);
+			abort(!pusherExtend && enable){
+				sustain pusherExtended;
+			}
+			await(!enable);
+		}
+	}
+	||
+	{// Vacuum
+		while(true){
+			present(vacOn && armAtSource){
+				if((Integer)#capPos == 1){
+					emit capPos(0);
+					abort(!vacOn){
+						sustain WPgripped; 
+					}
+					present(armAtSource){
+						emit capPos(1);
+					}
+				}
+			}
+			pause;
+		}
+	}
+	||
+	{
+		/*
+		 * Cap positions
+		 * 0 = at Mag
+		 * 1 = at pick-up
+		 */
+		while(true){
+			// At mag
+			abort(empty){
+				while(true){
+						await(pusherRetracted);
+						await(pusherExtended);
+						// At pick-up
+						emit capPos(1);
+						await(pusherRetracted);
+						emit capDec;
+				}
+			}
+			await(refill);
+		}
+	}
+	||
+	{
+		int capcount = 5;
+		while(true){
+			present(capDec){
+				if(capcount > 0)
+					capcount--;
+			}
+			present(refill){
+				capcount = 5;
+			}
+//			present(pusherRetracted){
+				if(capcount == 0)
+					emit empty;
+//			}
+			pause;
+		}
+	}
+	||
+	{// To viz
+		{while(true){present(pusherRetracted){emit pusherRetractedE;} pause;}}
+		||
+		{while(true){present(pusherExtended){emit pusherExtendedE;} pause;}}
+		||
+		{while(true){present(WPgripped){emit WPgrippedE;} pause;}}
+		||
+		{while(true){present(armAtSource){emit armAtSourceE;} pause;}}
+		||
+		{while(true){present(armAtDest){emit armAtDestE;} pause;}}
+		||
+		{while(true){present(empty){emit emptyE;} pause;}}
+		||
+		
+		{while(true){present(pusherExtend){emit pusherExtendE;} pause;}}
+		||
+		{while(true){present(vacOn){emit vacOnE;} pause;}}
+		||
+		{while(true){present(armSource){emit armSourceE;} pause;}}
+		||
+		{while(true){present(armDest){emit armDestE;} pause;}}
+		||
+		{while(true){present(bottleAtPos3){emit bottleAtPos3E;} pause;}}
 	}
 }

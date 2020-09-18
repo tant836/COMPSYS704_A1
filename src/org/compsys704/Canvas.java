@@ -21,6 +21,7 @@ public class Canvas extends JPanel {
 	BufferedImage RotaryTable;
 	BufferedImage Capper;
 	BufferedImage Filler;
+	BufferedImage CapLoader;
 	
 	public Canvas(){
 		try {
@@ -28,13 +29,7 @@ public class Canvas extends JPanel {
 			RotaryTable = ImageIO.read(new File("res/RotaryTable.PNG"));
 			Capper = ImageIO.read(new File("res/Capper.PNG"));
 			Filler = ImageIO.read(new File("res/Filler.PNG"));
-//			arm1 = bi.getSubimage(0, 0, 64, 256);
-//			arm2 = bi.getSubimage(71, 0, 48, 256);
-//			loader = ImageIO.read(new File("res/loader.png"));
-//			bi = ImageIO.read(new File("res/pusher.png"));
-//			p1 = bi.getSubimage(0, 0, 238, 68);
-//			p2 = bi.getSubimage(238, 0, 172, 68);
-//			cap = ImageIO.read(new File("res/cap.png"));
+			CapLoader = ImageIO.read(new File("res/CapLoader.PNG"));
 		} catch (IOException e) {
 			e.printStackTrace();
 			//System.exit(1);;
@@ -260,6 +255,76 @@ public class Canvas extends JPanel {
 			g.setColor(Color.red);
 		}
 		g.fillOval(420, 707, 15, 15);
+		
+		//CapLoader
+		g.drawImage(CapLoader, 550, 460, null);
+		if(States.PUSHER_RETRACTED) {
+			g.setColor(Color.green);
+		}else {
+			g.setColor(Color.red);
+		}
+		g.fillOval(537, 478, 15, 15);
+		if(States.PUSHER_EXTENDED) {
+			g.setColor(Color.green);
+		}else {
+			g.setColor(Color.red);
+		}
+		g.fillOval(537, 508, 15, 15);
+		if(States.GRIPPED) {
+			g.setColor(Color.green);
+		}else {
+			g.setColor(Color.red);
+		}
+		g.fillOval(537, 538, 15, 15);
+		if(States.ARM_AT_SOURCE) {
+			g.setColor(Color.green);
+		}else {
+			g.setColor(Color.red);
+		}
+		g.fillOval(537, 568, 15, 15);
+		if(States.ARM_AT_DEST) {
+			g.setColor(Color.green);
+		}else {
+			g.setColor(Color.red);
+		}
+		g.fillOval(537, 598, 15, 15);
+		if(States.MAG_EMPTY) {
+			g.setColor(Color.green);
+		}else {
+			g.setColor(Color.red);
+		}
+		g.fillOval(537, 628, 15, 15);
+		if(States.bottleAtPos3) {
+			g.setColor(Color.green);
+		}else {
+			g.setColor(Color.red);
+		}
+		g.fillOval(537, 658, 15, 15);
+		
+		if(States.pusherExtend) {
+			g.setColor(Color.green);
+		}else {
+			g.setColor(Color.red);
+		}
+		g.fillOval(947, 478, 15, 15);
+		if(States.vacOn) {
+			g.setColor(Color.green);
+		}else {
+			g.setColor(Color.red);
+		}
+		g.fillOval(947, 527, 15, 15);
+		if(States.armSource) {
+			g.setColor(Color.green);
+		}else {
+			g.setColor(Color.red);
+		}
+		g.fillOval(947, 553, 15, 15);
+		if(States.armDest) {
+			g.setColor(Color.green);
+		}else {
+			g.setColor(Color.red);
+		}
+		g.fillOval(947, 610, 15, 15);
 		
 	}
 }

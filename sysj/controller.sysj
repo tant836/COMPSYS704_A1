@@ -21,7 +21,7 @@ Conveyor(
 }
 
 RotaryTable(
-		input signal tableAlignedWithSensor, bottleAtPos5, capOnBottleAtPos1, bottleAtPos1, doneAtPos2, doneAtPos4;
+		input signal tableAlignedWithSensor, bottleAtPos5, capOnBottleAtPos1, bottleAtPos1, doneAtPos2, doneAtPos4, doneAtPos3;
 		output signal rotaryTableTrigger;
 		)
 ->{
@@ -35,6 +35,10 @@ RotaryTable(
 			sustain rotaryTableTrigger;
 		}
 		await(doneAtPos2);
+		abort(bottleAtPos5 || tableAlignedWithSensor){
+			sustain rotaryTableTrigger;
+		}
+		await(doneAtPos3);
 		abort(bottleAtPos5 || tableAlignedWithSensor){
 			sustain rotaryTableTrigger;
 		}
@@ -233,5 +237,51 @@ Filler(
 		}
 			}
 		}
+	}
+}
+
+CapLoader(
+		input signal pusherRetracted,pusherExtended,WPgripped,armAtSource,armAtDest,empty;
+		output signal pusherExtend,vacOn,armSource,armDest, doneAtPos3;
+		input signal bottleAtPos3;
+		)
+->{
+/* TODO: Write control-logic */
+	
+	loop{
+		
+			pause;
+			await(!empty);
+			await(bottleAtPos3);
+			abort(armAtDest){
+				sustain armDest;
+			}
+			
+			abort(pusherExtended){
+				sustain pusherExtend;
+			}
+			
+			await(pusherRetracted);
+			
+			abort(armAtSource){
+				sustain armSource;
+			}
+			
+			abort(WPgripped){
+				sustain vacOn;
+			}
+			
+			abort(armAtDest){
+				{sustain vacOn;}||{sustain armDest;}
+			}
+			
+			await(!WPgripped);
+			
+			abort(armAtSource){
+				sustain armSource;
+			}
+			
+			emit doneAtPos3;
+			await(!bottleAtPos3);
 	}
 }

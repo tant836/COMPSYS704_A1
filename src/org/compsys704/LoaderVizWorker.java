@@ -110,7 +110,60 @@ public class LoaderVizWorker extends Worker {
 			
 			States.noz4 = status;
 			break;
+			
+		case "pusherRetractedE":
+			States.PUSHER_RETRACTED = status;
+			break;
+		case "pusherExtendedE":
+			if(!States.MAG_EMPTY && !States.PUSHER_EXTENDED)
+				States.CAP_READY = true;
+			States.PUSHER_EXTENDED = status;
+			break;
+		case "WPgrippedE":
+			if(States.GRIPPED && States.ARM_AT_SOURCE){
+				if(!status)
+					States.CAP_READY = true;
+			}
+			States.GRIPPED = status;
+			if(States.GRIPPED && States.ARM_AT_SOURCE){
+				States.CAP_READY = false;
+			}
+			break;
+		case "armAtSourceE":
+			States.ARM_AT_SOURCE = status;
+			break;
+		case "armAtDestE":
+			States.ARM_AT_DEST = status;
+			break;
+		case "emptyE":
+			States.MAG_EMPTY = status;
+			break;
 
+		case "pusherExtendE":
+			
+			States.pusherExtend = status;
+			break;
+			
+		case "vacOnE":
+			
+			States.vacOn = status;
+			break;
+			
+		case "armSourceE":
+			
+			States.armSource = status;
+			break;
+			
+		case "armDestE":
+			
+			States.armDest = status;
+			break;
+			
+		case "bottleAtPos3E":
+			
+			States.bottleAtPos3 = status;
+			break;
+			
 		default:
 			System.err.println("Wrong sig name : " + signame);
 			// System.exit(1);
@@ -119,13 +172,14 @@ public class LoaderVizWorker extends Worker {
 		
 	}
 
-	static final List<String> signames = Arrays.asList("motConveyorOnE", "bottleAtPos1E", "rotaryTableTriggerE",
+	static final List<String> signames = Arrays.asList("motConveyorOnE", "bottleAtPos1E", "rotaryTableTriggerE", "bottleAtPos3E",
 			"cylPos5ZAxisExtendE", "bottleLeftPos5E", "bottleAtPos4E", "bottleAtPos2E", "gripperTurnRetractE",
 			"gripperTurnExtendE", "capGripperPos5ExtendE", "cylClampBottleExtendE", "bottleAtPos5E", "capOnBottleAtPos1E",
 			"gripperZAxisLoweredE", "gripperZAxisLiftedE", "gripperTurnHomePosE", "gripperTurnFinalPosE",
 			"valveInjectorOnOffE", "valveInletOnOffE", "dosUnitValveRetractE", "dosUnitEvacE", "dosUnitFilledE",
 			"dosUnitValveExtendE", "emptyE", "armAtDestE", "armAtSourceE", "WPgrippedE", "pusherExtendedE",
-			"pusherRetractedE", "noz1E", "noz2E", "noz3E", "noz4E");
+			"pusherRetractedE", "noz1E", "noz2E", "noz3E", "noz4E", "pusherRetractedE","pusherExtendedE","WPgrippedE",
+			"armAtSourceE","armAtDestE","emptyE", "pusherExtendE", "vacOnE", "armSourceE", "armDestE");
 
 	@Override
 	public boolean hasSignal(String sn) {

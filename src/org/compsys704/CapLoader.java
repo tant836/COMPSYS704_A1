@@ -27,7 +27,7 @@ public class CapLoader extends JFrame {
 	public CapLoader() {
 		
 		panel = new Canvas();
-		panel.setPreferredSize(new Dimension(500, 800));
+		panel.setPreferredSize(new Dimension(1000, 800));
 		panel.setBackground(Color.WHITE);
 		JButton enable = new JButton("Enable");
 		enable.addActionListener(new SignalClient(Ports.PORT_LOADER_PLANT, Ports.ENABLE_SIGNAL));
@@ -35,11 +35,14 @@ public class CapLoader extends JFrame {
 		remBottle.addActionListener(new SignalClient(Ports.PORT_LOADER_PLANT, Ports.REMOVE_BOTTLE_SIGNAL));
 		JButton put_bottle = new JButton("Put bottle");
 		put_bottle.addActionListener(new SignalClient(Ports.PORT_LOADER_PLANT, Ports.PLACE_BOTTLE_SIGNAL));
+		JButton refill = new JButton("refill");
+		refill.addActionListener(new SignalClient(Ports.PORT_LOADER_PLANT, Ports.PLACE_BOTTLE_SIGNAL));
 		
 		JPanel ss = new JPanel();
 		ss.add(enable);
 		ss.add(remBottle);
 		ss.add(put_bottle);
+		ss.add(refill);
 		
 		
 		JTabbedPane tabbedPane = new JTabbedPane();

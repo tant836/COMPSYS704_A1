@@ -13,6 +13,7 @@
 			<iSignal Name="bottleAtPos5"  Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
 			<iSignal Name="capOnBottleAtPos1"  Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
 			<iSignal Name="doneAtPos2"  Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
+			<iSignal Name="doneAtPos3"  Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
 			<iSignal Name="doneAtPos4"  Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
 
 			<oSignal Name="rotaryTableTrigger" To="PlantCD.rotaryTableTrigger" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10001" />
@@ -60,16 +61,22 @@
 			
 			<oSignal Name="doneAtPos2" To="RotaryTableCD.doneAtPos2" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10000" />
 		</ClockDomain>
-<!-- 		<ClockDomain Name="GUIReaderCD" Class="GUIReader"> -->
-<!-- 			<iSignal Name="placeOrder" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" Type="java.lang.Integer" /> -->
-<!-- 			<iSignal Name="liquid1" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" /> -->
-<!-- 			<iSignal Name="liquid2" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" /> -->
-<!-- 			<iSignal Name="liquid3" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" /> -->
-<!-- 			<iSignal Name="liquid4" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" /> -->
-<!-- 			<iSignal Name="requestliquid" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" /> -->
+		
+		<ClockDomain Name="CapLoaderCD" Class="CapLoader">
+			<iSignal Name="pusherRetracted" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
+			<iSignal Name="pusherExtended"  Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
+			<iSignal Name="WPgripped"       Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
+			<iSignal Name="armAtSource"     Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
+			<iSignal Name="armAtDest"       Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
+			<iSignal Name="empty"           Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
+
+			<oSignal Name="pusherExtend" To="PlantCD.pusherExtend" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10001" />
+			<oSignal Name="vacOn"        To="PlantCD.vacOn"        Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10001" />
+			<oSignal Name="armSource"    To="PlantCD.armSource"    Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10001" />
+			<oSignal Name="armDest"      To="PlantCD.armDest"      Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10001" />
+			<oSignal Name="doneAtPos3"      To="RotaryTableCD.doneAtPos3"      Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10000" />
 			
-<!-- 			<oChannel Name="liquidBuffer" To="FillerCD.liquidBuffer"/> -->
-<!-- 			<oSignal Name="sentliquid" To="FillerCD.sentliquid" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10000" /> -->
-<!-- 		</ClockDomain> -->
+			<iSignal Name="bottleAtPos3"      Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
+		</ClockDomain>
 	</SubSystem>
 </System>
