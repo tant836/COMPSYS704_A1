@@ -23,6 +23,9 @@ import javax.swing.JTabbedPane;
 public class CapLoader extends JFrame {
 	private JPanel panel;
 	private JPanel panel2;
+	private JPanel panelrot;
+	private JPanel panelfil;
+	private JPanel panelCap;
 	
 	public CapLoader() {
 		
@@ -35,11 +38,14 @@ public class CapLoader extends JFrame {
 		remBottle.addActionListener(new SignalClient(Ports.PORT_LOADER_PLANT, Ports.REMOVE_BOTTLE_SIGNAL));
 		JButton put_bottle = new JButton("Put bottle");
 		put_bottle.addActionListener(new SignalClient(Ports.PORT_LOADER_PLANT, Ports.PLACE_BOTTLE_SIGNAL));
+		JButton refill = new JButton("refill");
+		refill.addActionListener(new SignalClient(Ports.PORT_LOADER_PLANT, Ports.PLACE_BOTTLE_SIGNAL));
 		
 		JPanel ss = new JPanel();
 		ss.add(enable);
 		ss.add(remBottle);
 		ss.add(put_bottle);
+		ss.add(refill);
 		
 		
 		JTabbedPane tabbedPane = new JTabbedPane();
@@ -51,6 +57,22 @@ public class CapLoader extends JFrame {
 		panel2.setBackground(Color.WHITE);
 		
 		tabbedPane.addTab("tab2", panel2);
+		
+		panelrot = new Canvas_Rotary();
+		panelrot.setPreferredSize(new Dimension(500, 800));
+		panelrot.setBackground(Color.WHITE);
+		tabbedPane.addTab("RotaryTable", panelrot);
+		
+		panelfil = new Canvas_Filler();
+		panelfil.setPreferredSize(new Dimension(500, 800));
+		panelfil.setBackground(Color.WHITE);
+		tabbedPane.addTab("Filler", panelfil);
+		
+		panelCap = new Canvas_Caploader();
+		panelCap.setPreferredSize(new Dimension(500, 800));
+		panelCap.setBackground(Color.WHITE);
+		tabbedPane.addTab("Caploader", panelCap);
+		
 		this.setLayout(new GridBagLayout());
 		GridBagConstraints c = new GridBagConstraints();
 		c.gridx = 0;

@@ -38,6 +38,22 @@ public class States {
 	public static volatile boolean noz4 = false;
 	
 	
+	public static volatile boolean PUSHER_RETRACTED = true;
+	public static volatile boolean PUSHER_EXTENDED = !PUSHER_RETRACTED;
+	public static volatile boolean GRIPPED = false;
+	public static volatile boolean ARM_AT_SOURCE = false;
+	public static volatile boolean ARM_AT_DEST = true;
+	public static volatile boolean MAG_EMPTY = false;
+	public static volatile boolean bottleAtPos3 = false;
+	
+	public static volatile boolean CAP_READY = false;
+	
+	
+	
+	public static volatile boolean pusherExtend = false;
+	public static volatile boolean vacOn = false;
+	public static volatile boolean armSource = false;
+	public static volatile boolean armDest = false;
 	
 	public static volatile String Liquid = "Water";
 	
