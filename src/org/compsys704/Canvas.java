@@ -24,10 +24,10 @@ public class Canvas extends JPanel {
 	
 	public Canvas(){
 		try {
-			Conveyor = ImageIO.read(new File("res/Conveyor.PNG"));
-			RotaryTable = ImageIO.read(new File("res/RotaryTable.PNG"));
-			Capper = ImageIO.read(new File("res/Capper.PNG"));
-			Filler = ImageIO.read(new File("res/Filler.PNG"));
+			//Conveyor = ImageIO.read(new File("res/Conveyor.PNG"));
+			RotaryTable = ImageIO.read(new File("res/RotaryDetail.PNG"));
+			Capper = ImageIO.read(new File("res/CapLoaderDetail.PNG"));
+			Filler = ImageIO.read(new File("res/FillerDetail.PNG"));
 //			arm1 = bi.getSubimage(0, 0, 64, 256);
 //			arm2 = bi.getSubimage(71, 0, 48, 256);
 //			loader = ImageIO.read(new File("res/loader.png"));
@@ -45,7 +45,7 @@ public class Canvas extends JPanel {
 	protected void paintComponent(Graphics g){
 		super.paintComponent(g);
 		//conveyor
-		g.drawImage(Conveyor, 45, 20, null);
+		g.drawImage(RotaryTable, 0, 0, null);
 		if(States.bottleAtPos1) {
 			g.setColor(Color.green);
 		}else {
@@ -68,7 +68,7 @@ public class Canvas extends JPanel {
 		g.fillOval(440, 70, 15, 15);
 		
 		//RotaryTable
-		g.drawImage(RotaryTable, 23, 150, null);
+		//g.drawImage(RotaryTable, 23, 150, null);
 		if(States.tableAlignedWithSensor) {
 			g.setColor(Color.green);
 		}else {
@@ -98,7 +98,7 @@ public class Canvas extends JPanel {
 		g.fillOval(440, 235, 15, 15);
 		
 		//Capper
-		g.drawImage(Capper, 44, 350, null);
+		g.drawImage(Capper, 100, 0, null);
 		if(States.bottleAtPos4) {
 			g.setColor(Color.green);
 		}else {
