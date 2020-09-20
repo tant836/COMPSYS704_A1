@@ -18,7 +18,9 @@ import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
+import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
+import javax.swing.ScrollPaneConstants;
 
 public class CapLoader extends JFrame {
 	private JPanel panel;
@@ -31,8 +33,10 @@ public class CapLoader extends JFrame {
 	public CapLoader() {
 		
 		panel = new Canvas();
-		panel.setPreferredSize(new Dimension(500, 800));
+		panel.setPreferredSize(new Dimension(500, 1200));
 		panel.setBackground(Color.WHITE);
+		JScrollPane scrollPane = new JScrollPane(panel, ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+		scrollPane.setPreferredSize(new Dimension(500,800));
 		JButton enable = new JButton("Enable");
 		enable.addActionListener(new SignalClient(Ports.PORT_LOADER_PLANT, Ports.ENABLE_SIGNAL));
 		JButton remBottle = new JButton("Remove bottle");
@@ -50,14 +54,15 @@ public class CapLoader extends JFrame {
 		
 		
 		JTabbedPane tabbedPane = new JTabbedPane();
+		
 
-		tabbedPane.addTab("tab1", panel);
+		tabbedPane.addTab("Overview", scrollPane);
 		
-		panel2 = new Canvas2();
-		panel2.setPreferredSize(new Dimension(500, 800));
-		panel2.setBackground(Color.WHITE);
-		
-		tabbedPane.addTab("tab2", panel2);
+//		panel2 = new Canvas2();
+//		panel2.setPreferredSize(new Dimension(500, 800));
+//		panel2.setBackground(Color.WHITE);
+//		
+//		tabbedPane.addTab("tab2", panel2);
 		
 		panelrot = new Canvas_Rotary();
 		panelrot.setPreferredSize(new Dimension(500, 800));

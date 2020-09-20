@@ -255,6 +255,75 @@ public class Canvas extends JPanel {
 			g.setColor(Color.red);
 		}
 		g.fillOval(420, 707, 15, 15);
-		
+		//CapLoader
+				g.drawImage(CapLoader, 45, 740, null);
+				if(States.PUSHER_RETRACTED) {
+					g.setColor(Color.green);
+				}else {
+					g.setColor(Color.red);
+				}
+				g.fillOval(33, 758, 15, 15);
+				if(States.PUSHER_EXTENDED) {
+					g.setColor(Color.green);
+				}else {
+					g.setColor(Color.red);
+				}
+				g.fillOval(33, 788, 15, 15);
+				if(States.GRIPPED) {
+					g.setColor(Color.green);
+				}else {
+					g.setColor(Color.red);
+				}
+				g.fillOval(33, 818, 15, 15);
+				if(States.ARM_AT_SOURCE) {
+					g.setColor(Color.green);
+				}else {
+					g.setColor(Color.red);
+				}
+				g.fillOval(33, 848, 15, 15);
+				if(States.ARM_AT_DEST) {
+					g.setColor(Color.green);
+				}else {
+					g.setColor(Color.red);
+				}
+				g.fillOval(33, 878, 15, 15);
+				if(States.MAG_EMPTY) {
+					g.setColor(Color.green);
+				}else {
+					g.setColor(Color.red);
+				}
+				g.fillOval(33, 908, 15, 15);
+				if(States.bottleAtPos3) {
+					g.setColor(Color.green);
+				}else {
+					g.setColor(Color.red);
+				}
+				g.fillOval(33, 938, 15, 15);
+
+				if(States.pusherExtend) {
+					g.setColor(Color.green);
+				}else {
+					g.setColor(Color.red);
+				}
+				g.fillOval(443, 758, 15, 15);
+				if(States.vacOn) {
+					g.setColor(Color.green);
+				}else {
+					g.setColor(Color.red);
+				}
+				g.fillOval(443, 808, 15, 15);
+				if(States.armSource) {
+					g.setColor(Color.green);
+				}else {
+					g.setColor(Color.red);
+				}
+				g.fillOval(443, 833, 15, 15);
+				if(States.armDest) {
+					g.setColor(Color.green);
+				}else {
+					g.setColor(Color.red);
+				}
+				g.fillOval(443, 890, 15, 15);
+
 	}
 }
