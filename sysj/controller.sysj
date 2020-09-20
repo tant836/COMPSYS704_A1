@@ -121,9 +121,9 @@ Filler(
 		input signal bottleAtPos2, dosUnitEvac, dosUnitFilled;
 		input signal noz1,noz2,noz3,noz4;
 		input Integer signal sentliquid;
-		input signal  i_selNoz1, i_selNoz2, i_selNoz3, i_selNoz4, bottleAdded;
+		input signal bottleAdded;
 
-		output signal valveInjectorOnOff, valveInletOnOff, dosUnitValveRetract, dosUnitValveExtend, turnNozTrigger, doneAtPos2,  nozBusy, requestliquid;
+		output signal valveInjectorOnOff, valveInletOnOff, dosUnitValveRetract, dosUnitValveExtend, turnNozTrigger, doneAtPos2, requestliquid;
 		)
 ->{
 	signal doneFilling, doneAllLiquids, nozzlePlaced, doneAtPos2_L;
