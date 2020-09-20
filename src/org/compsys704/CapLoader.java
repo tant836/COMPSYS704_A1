@@ -33,10 +33,11 @@ public class CapLoader extends JFrame {
 	public CapLoader() {
 		
 		panel = new Canvas();
-		panel.setPreferredSize(new Dimension(500, 1200));
+		panel.setPreferredSize(new Dimension(500, 1000));
 		panel.setBackground(Color.WHITE);
 		JScrollPane scrollPane = new JScrollPane(panel, ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 		scrollPane.setPreferredSize(new Dimension(500,800));
+		scrollPane.getVerticalScrollBar().setUnitIncrement(10);
 		JButton enable = new JButton("Enable");
 		enable.addActionListener(new SignalClient(Ports.PORT_LOADER_PLANT, Ports.ENABLE_SIGNAL));
 		JButton remBottle = new JButton("Remove bottle");
