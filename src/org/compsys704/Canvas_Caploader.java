@@ -34,69 +34,69 @@ public class Canvas_Caploader extends JPanel {
 			}else {
 				g.setColor(Color.red);
 			}
-			g.fillOval(35, 370, 15, 15);
+			g.fillOval(83, 343, 15, 15);
 			
 			if(States.gripperZAxisLowered) {
 				g.setColor(Color.green);
 			}else {
 				g.setColor(Color.red);
 			}
-			g.fillOval(35, 400, 15, 15);
+			g.fillOval(83, 53, 15, 15);
 			
 			if(States.gripperZAxisLifted) {
 				g.setColor(Color.green);
 			}else {
 				g.setColor(Color.red);
 			}
-			g.fillOval(35, 430, 15, 15);
+			g.fillOval(83, 13, 15, 15);
 			
 			if(States.gripperTurnHomePos) {
 				g.setColor(Color.green);
 			}else {
 				g.setColor(Color.red);
 			}
-			g.fillOval(35, 460, 15, 15);
+			g.fillOval(83, 173, 15, 15);
 			
 			if(States.gripperTurnFinalPos) {
 				g.setColor(Color.green);
 			}else {
 				g.setColor(Color.red);
 			}
-			g.fillOval(35, 490, 15, 15);
+			g.fillOval(83, 213, 15, 15);
 			
 			if(States.cylPos5ZaxisExtend) {
 				g.setColor(Color.green);
 			}else {
 				g.setColor(Color.red);
 			}
-			g.fillOval(438, 370, 15, 15);
+			g.fillOval(223, 253, 15, 15);
 			
 			if(States.gripperTurnRetract) {
 				g.setColor(Color.green);
 			}else {
 				g.setColor(Color.red);
 			}
-			g.fillOval(438, 400, 15, 15);
+			g.fillOval(223, 283, 15, 15);
 			
 			if(States.gripperTurnExtend) {
 				g.setColor(Color.green);
 			}else {
 				g.setColor(Color.red);
 			}
-			g.fillOval(438, 430, 15, 15);
+			g.fillOval(223, 313, 15, 15);
 			
 			if(States.capGripperPos5Extend) {
 				g.setColor(Color.green);
 			}else {
 				g.setColor(Color.red);
 			}
-			g.fillOval(438, 460, 15, 15);
+			g.fillOval(83, 113, 15, 15);
 			
 			if(States.cylClampBottleExtend) {
 				g.setColor(Color.green);
 			}else {
 				g.setColor(Color.red);
 			}
-			g.fillOval(438, 490, 15, 15);
+			g.fillOval(223, 343, 15, 15);
 		}
 }

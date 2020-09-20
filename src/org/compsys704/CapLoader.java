@@ -26,6 +26,7 @@ public class CapLoader extends JFrame {
 	private JPanel panelrot;
 	private JPanel panelfil;
 	private JPanel panelCap;
+	private JPanel panelLid;
 	
 	public CapLoader() {
 		
@@ -72,6 +73,11 @@ public class CapLoader extends JFrame {
 		panelCap.setPreferredSize(new Dimension(500, 800));
 		panelCap.setBackground(Color.WHITE);
 		tabbedPane.addTab("Caploader", panelCap);
+		
+		panelLid = new Canvas_LidLoader();
+		panelLid.setPreferredSize(new Dimension(500, 800));
+		panelLid.setBackground(Color.WHITE);
+		tabbedPane.addTab("LidLoader", panelLid);
 		
 		this.setLayout(new GridBagLayout());
 		GridBagConstraints c = new GridBagConstraints();
