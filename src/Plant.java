@@ -5509,7 +5509,7 @@ public class Plant extends ClockDomain{
           S22867=2;
           class GUI extends Object implements java.lang.Runnable {//sysj\plant.sysj line: 35, column: 1
             public void run() {//sysj\plant.sysj line: 37, column: 21
-              org.compsys704.CapLoader.main(null);//sysj\plant.sysj line: 38, column: 4
+              org.compsys704.GUI.main(null);//sysj\plant.sysj line: 38, column: 4
             }
             GUI(){//sysj\plant.sysj line: 36, column: 42
             }
