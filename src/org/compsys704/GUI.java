@@ -22,7 +22,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import javax.swing.ScrollPaneConstants;
 
-public class CapLoader extends JFrame {
+public class GUI extends JFrame {
 	private JPanel panel;
 	private JPanel panel2;
 	private JPanel panelrot;
@@ -30,7 +30,7 @@ public class CapLoader extends JFrame {
 	private JPanel panelCap;
 	private JPanel panelLid;
 	
-	public CapLoader() {
+	public GUI() {
 		
 		panel = new Canvas();
 		panel.setPreferredSize(new Dimension(500, 1000));
@@ -40,7 +40,8 @@ public class CapLoader extends JFrame {
 		scrollPane.getVerticalScrollBar().setUnitIncrement(10);
 		JButton enable = new JButton("Enable");
 		enable.addActionListener(new SignalClient(Ports.PORT_LOADER_PLANT, Ports.ENABLE_SIGNAL));
-		JButton remBottle = new JButton("Remove cap");
+
+		JButton remBottle = new JButton("Remove bottlecap");
 		remBottle.addActionListener(new SignalClient(Ports.PORT_LOADER_PLANT, Ports.REMOVE_BOTTLE_SIGNAL));
 		JButton put_bottle = new JButton("Put bottle");
 		put_bottle.addActionListener(new SignalClient(Ports.PORT_LOADER_PLANT, Ports.PLACE_BOTTLE_SIGNAL));
@@ -95,7 +96,7 @@ public class CapLoader extends JFrame {
 		c.gridy = 1;
 		this.add(ss,c);
 
-		this.setTitle("Cap Loader");
+		this.setTitle("Bottling System");
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setLocationRelativeTo(null);
 		this.setResizable(false);
@@ -103,7 +104,7 @@ public class CapLoader extends JFrame {
 	}
 
 	public static void main(String[] args) {
-		CapLoader cl = new CapLoader();
+		GUI cl = new GUI();
 		cl.pack();
 		cl.setVisible(true);
 		System.out.println("Begin");
