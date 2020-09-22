@@ -26,10 +26,10 @@ Plant(
 		output signal gripperZAxisLowered, gripperTurnFinalPos, gripperTurnHomePos, gripperZAxisLifted;
 		
 		//Filler
-		input signal valveInjectorOnOff,valveInletOnOff,dosUnitValveRetract,dosUnitValveExtend, selNoz1, selNoz2, selNoz3, selNoz4, turnNozTrigger;
+		input signal valveInjectorOnOff,valveInletOnOff,dosUnitValveRetract,dosUnitValveExtend, turnNozTrigger;
 		
 		output signal valveInjectorOnOffE,valveInletOnOffE,dosUnitValveRetractE,dosUnitValveExtendE, dosUnitFilledE, dosUnitEvacE, dosUnitEvac, dosUnitFilled,noz1,noz2,noz3,noz4;
-		output signal  o_selNoz1, o_selNoz2, o_selNoz3, o_selNoz4, noz1E, noz2E, noz3E, noz4E, bottleAddedC;
+		output signal noz1E, noz2E, noz3E, noz4E, bottleAddedC;
 		)
 ->
 {
@@ -506,14 +506,7 @@ Plant(
 		||
 		{while(true) {present(dosUnitFilled){emit dosUnitFilledE;} pause;}}
 
-		||
-		{while(true) {present(selNoz1){emit o_selNoz1;} pause;}}
-		||
-		{while(true) {present(selNoz2){emit o_selNoz2;} pause;}}
-		||
-		{while(true) {present(selNoz3){emit o_selNoz3;} pause;}}
-		||
-		{while(true) {present(selNoz4){emit o_selNoz4;} pause;}}
+		
 		||
 		{while(true) {present(capOnBottleAtPos1){emit capOnBottleAtPos1E;} pause;}}
 		||
