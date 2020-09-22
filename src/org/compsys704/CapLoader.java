@@ -40,7 +40,7 @@ public class CapLoader extends JFrame {
 		scrollPane.getVerticalScrollBar().setUnitIncrement(10);
 		JButton enable = new JButton("Enable");
 		enable.addActionListener(new SignalClient(Ports.PORT_LOADER_PLANT, Ports.ENABLE_SIGNAL));
-		JButton remBottle = new JButton("Remove bottle");
+		JButton remBottle = new JButton("Remove cap");
 		remBottle.addActionListener(new SignalClient(Ports.PORT_LOADER_PLANT, Ports.REMOVE_BOTTLE_SIGNAL));
 		JButton put_bottle = new JButton("Put bottle");
 		put_bottle.addActionListener(new SignalClient(Ports.PORT_LOADER_PLANT, Ports.PLACE_BOTTLE_SIGNAL));
