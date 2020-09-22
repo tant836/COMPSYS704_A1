@@ -66,8 +66,6 @@
 
 			<iSignal Name="refill"       Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10001" />
 
-			<iSignal Name="putBottleAt5_FV"       Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10001" />
-			
 			<iSignal Name="removeBottle"       Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10001" />
 
 			<oSignal Name="bottleAddedC"    To="FillerCD.bottleAdded"    Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10000" />

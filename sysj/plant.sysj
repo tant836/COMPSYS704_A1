@@ -5,7 +5,7 @@ Plant(
 		output signal pusherExtendE, vacOnE, armSourceE, armDestE, bottleAtPos3, bottleAtPos3E;
 		
 		//Conveyor
-		input signal motConveyorOn, bottleAdded, putBottleAt5_FV;
+		input signal motConveyorOn, bottleAdded;
 		
 		output signal motConveyorOnE, bottleAtPos1, bottleAtPos1E, bottleAtPos5,bottleAtPos5_RT, bottleLeftPos5, bottleAtPos5E, bottleLeftPos5E, bottleAtPos2E, bottleAtPos4E, bottleAtPos2, bottleAtPos4;
 		

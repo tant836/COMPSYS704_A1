@@ -74,7 +74,7 @@ public class OrderingSystem extends JFrame {
                 	JOptionPane.showMessageDialog(OrderingSystem.this, "No liquids selected. \n Order was not made"); 
                 }else {
                 	// MessageDialog to show information selected radion buttons. 
-                    JOptionPane.showMessageDialog(OrderingSystem.this, "Order made: \n" + qual); 
+                    JOptionPane.showMessageDialog(OrderingSystem.this, "Order made \n Number of orders in queue: " + FIFO.size()); 
 //                    ActionListener al = new SignalClient(Ports.PORT_LOADER_CONTROLLER, Ports.PLACE_ORDER);
 //                	al.actionPerformed(null);
                 	

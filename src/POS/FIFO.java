@@ -24,4 +24,8 @@ public class FIFO {
 	public static Integer peek() {
 		return fifo.peek();
 	}
+	
+	public static int size() {
+		return fifo.size();
+	}
 }

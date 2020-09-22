@@ -16,7 +16,6 @@ public class Plant extends ClockDomain{
   public Signal removeBottle = new Signal("removeBottle", Signal.INPUT);
   public Signal motConveyorOn = new Signal("motConveyorOn", Signal.INPUT);
   public Signal bottleAdded = new Signal("bottleAdded", Signal.INPUT);
-  public Signal putBottleAt5_FV = new Signal("putBottleAt5_FV", Signal.INPUT);
   public Signal rotaryTableTrigger = new Signal("rotaryTableTrigger", Signal.INPUT);
   public Signal cylPos5ZaxisExtend = new Signal("cylPos5ZaxisExtend", Signal.INPUT);
   public Signal pusherExtend = new Signal("pusherExtend", Signal.INPUT);
@@ -5820,7 +5819,6 @@ public class Plant extends ClockDomain{
           removeBottle.gethook();
           motConveyorOn.gethook();
           bottleAdded.gethook();
-          putBottleAt5_FV.gethook();
           rotaryTableTrigger.gethook();
           cylPos5ZaxisExtend.gethook();
           pusherExtend.gethook();
@@ -5846,7 +5844,6 @@ public class Plant extends ClockDomain{
       removeBottle.setpreclear();
       motConveyorOn.setpreclear();
       bottleAdded.setpreclear();
-      putBottleAt5_FV.setpreclear();
       rotaryTableTrigger.setpreclear();
       cylPos5ZaxisExtend.setpreclear();
       pusherExtend.setpreclear();
@@ -5961,9 +5958,6 @@ public class Plant extends ClockDomain{
       dummyint = bottleAdded.getStatus() ? bottleAdded.setprepresent() : bottleAdded.setpreclear();
       bottleAdded.setpreval(bottleAdded.getValue());
       bottleAdded.setClear();
-      dummyint = putBottleAt5_FV.getStatus() ? putBottleAt5_FV.setprepresent() : putBottleAt5_FV.setpreclear();
-      putBottleAt5_FV.setpreval(putBottleAt5_FV.getValue());
-      putBottleAt5_FV.setClear();
       dummyint = rotaryTableTrigger.getStatus() ? rotaryTableTrigger.setprepresent() : rotaryTableTrigger.setpreclear();
       rotaryTableTrigger.setpreval(rotaryTableTrigger.getValue());
       rotaryTableTrigger.setClear();
@@ -6164,7 +6158,6 @@ public class Plant extends ClockDomain{
         removeBottle.gethook();
         motConveyorOn.gethook();
         bottleAdded.gethook();
-        putBottleAt5_FV.gethook();
         rotaryTableTrigger.gethook();
         cylPos5ZaxisExtend.gethook();
         pusherExtend.gethook();
