@@ -7,7 +7,10 @@
 			<oSignal Name="motConveyorOn" To="PlantCD.motConveyorOn" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10001" />
 		</ClockDomain>
 		<ClockDomain Name="RotaryTableCD" Class="RotaryTable">
-			<iSignal Name="bottleAtPos1" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
+			<iSignal Name="bottleAtPos1_RT" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
+			<iSignal Name="bottleAtPos2_RT" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
+			<iSignal Name="bottleAtPos3_RT" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
+			<iSignal Name="bottleAtPos4_RT" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
 		
 			<iSignal Name="tableAlignedWithSensor" Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
 			<iSignal Name="bottleAtPos5"  Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10000" />
@@ -46,6 +49,7 @@
 <!-- 			<iChannel Name="liquidBuffer" From="GUIReaderCD.liquidBuffer"/> -->
 			
 			<oSignal Name="requestliquid" To="POS.requestliquid" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="30000" />
+			<oSignal Name="receivedliquid" To="POS.receivedliquid" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="30000" />
 			
 			
 			

@@ -33,6 +33,9 @@ public class SignalServer implements Runnable {
 					if(signame.equalsIgnoreCase("requestliquid")) {
 						System.out.println("herererere");
 						s.getOutputStream().write(0);
+					}else if(signame.equalsIgnoreCase("receivedliquid")) {
+						
+						s.getOutputStream().write(0);
 					}else {
 						s.close();
 						continue;

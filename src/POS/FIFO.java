@@ -21,4 +21,7 @@ public class FIFO {
 		return fifo.isEmpty();
 	}
 
+	public static Integer peek() {
+		return fifo.peek();
+	}
 }

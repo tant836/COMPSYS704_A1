@@ -6,7 +6,10 @@
 			<iSignal Name="enable"       Class="com.systemj.ipc.SimpleServer" IP="127.0.0.1" Port="10001" />
 			
 			<oSignal Name="bottleAtPos1" To="ConveyorCD.bottleAtPos1" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10000" />
-			<oSignal Name="bottleAtPos1_RT" To="RotaryTableCD.bottleAtPos1" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10000" />
+			<oSignal Name="bottleAtPos1_RT" To="RotaryTableCD.bottleAtPos1_RT" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10000" />
+			<oSignal Name="bottleAtPos2_RT" To="RotaryTableCD.bottleAtPos2_RT" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10000" />
+			<oSignal Name="bottleAtPos3_RT" To="RotaryTableCD.bottleAtPos3_RT" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10000" />
+			<oSignal Name="bottleAtPos4_RT" To="RotaryTableCD.bottleAtPos4_RT" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10000" />
 			<oSignal Name="bottleLeftPos5" To="ConveyorCD.bottleLeftPos5" Class="com.systemj.ipc.SimpleClient" IP="127.0.0.1" Port="10000" />
 			
 			

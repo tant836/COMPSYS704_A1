@@ -29,7 +29,7 @@ Plant(
 		input signal valveInjectorOnOff,valveInletOnOff,dosUnitValveRetract,dosUnitValveExtend, turnNozTrigger;
 		
 		output signal valveInjectorOnOffE,valveInletOnOffE,dosUnitValveRetractE,dosUnitValveExtendE, dosUnitFilledE, dosUnitEvacE, dosUnitEvac, dosUnitFilled,noz1,noz2,noz3,noz4;
-		output signal noz1E, noz2E, noz3E, noz4E, bottleAddedC;
+		output signal noz1E, noz2E, noz3E, noz4E, bottleAddedC, bottleAtPos4_RT, bottleAtPos3_RT, bottleAtPos2_RT;
 		)
 ->
 {
@@ -193,7 +193,6 @@ Plant(
 		while(true) {
 			pause;
 			present(l_putBottleAt3){
-				System.out.println("putting at pos 3 proper");
 				abort((bottleAtPos4)){
 					await(!enable);
 					sustain bottleAtPos3;
@@ -218,32 +217,30 @@ Plant(
 		int numTurns = 0;
 		while(true) {
 			pause;
+			emit tableAlignedWithSensor;
 			present(rotaryTableTrigger && enable){
 				await(!enable);
 				numTurns++;
-				if(numTurns >= 2 && numTurns < 3) {
+				if(numTurns == 2) {
 					emit l_putBottleAt2;
 					abort(rotaryTableTrigger){
 						sustain tableAlignedWithSensor;
 					}
-				}else if(numTurns >= 3 && numTurns < 4) {
+				}else if(numTurns == 3) {
 					emit l_putBottleAt3;
-					System.out.println("putting at pos 3");
 					abort(rotaryTableTrigger){
 						sustain tableAlignedWithSensor;
 					}
 					
-				}else if(numTurns >= 4 && numTurns < 5) {
+				}else if(numTurns == 4 ) {
 					emit l_putBottleAt4;
 					abort(rotaryTableTrigger){
 						sustain tableAlignedWithSensor;
 					}
-				}else if(numTurns >= 5) {
+				}else if(numTurns == 5) {
 					numTurns = 0;
 					emit l_putBottleAt5;
-					abort(rotaryTableTrigger){
-						sustain tableAlignedWithSensor;
-					}
+					await(!rotaryTableTrigger);
 				}
 			}
 		}
@@ -452,6 +449,12 @@ Plant(
 		{while(true){present(rotaryTableTrigger){emit rotaryTableTriggerE;} pause;}}
 		||
 		{while(true){present(bottleAtPos1 && enable){await(!enable);  await(enable); emit bottleAtPos1_RT;} pause;}}
+		||
+		{while(true){present(bottleAtPos2){emit bottleAtPos2_RT;} pause;}}
+		||
+		{while(true){present(bottleAtPos3){emit bottleAtPos3_RT;} pause;}}
+		||
+		{while(true){present(bottleAtPos4){emit bottleAtPos4_RT;} pause;}}
 		||
 		{while(true){present(bottleAtPos5 || l_putBottleAt5){emit bottleAtPos5E;} pause;}}
 		||

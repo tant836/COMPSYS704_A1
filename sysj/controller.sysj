@@ -21,7 +21,7 @@ Conveyor(
 }
 
 RotaryTable(
-		input signal tableAlignedWithSensor, bottleAtPos5, capOnBottleAtPos1, bottleAtPos1, doneAtPos2, doneAtPos4, doneAtPos3;
+		input signal tableAlignedWithSensor, bottleAtPos5, capOnBottleAtPos1, bottleAtPos1_RT, doneAtPos2, doneAtPos4, doneAtPos3, bottleAtPos2_RT, bottleAtPos3_RT, bottleAtPos4_RT;
 		output signal rotaryTableTrigger;
 		)
 ->{
@@ -29,21 +29,21 @@ RotaryTable(
 	//My change is logic good?
 	loop{
 		pause;
-		await(bottleAtPos1);
+		await(bottleAtPos1_RT);
 		await(!capOnBottleAtPos1);
-		abort(bottleAtPos5 || tableAlignedWithSensor){
+		abort(bottleAtPos2_RT){
 			sustain rotaryTableTrigger;
 		}
 		await(doneAtPos2);
-		abort(bottleAtPos5 || tableAlignedWithSensor){
+		abort(bottleAtPos3_RT){
 			sustain rotaryTableTrigger;
 		}
 		await(doneAtPos3);
-		abort(bottleAtPos5 || tableAlignedWithSensor){
+		abort(bottleAtPos4_RT){
 			sustain rotaryTableTrigger;
 		}
 		await(doneAtPos4);
-		abort(bottleAtPos5 || tableAlignedWithSensor){
+		abort(bottleAtPos5){
 			sustain rotaryTableTrigger;
 		}
 		
@@ -123,7 +123,7 @@ Filler(
 		input Integer signal sentliquid;
 		input signal bottleAdded;
 
-		output signal valveInjectorOnOff, valveInletOnOff, dosUnitValveRetract, dosUnitValveExtend, turnNozTrigger, doneAtPos2, requestliquid;
+		output signal valveInjectorOnOff, valveInletOnOff, dosUnitValveRetract, dosUnitValveExtend, turnNozTrigger, doneAtPos2, requestliquid, receivedliquid;
 		)
 ->{
 	signal doneFilling, doneAllLiquids, nozzlePlaced, doneAtPos2_L;
@@ -144,8 +144,9 @@ Filler(
 		}
 		
 		liquidval = (int)#sentliquid;
+		emit receivedliquid;
 		
-		System.out.println("receive liquidBuffer");
+		System.out.println("receive liquidBuffer " + liquidval);
 			if((liquidval & (1 << 0)) != 0) {
 				
 					abort(noz1){
@@ -209,7 +210,6 @@ Filler(
 					}
 			}
 			
-			System.out.println("-- 19");
 			
 			abort(!bottleAtPos2){
 			present(bottleAtPos2){

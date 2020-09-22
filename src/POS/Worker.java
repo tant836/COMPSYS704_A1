@@ -47,12 +47,15 @@ public class Worker implements Runnable {
 				
 				//Object[] o = (Object[]) ois.readObject();
 				
-				if((boolean)o[0] == true) {
+				if(signame.equalsIgnoreCase("requestliquid") && (boolean)o[0] == true) {
 					if(!FIFO.isEmpty()) {
 						System.out.println("sending");
 						SignalClient al = new SignalClient(12345, Ports.sentliquid);
-	                	al.sendInteger(FIFO.poll());
+	                	al.sendInteger(FIFO.peek());
 					}
+				}else if(signame.equalsIgnoreCase("receivedliquid") && (boolean)o[0] == true) {
+					System.out.println("removing");
+					FIFO.poll();
 				}
 			}
 		} catch (IOException e) {

@@ -19,10 +19,6 @@ public class Filler extends ClockDomain{
   public Signal noz3 = new Signal("noz3", Signal.INPUT);
   public Signal noz4 = new Signal("noz4", Signal.INPUT);
   public Signal sentliquid = new Signal("sentliquid", Signal.INPUT);
-  public Signal i_selNoz1 = new Signal("i_selNoz1", Signal.INPUT);
-  public Signal i_selNoz2 = new Signal("i_selNoz2", Signal.INPUT);
-  public Signal i_selNoz3 = new Signal("i_selNoz3", Signal.INPUT);
-  public Signal i_selNoz4 = new Signal("i_selNoz4", Signal.INPUT);
   public Signal bottleAdded = new Signal("bottleAdded", Signal.INPUT);
   public Signal valveInjectorOnOff = new Signal("valveInjectorOnOff", Signal.OUTPUT);
   public Signal valveInletOnOff = new Signal("valveInletOnOff", Signal.OUTPUT);
@@ -30,8 +26,8 @@ public class Filler extends ClockDomain{
   public Signal dosUnitValveExtend = new Signal("dosUnitValveExtend", Signal.OUTPUT);
   public Signal turnNozTrigger = new Signal("turnNozTrigger", Signal.OUTPUT);
   public Signal doneAtPos2 = new Signal("doneAtPos2", Signal.OUTPUT);
-  public Signal nozBusy = new Signal("nozBusy", Signal.OUTPUT);
   public Signal requestliquid = new Signal("requestliquid", Signal.OUTPUT);
+  public Signal receivedliquid = new Signal("receivedliquid", Signal.OUTPUT);
   private Signal doneFilling_13;
   private Signal doneAllLiquids_13;
   private Signal nozzlePlaced_13;
@@ -210,7 +206,7 @@ public class Filler extends ClockDomain{
         break;
       
       case 1 : 
-        if(!bottleAtPos2.getprestatus()){//sysj\controller.sysj line: 204, column: 13
+        if(!bottleAtPos2.getprestatus()){//sysj\controller.sysj line: 205, column: 13
           S1401=0;
           active[16]=0;
           ends[16]=0;
@@ -253,7 +249,7 @@ public class Filler extends ClockDomain{
   }
 
   public void thread2888(int [] tdone, int [] ends){
-        doneAtPos2_L_13.setPresent();//sysj\controller.sysj line: 208, column: 7
+        doneAtPos2_L_13.setPresent();//sysj\controller.sysj line: 209, column: 7
     currsigs.addElement(doneAtPos2_L_13);
     active[17]=0;
     ends[17]=0;
@@ -262,7 +258,7 @@ public class Filler extends ClockDomain{
 
   public void thread2887(int [] tdone, int [] ends){
         S1401=1;
-    doneAtPos2.setPresent();//sysj\controller.sysj line: 203, column: 7
+    doneAtPos2.setPresent();//sysj\controller.sysj line: 204, column: 7
     currsigs.addElement(doneAtPos2);
     active[16]=1;
     ends[16]=1;
@@ -288,10 +284,10 @@ public class Filler extends ClockDomain{
             break;
           
           case 1 : 
-            if(doneAllLiquids_13.getprestatus() || nozzlePlaced_13.getprestatus()){//sysj\controller.sysj line: 199, column: 10
+            if(doneAllLiquids_13.getprestatus() || nozzlePlaced_13.getprestatus()){//sysj\controller.sysj line: 200, column: 10
               S1397=2;
-              if(doneAllLiquids_13.getprestatus()){//sysj\controller.sysj line: 200, column: 12
-                System.out.println("-- 21");//sysj\controller.sysj line: 201, column: 5
+              if(doneAllLiquids_13.getprestatus()){//sysj\controller.sysj line: 201, column: 12
+                System.out.println("-- 21");//sysj\controller.sysj line: 202, column: 5
                 thread2887(tdone,ends);
                 thread2888(tdone,ends);
                 int biggest2889 = 0;
@@ -308,7 +304,6 @@ public class Filler extends ClockDomain{
                 }
               }
               else {
-                System.out.println("-- 19");//sysj\controller.sysj line: 212, column: 4
                 S1397=3;
                 if(bottleAtPos2.getprestatus()){//sysj\controller.sysj line: 215, column: 12
                   S1471=0;
@@ -359,7 +354,6 @@ public class Filler extends ClockDomain{
             }
             //FINXME code
             if(biggest2895 == 0){
-              System.out.println("-- 19");//sysj\controller.sysj line: 212, column: 4
               S1397=3;
               if(bottleAtPos2.getprestatus()){//sysj\controller.sysj line: 215, column: 12
                 S1471=0;
@@ -534,11 +528,13 @@ public class Filler extends ClockDomain{
           case 2 : 
             if(sentliquid.getprestatus()){//sysj\controller.sysj line: 137, column: 10
               liquidval_thread_14 = (int)(sentliquid.getpreval() == null ? null : ((Integer)sentliquid.getpreval()));//sysj\controller.sysj line: 146, column: 3
-              System.out.println("receive liquidBuffer");//sysj\controller.sysj line: 148, column: 3
+              receivedliquid.setPresent();//sysj\controller.sysj line: 147, column: 3
+              currsigs.addElement(receivedliquid);
+              System.out.println("receive liquidBuffer " + liquidval_thread_14);//sysj\controller.sysj line: 149, column: 3
               S652=3;
-              if((liquidval_thread_14 & (1 << 0)) != 0){//sysj\controller.sysj line: 149, column: 7
+              if((liquidval_thread_14 & (1 << 0)) != 0){//sysj\controller.sysj line: 150, column: 7
                 S675=0;
-                turnNozTrigger.setPresent();//sysj\controller.sysj line: 152, column: 7
+                turnNozTrigger.setPresent();//sysj\controller.sysj line: 153, column: 7
                 currsigs.addElement(turnNozTrigger);
                 active[14]=1;
                 ends[14]=1;
@@ -546,41 +542,41 @@ public class Filler extends ClockDomain{
               }
               else {
                 S652=4;
-                if((liquidval_thread_14 & (1 << 1)) != 0){//sysj\controller.sysj line: 159, column: 7
+                if((liquidval_thread_14 & (1 << 1)) != 0){//sysj\controller.sysj line: 160, column: 7
                   S703=0;
-                  turnNozTrigger.setPresent();//sysj\controller.sysj line: 161, column: 7
+                  turnNozTrigger.setPresent();//sysj\controller.sysj line: 162, column: 7
                   currsigs.addElement(turnNozTrigger);
                   active[14]=1;
                   ends[14]=1;
                   tdone[14]=1;
                 }
                 else {
-                  System.out.println("-- 1");//sysj\controller.sysj line: 167, column: 4
+                  System.out.println("-- 1");//sysj\controller.sysj line: 168, column: 4
                   S652=5;
-                  if((liquidval_thread_14 & (1 << 2)) != 0){//sysj\controller.sysj line: 168, column: 7
-                    System.out.println("-- 2");//sysj\controller.sysj line: 169, column: 5
+                  if((liquidval_thread_14 & (1 << 2)) != 0){//sysj\controller.sysj line: 169, column: 7
+                    System.out.println("-- 2");//sysj\controller.sysj line: 170, column: 5
                     S741=0;
-                    turnNozTrigger.setPresent();//sysj\controller.sysj line: 171, column: 7
+                    turnNozTrigger.setPresent();//sysj\controller.sysj line: 172, column: 7
                     currsigs.addElement(turnNozTrigger);
                     active[14]=1;
                     ends[14]=1;
                     tdone[14]=1;
                   }
                   else {
-                    System.out.println("-- 5");//sysj\controller.sysj line: 179, column: 4
+                    System.out.println("-- 5");//sysj\controller.sysj line: 180, column: 4
                     S652=6;
-                    if((liquidval_thread_14 & (1 << 3)) != 0){//sysj\controller.sysj line: 180, column: 7
+                    if((liquidval_thread_14 & (1 << 3)) != 0){//sysj\controller.sysj line: 181, column: 7
                       S817=0;
-                      turnNozTrigger.setPresent();//sysj\controller.sysj line: 182, column: 7
+                      turnNozTrigger.setPresent();//sysj\controller.sysj line: 183, column: 7
                       currsigs.addElement(turnNozTrigger);
                       active[14]=1;
                       ends[14]=1;
                       tdone[14]=1;
                     }
                     else {
-                      System.out.println("-- 6");//sysj\controller.sysj line: 188, column: 4
+                      System.out.println("-- 6");//sysj\controller.sysj line: 189, column: 4
                       S652=7;
-                      doneAllLiquids_13.setPresent();//sysj\controller.sysj line: 190, column: 5
+                      doneAllLiquids_13.setPresent();//sysj\controller.sysj line: 191, column: 5
                       currsigs.addElement(doneAllLiquids_13);
                       active[14]=1;
                       ends[14]=1;
@@ -617,16 +613,16 @@ public class Filler extends ClockDomain{
           case 3 : 
             switch(S675){
               case 0 : 
-                if(noz1.getprestatus()){//sysj\controller.sysj line: 151, column: 12
+                if(noz1.getprestatus()){//sysj\controller.sysj line: 152, column: 12
                   S675=1;
-                  nozzlePlaced_13.setPresent();//sysj\controller.sysj line: 155, column: 7
+                  nozzlePlaced_13.setPresent();//sysj\controller.sysj line: 156, column: 7
                   currsigs.addElement(nozzlePlaced_13);
                   active[14]=1;
                   ends[14]=1;
                   tdone[14]=1;
                 }
                 else {
-                  turnNozTrigger.setPresent();//sysj\controller.sysj line: 152, column: 7
+                  turnNozTrigger.setPresent();//sysj\controller.sysj line: 153, column: 7
                   currsigs.addElement(turnNozTrigger);
                   active[14]=1;
                   ends[14]=1;
@@ -635,43 +631,43 @@ public class Filler extends ClockDomain{
                 break;
               
               case 1 : 
-                if(doneFilling_13.getprestatus()){//sysj\controller.sysj line: 154, column: 12
+                if(doneFilling_13.getprestatus()){//sysj\controller.sysj line: 155, column: 12
                   S652=4;
-                  if((liquidval_thread_14 & (1 << 1)) != 0){//sysj\controller.sysj line: 159, column: 7
+                  if((liquidval_thread_14 & (1 << 1)) != 0){//sysj\controller.sysj line: 160, column: 7
                     S703=0;
-                    turnNozTrigger.setPresent();//sysj\controller.sysj line: 161, column: 7
+                    turnNozTrigger.setPresent();//sysj\controller.sysj line: 162, column: 7
                     currsigs.addElement(turnNozTrigger);
                     active[14]=1;
                     ends[14]=1;
                     tdone[14]=1;
                   }
                   else {
-                    System.out.println("-- 1");//sysj\controller.sysj line: 167, column: 4
+                    System.out.println("-- 1");//sysj\controller.sysj line: 168, column: 4
                     S652=5;
-                    if((liquidval_thread_14 & (1 << 2)) != 0){//sysj\controller.sysj line: 168, column: 7
-                      System.out.println("-- 2");//sysj\controller.sysj line: 169, column: 5
+                    if((liquidval_thread_14 & (1 << 2)) != 0){//sysj\controller.sysj line: 169, column: 7
+                      System.out.println("-- 2");//sysj\controller.sysj line: 170, column: 5
                       S741=0;
-                      turnNozTrigger.setPresent();//sysj\controller.sysj line: 171, column: 7
+                      turnNozTrigger.setPresent();//sysj\controller.sysj line: 172, column: 7
                       currsigs.addElement(turnNozTrigger);
                       active[14]=1;
                       ends[14]=1;
                       tdone[14]=1;
                     }
                     else {
-                      System.out.println("-- 5");//sysj\controller.sysj line: 179, column: 4
+                      System.out.println("-- 5");//sysj\controller.sysj line: 180, column: 4
                       S652=6;
-                      if((liquidval_thread_14 & (1 << 3)) != 0){//sysj\controller.sysj line: 180, column: 7
+                      if((liquidval_thread_14 & (1 << 3)) != 0){//sysj\controller.sysj line: 181, column: 7
                         S817=0;
-                        turnNozTrigger.setPresent();//sysj\controller.sysj line: 182, column: 7
+                        turnNozTrigger.setPresent();//sysj\controller.sysj line: 183, column: 7
                         currsigs.addElement(turnNozTrigger);
                         active[14]=1;
                         ends[14]=1;
                         tdone[14]=1;
                       }
                       else {
-                        System.out.println("-- 6");//sysj\controller.sysj line: 188, column: 4
+                        System.out.println("-- 6");//sysj\controller.sysj line: 189, column: 4
                         S652=7;
-                        doneAllLiquids_13.setPresent();//sysj\controller.sysj line: 190, column: 5
+                        doneAllLiquids_13.setPresent();//sysj\controller.sysj line: 191, column: 5
                         currsigs.addElement(doneAllLiquids_13);
                         active[14]=1;
                         ends[14]=1;
@@ -681,7 +677,7 @@ public class Filler extends ClockDomain{
                   }
                 }
                 else {
-                  nozzlePlaced_13.setPresent();//sysj\controller.sysj line: 155, column: 7
+                  nozzlePlaced_13.setPresent();//sysj\controller.sysj line: 156, column: 7
                   currsigs.addElement(nozzlePlaced_13);
                   active[14]=1;
                   ends[14]=1;
@@ -695,16 +691,16 @@ public class Filler extends ClockDomain{
           case 4 : 
             switch(S703){
               case 0 : 
-                if(noz2.getprestatus()){//sysj\controller.sysj line: 160, column: 12
+                if(noz2.getprestatus()){//sysj\controller.sysj line: 161, column: 12
                   S703=1;
-                  nozzlePlaced_13.setPresent();//sysj\controller.sysj line: 164, column: 7
+                  nozzlePlaced_13.setPresent();//sysj\controller.sysj line: 165, column: 7
                   currsigs.addElement(nozzlePlaced_13);
                   active[14]=1;
                   ends[14]=1;
                   tdone[14]=1;
                 }
                 else {
-                  turnNozTrigger.setPresent();//sysj\controller.sysj line: 161, column: 7
+                  turnNozTrigger.setPresent();//sysj\controller.sysj line: 162, column: 7
                   currsigs.addElement(turnNozTrigger);
                   active[14]=1;
                   ends[14]=1;
@@ -713,33 +709,33 @@ public class Filler extends ClockDomain{
                 break;
               
               case 1 : 
-                if(doneFilling_13.getprestatus()){//sysj\controller.sysj line: 163, column: 12
-                  System.out.println("-- 1");//sysj\controller.sysj line: 167, column: 4
+                if(doneFilling_13.getprestatus()){//sysj\controller.sysj line: 164, column: 12
+                  System.out.println("-- 1");//sysj\controller.sysj line: 168, column: 4
                   S652=5;
-                  if((liquidval_thread_14 & (1 << 2)) != 0){//sysj\controller.sysj line: 168, column: 7
-                    System.out.println("-- 2");//sysj\controller.sysj line: 169, column: 5
+                  if((liquidval_thread_14 & (1 << 2)) != 0){//sysj\controller.sysj line: 169, column: 7
+                    System.out.println("-- 2");//sysj\controller.sysj line: 170, column: 5
                     S741=0;
-                    turnNozTrigger.setPresent();//sysj\controller.sysj line: 171, column: 7
+                    turnNozTrigger.setPresent();//sysj\controller.sysj line: 172, column: 7
                     currsigs.addElement(turnNozTrigger);
                     active[14]=1;
                     ends[14]=1;
                     tdone[14]=1;
                   }
                   else {
-                    System.out.println("-- 5");//sysj\controller.sysj line: 179, column: 4
+                    System.out.println("-- 5");//sysj\controller.sysj line: 180, column: 4
                     S652=6;
-                    if((liquidval_thread_14 & (1 << 3)) != 0){//sysj\controller.sysj line: 180, column: 7
+                    if((liquidval_thread_14 & (1 << 3)) != 0){//sysj\controller.sysj line: 181, column: 7
                       S817=0;
-                      turnNozTrigger.setPresent();//sysj\controller.sysj line: 182, column: 7
+                      turnNozTrigger.setPresent();//sysj\controller.sysj line: 183, column: 7
                       currsigs.addElement(turnNozTrigger);
                       active[14]=1;
                       ends[14]=1;
                       tdone[14]=1;
                     }
                     else {
-                      System.out.println("-- 6");//sysj\controller.sysj line: 188, column: 4
+                      System.out.println("-- 6");//sysj\controller.sysj line: 189, column: 4
                       S652=7;
-                      doneAllLiquids_13.setPresent();//sysj\controller.sysj line: 190, column: 5
+                      doneAllLiquids_13.setPresent();//sysj\controller.sysj line: 191, column: 5
                       currsigs.addElement(doneAllLiquids_13);
                       active[14]=1;
                       ends[14]=1;
@@ -748,7 +744,7 @@ public class Filler extends ClockDomain{
                   }
                 }
                 else {
-                  nozzlePlaced_13.setPresent();//sysj\controller.sysj line: 164, column: 7
+                  nozzlePlaced_13.setPresent();//sysj\controller.sysj line: 165, column: 7
                   currsigs.addElement(nozzlePlaced_13);
                   active[14]=1;
                   ends[14]=1;
@@ -762,17 +758,17 @@ public class Filler extends ClockDomain{
           case 5 : 
             switch(S741){
               case 0 : 
-                if(noz3.getprestatus()){//sysj\controller.sysj line: 170, column: 12
-                  System.out.println("-- 3");//sysj\controller.sysj line: 173, column: 6
+                if(noz3.getprestatus()){//sysj\controller.sysj line: 171, column: 12
+                  System.out.println("-- 3");//sysj\controller.sysj line: 174, column: 6
                   S741=1;
-                  nozzlePlaced_13.setPresent();//sysj\controller.sysj line: 175, column: 7
+                  nozzlePlaced_13.setPresent();//sysj\controller.sysj line: 176, column: 7
                   currsigs.addElement(nozzlePlaced_13);
                   active[14]=1;
                   ends[14]=1;
                   tdone[14]=1;
                 }
                 else {
-                  turnNozTrigger.setPresent();//sysj\controller.sysj line: 171, column: 7
+                  turnNozTrigger.setPresent();//sysj\controller.sysj line: 172, column: 7
                   currsigs.addElement(turnNozTrigger);
                   active[14]=1;
                   ends[14]=1;
@@ -781,22 +777,22 @@ public class Filler extends ClockDomain{
                 break;
               
               case 1 : 
-                if(doneFilling_13.getprestatus()){//sysj\controller.sysj line: 174, column: 12
-                  System.out.println("-- 4");//sysj\controller.sysj line: 177, column: 6
-                  System.out.println("-- 5");//sysj\controller.sysj line: 179, column: 4
+                if(doneFilling_13.getprestatus()){//sysj\controller.sysj line: 175, column: 12
+                  System.out.println("-- 4");//sysj\controller.sysj line: 178, column: 6
+                  System.out.println("-- 5");//sysj\controller.sysj line: 180, column: 4
                   S652=6;
-                  if((liquidval_thread_14 & (1 << 3)) != 0){//sysj\controller.sysj line: 180, column: 7
+                  if((liquidval_thread_14 & (1 << 3)) != 0){//sysj\controller.sysj line: 181, column: 7
                     S817=0;
-                    turnNozTrigger.setPresent();//sysj\controller.sysj line: 182, column: 7
+                    turnNozTrigger.setPresent();//sysj\controller.sysj line: 183, column: 7
                     currsigs.addElement(turnNozTrigger);
                     active[14]=1;
                     ends[14]=1;
                     tdone[14]=1;
                   }
                   else {
-                    System.out.println("-- 6");//sysj\controller.sysj line: 188, column: 4
+                    System.out.println("-- 6");//sysj\controller.sysj line: 189, column: 4
                     S652=7;
-                    doneAllLiquids_13.setPresent();//sysj\controller.sysj line: 190, column: 5
+                    doneAllLiquids_13.setPresent();//sysj\controller.sysj line: 191, column: 5
                     currsigs.addElement(doneAllLiquids_13);
                     active[14]=1;
                     ends[14]=1;
@@ -804,7 +800,7 @@ public class Filler extends ClockDomain{
                   }
                 }
                 else {
-                  nozzlePlaced_13.setPresent();//sysj\controller.sysj line: 175, column: 7
+                  nozzlePlaced_13.setPresent();//sysj\controller.sysj line: 176, column: 7
                   currsigs.addElement(nozzlePlaced_13);
                   active[14]=1;
                   ends[14]=1;
@@ -818,16 +814,16 @@ public class Filler extends ClockDomain{
           case 6 : 
             switch(S817){
               case 0 : 
-                if(noz4.getprestatus()){//sysj\controller.sysj line: 181, column: 12
+                if(noz4.getprestatus()){//sysj\controller.sysj line: 182, column: 12
                   S817=1;
-                  nozzlePlaced_13.setPresent();//sysj\controller.sysj line: 185, column: 7
+                  nozzlePlaced_13.setPresent();//sysj\controller.sysj line: 186, column: 7
                   currsigs.addElement(nozzlePlaced_13);
                   active[14]=1;
                   ends[14]=1;
                   tdone[14]=1;
                 }
                 else {
-                  turnNozTrigger.setPresent();//sysj\controller.sysj line: 182, column: 7
+                  turnNozTrigger.setPresent();//sysj\controller.sysj line: 183, column: 7
                   currsigs.addElement(turnNozTrigger);
                   active[14]=1;
                   ends[14]=1;
@@ -836,17 +832,17 @@ public class Filler extends ClockDomain{
                 break;
               
               case 1 : 
-                if(doneFilling_13.getprestatus()){//sysj\controller.sysj line: 184, column: 12
-                  System.out.println("-- 6");//sysj\controller.sysj line: 188, column: 4
+                if(doneFilling_13.getprestatus()){//sysj\controller.sysj line: 185, column: 12
+                  System.out.println("-- 6");//sysj\controller.sysj line: 189, column: 4
                   S652=7;
-                  doneAllLiquids_13.setPresent();//sysj\controller.sysj line: 190, column: 5
+                  doneAllLiquids_13.setPresent();//sysj\controller.sysj line: 191, column: 5
                   currsigs.addElement(doneAllLiquids_13);
                   active[14]=1;
                   ends[14]=1;
                   tdone[14]=1;
                 }
                 else {
-                  nozzlePlaced_13.setPresent();//sysj\controller.sysj line: 185, column: 7
+                  nozzlePlaced_13.setPresent();//sysj\controller.sysj line: 186, column: 7
                   currsigs.addElement(nozzlePlaced_13);
                   active[14]=1;
                   ends[14]=1;
@@ -858,15 +854,15 @@ public class Filler extends ClockDomain{
             break;
           
           case 7 : 
-            if(doneAtPos2_L_13.getprestatus()){//sysj\controller.sysj line: 189, column: 10
-              System.out.println("-- 7");//sysj\controller.sysj line: 192, column: 4
+            if(doneAtPos2_L_13.getprestatus()){//sysj\controller.sysj line: 190, column: 10
+              System.out.println("-- 7");//sysj\controller.sysj line: 193, column: 4
                             S652=0;
               active[14]=1;
               ends[14]=1;
               tdone[14]=1;
             }
             else {
-              doneAllLiquids_13.setPresent();//sysj\controller.sysj line: 190, column: 5
+              doneAllLiquids_13.setPresent();//sysj\controller.sysj line: 191, column: 5
               currsigs.addElement(doneAllLiquids_13);
               active[14]=1;
               ends[14]=1;
@@ -996,10 +992,6 @@ public class Filler extends ClockDomain{
           noz3.gethook();
           noz4.gethook();
           sentliquid.gethook();
-          i_selNoz1.gethook();
-          i_selNoz2.gethook();
-          i_selNoz3.gethook();
-          i_selNoz4.gethook();
           bottleAdded.gethook();
           df = true;
         }
@@ -1013,10 +1005,6 @@ public class Filler extends ClockDomain{
       noz3.setpreclear();
       noz4.setpreclear();
       sentliquid.setpreclear();
-      i_selNoz1.setpreclear();
-      i_selNoz2.setpreclear();
-      i_selNoz3.setpreclear();
-      i_selNoz4.setpreclear();
       bottleAdded.setpreclear();
       valveInjectorOnOff.setpreclear();
       valveInletOnOff.setpreclear();
@@ -1024,8 +1012,8 @@ public class Filler extends ClockDomain{
       dosUnitValveExtend.setpreclear();
       turnNozTrigger.setpreclear();
       doneAtPos2.setpreclear();
-      nozBusy.setpreclear();
       requestliquid.setpreclear();
+      receivedliquid.setpreclear();
       doneFilling_13.setpreclear();
       doneAllLiquids_13.setpreclear();
       nozzlePlaced_13.setpreclear();
@@ -1060,18 +1048,6 @@ public class Filler extends ClockDomain{
       dummyint = sentliquid.getStatus() ? sentliquid.setprepresent() : sentliquid.setpreclear();
       sentliquid.setpreval(sentliquid.getValue());
       sentliquid.setClear();
-      dummyint = i_selNoz1.getStatus() ? i_selNoz1.setprepresent() : i_selNoz1.setpreclear();
-      i_selNoz1.setpreval(i_selNoz1.getValue());
-      i_selNoz1.setClear();
-      dummyint = i_selNoz2.getStatus() ? i_selNoz2.setprepresent() : i_selNoz2.setpreclear();
-      i_selNoz2.setpreval(i_selNoz2.getValue());
-      i_selNoz2.setClear();
-      dummyint = i_selNoz3.getStatus() ? i_selNoz3.setprepresent() : i_selNoz3.setpreclear();
-      i_selNoz3.setpreval(i_selNoz3.getValue());
-      i_selNoz3.setClear();
-      dummyint = i_selNoz4.getStatus() ? i_selNoz4.setprepresent() : i_selNoz4.setpreclear();
-      i_selNoz4.setpreval(i_selNoz4.getValue());
-      i_selNoz4.setClear();
       dummyint = bottleAdded.getStatus() ? bottleAdded.setprepresent() : bottleAdded.setpreclear();
       bottleAdded.setpreval(bottleAdded.getValue());
       bottleAdded.setClear();
@@ -1087,10 +1063,10 @@ public class Filler extends ClockDomain{
       turnNozTrigger.setClear();
       doneAtPos2.sethook();
       doneAtPos2.setClear();
-      nozBusy.sethook();
-      nozBusy.setClear();
       requestliquid.sethook();
       requestliquid.setClear();
+      receivedliquid.sethook();
+      receivedliquid.setClear();
       doneFilling_13.setClear();
       doneAllLiquids_13.setClear();
       nozzlePlaced_13.setClear();
@@ -1105,10 +1081,6 @@ public class Filler extends ClockDomain{
         noz3.gethook();
         noz4.gethook();
         sentliquid.gethook();
-        i_selNoz1.gethook();
-        i_selNoz2.gethook();
-        i_selNoz3.gethook();
-        i_selNoz4.gethook();
         bottleAdded.gethook();
       }
       runFinisher();
